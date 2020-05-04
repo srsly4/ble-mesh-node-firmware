@@ -40,37 +40,6 @@ void blink_task(void *params)
 }
 
 
-static void esp_ble_mesh_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
-                                             esp_ble_mesh_model_cb_param_t *param)
-{
-    ESP_LOGI(TAG, "CUSTOM MODEL EVENT");
-    switch (event) {
-        case ESP_BLE_MESH_MODEL_OPERATION_EVT:
-            if (param->model_operation.opcode == ESP_BLE_MESH_VND_MODEL_OP_SEND) {
-                uint16_t tid = *(uint16_t *)param->model_operation.msg;
-                ESP_LOGI(TAG, "Recv 0x%06x, tid 0x%04x", param->model_operation.opcode, tid);
-                esp_err_t err = esp_ble_mesh_server_model_send_msg(&vnd_models[0],
-                        param->model_operation.ctx, ESP_BLE_MESH_VND_MODEL_OP_STATUS,
-                        sizeof(tid), (uint8_t *)&tid);
-                if (err) {
-                    ESP_LOGE(TAG, "Faild to send message 0x%06x", ESP_BLE_MESH_VND_MODEL_OP_STATUS);
-                }
-            }
-            break;
-        case ESP_BLE_MESH_MODEL_SEND_COMP_EVT:
-            if (param->model_send_comp.err_code) {
-                ESP_LOGE(TAG, "Failed to send message 0x%06x", param->model_send_comp.opcode);
-                break;
-            }
-            ESP_LOGI(TAG, "Send 0x%06x", param->model_send_comp.opcode);
-            break;
-        default:
-            break;
-    }
-}
-
-
-
 void app_main()
 {
     /*esp_log_level_set("BLE_MESH", ESP_LOG_VERBOSE);

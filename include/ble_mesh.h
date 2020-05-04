@@ -24,14 +24,16 @@
 
 static uint8_t dev_uuid[16] = { 0xdd, 0xdd };
 
-#define ESP_BLE_MESH_VND_MODEL_ID_CLIENT    0x0000
-#define ESP_BLE_MESH_VND_MODEL_ID_SERVER    0x0001
-
-#define ESP_BLE_MESH_VND_MODEL_OP_SEND      ESP_BLE_MESH_MODEL_OP_3(0x00, CID_ESP)
-#define ESP_BLE_MESH_VND_MODEL_OP_STATUS    ESP_BLE_MESH_MODEL_OP_3(0x01, CID_ESP)
-
-
 #define CID_ESP 0x02E5
+
+#define TASK_VND_MODEL_ID_CLIENT    0x00A1
+#define TASK_VND_MODEL_ID_SERVER    0x00A2
+
+#define TASK_VND_MODEL_OP_GET           ESP_BLE_MESH_MODEL_OP_3(0x00, CID_ESP)
+#define TASK_VND_MODEL_OP_STATUS        ESP_BLE_MESH_MODEL_OP_3(0x01, CID_ESP)
+#define TASK_VND_MODEL_OP_ENQUEUE       ESP_BLE_MESH_MODEL_OP_3(0x02, CID_ESP)
+
+
 
 static esp_ble_mesh_cfg_srv_t config_server;
 

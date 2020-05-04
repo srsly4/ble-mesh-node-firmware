@@ -30,12 +30,13 @@ static esp_ble_mesh_gen_onoff_srv_t onoff_server_0 = {
 
 // VENDOR MODEL
 static esp_ble_mesh_model_op_t vnd_op[] = {
-    ESP_BLE_MESH_MODEL_OP(ESP_BLE_MESH_VND_MODEL_OP_SEND, 2),
+    ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_GET, 1),
+    ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_ENQUEUE, 4),
     ESP_BLE_MESH_MODEL_OP_END,
 };
 
 static esp_ble_mesh_model_t vnd_models[] = {
-    ESP_BLE_MESH_VENDOR_MODEL(CID_ESP, ESP_BLE_MESH_VND_MODEL_ID_SERVER,
+    ESP_BLE_MESH_VENDOR_MODEL(CID_ESP, TASK_VND_MODEL_ID_SERVER,
     vnd_op, NULL, NULL),
 };
 
@@ -43,13 +44,13 @@ static esp_ble_mesh_model_t vnd_models[] = {
 // ROOT ELEMENT
 static esp_ble_mesh_model_t root_models[] = {
     ESP_BLE_MESH_MODEL_CFG_SRV(&config_server),
-    ESP_BLE_MESH_MODEL_GEN_ONOFF_SRV(&onoff_pub_0, &onoff_server_0)
+    ESP_BLE_MESH_MODEL_GEN_ONOFF_SRV(&onoff_pub_0, &onoff_server_0),
 };
 
 
 // ELEMENTS
 static esp_ble_mesh_elem_t elements[] = {
-    ESP_BLE_MESH_ELEMENT(0, root_models, ESP_BLE_MESH_MODEL_NONE),
+    ESP_BLE_MESH_ELEMENT(0, root_models, vnd_models),
 };
 
 static esp_ble_mesh_comp_t composition = {
@@ -225,6 +226,35 @@ static void esp_ble_mesh_config_server_cb(esp_ble_mesh_cfg_server_cb_event_t eve
     }
 }
 
+static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
+                                             esp_ble_mesh_model_cb_param_t *param)
+{
+    switch (event) {
+    case ESP_BLE_MESH_MODEL_OPERATION_EVT:
+        if (param->model_operation.opcode == TASK_VND_MODEL_OP_GET) {
+            uint16_t tid = *(uint16_t *)param->model_operation.msg;
+            ESP_LOGI(TAG, "TASK_VND_MODEL_OP_GET Recv 0x%06x, tid 0x%04x", param->model_operation.opcode, tid);
+            esp_err_t err = esp_ble_mesh_server_model_send_msg(&vnd_models[0],
+                    param->model_operation.ctx, TASK_VND_MODEL_OP_STATUS,
+                    sizeof(tid), (uint8_t *)&tid);
+            if (err) {
+                ESP_LOGE(TAG, "Faild to send message TASK_VND_MODEL_OP_STATUS 0x%06x", TASK_VND_MODEL_OP_STATUS);
+            }
+        }
+        break;
+    case ESP_BLE_MESH_MODEL_SEND_COMP_EVT:
+        if (param->model_send_comp.err_code) {
+            ESP_LOGE(TAG, "Failed to send message 0x%06x", param->model_send_comp.opcode);
+            break;
+        }
+        ESP_LOGI(TAG, "Send 0x%06x", param->model_send_comp.opcode);
+        break;
+    default:
+        break;
+    }
+}
+
+
 /* Bluetooth INIT */
 void ble_mesh_get_dev_uuid(uint8_t *dev_uuid)
 {
@@ -264,7 +294,6 @@ esp_err_t bluetooth_init(void)
     return ret;
 }
 
-
 esp_err_t ble_mesh_init(void)
 {
     int err = 0;
@@ -276,7 +305,7 @@ esp_err_t ble_mesh_init(void)
     esp_ble_mesh_register_config_server_callback(esp_ble_mesh_config_server_cb);
     //esp_ble_mesh_register_health_server_callback(esp_ble_mesh_health_model_cb);
     esp_ble_mesh_register_generic_server_callback(esp_ble_mesh_generic_server_cb);
-    //esp_ble_mesh_register_custom_model_callback(esp_ble_mesh_custom_model_cb);
+    esp_ble_mesh_register_custom_model_callback(task_custom_model_cb);
 
     err = esp_ble_mesh_init(&provision, &composition);
     if (err) {
