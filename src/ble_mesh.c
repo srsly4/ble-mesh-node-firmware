@@ -1,4 +1,5 @@
 #include "ble_mesh.h"
+#include "tasks.h"
 
 // SERVER CONFIG
 
@@ -31,7 +32,7 @@ static esp_ble_mesh_gen_onoff_srv_t onoff_server_0 = {
 // VENDOR MODEL
 static esp_ble_mesh_model_op_t vnd_op[] = {
     ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_GET, 1),
-    ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_ENQUEUE, 4),
+    ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_ENQUEUE, 2),
     ESP_BLE_MESH_MODEL_OP_END,
 };
 
@@ -109,7 +110,6 @@ static void esp_handle_gen_onoff_msg(esp_ble_mesh_model_t *model,
         }
         esp_ble_mesh_model_publish(model, ESP_BLE_MESH_MODEL_OP_GEN_ONOFF_STATUS,
             sizeof(srv->state.onoff), &srv->state.onoff, ROLE_NODE);
-        ESP_LOGI(TAG, "kurwa działa: 0x%02x", (unsigned int)&srv->state.onoff);
         break;
     default:
         break;
@@ -240,6 +240,24 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
             if (err) {
                 ESP_LOGE(TAG, "Faild to send message TASK_VND_MODEL_OP_STATUS 0x%06x", TASK_VND_MODEL_OP_STATUS);
             }
+        }
+        if (param->model_operation.opcode == TASK_VND_MODEL_OP_ENQUEUE) {
+            uint8_t func_code = *(uint8_t *)param->model_operation.msg;
+            uint64_t time = *(uint64_t *)(param->model_operation.msg + 1);
+            ESP_LOGI(TAG, "TASK_VND_MODEL_OP_ENQUEUE Recv 0x%06x, func code 0x%02x, data len: %u, time: %llu",
+                param->model_operation.opcode, func_code, (unsigned int)param->model_operation.length, time);
+            task_item_t *task = malloc(sizeof(task_item_t));
+            task->func_code = func_code;
+            task->time = time;
+            task->arg_data = NULL;
+            if (param->model_operation.length > 9) {
+                size_t arg_size = param->model_operation.length - 9;
+                task->arg_data = malloc(arg_size);
+                memcpy(task->arg_data, param->model_operation.msg + 9, arg_size);
+            }
+
+            ESP_LOGI(TAG, "enqueuing task");
+            enqueue_task(task);
         }
         break;
     case ESP_BLE_MESH_MODEL_SEND_COMP_EVT:

@@ -7,9 +7,8 @@
 */
 
 #include "ble_mesh.h"
-
-#define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
-
+#include "tasks.h"
+#include "example/blink_task.h"
 
 #define BLINK_GPIO CONFIG_BLINK_GPIO
 
@@ -27,26 +26,8 @@ struct _led_state {
 extern struct _led_state led_state[3];
 
 
-void blink_task(void *params)
-{
-    while(1) {
-        /* Blink off (output low) */
-        gpio_set_level(BLINK_GPIO, 0);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
-        /* Blink on (output high) */
-        gpio_set_level(BLINK_GPIO, 1);
-        vTaskDelay(100 / portTICK_PERIOD_MS);
-    }
-}
-
-
 void app_main()
 {
-    /*esp_log_level_set("BLE_MESH", ESP_LOG_VERBOSE);
-    esp_log_level_set("BT_LOG", ESP_LOG_VERBOSE);
-    esp_log_level_set("bt", ESP_LOG_VERBOSE);
-    esp_log_level_set("btc", ESP_LOG_VERBOSE);
-    esp_log_level_set("ble", ESP_LOG_VERBOSE);*/
 
     gpio_pad_select_gpio(BLINK_GPIO);
     /* Set the GPIO as a push/pull output */
@@ -54,7 +35,15 @@ void app_main()
 
     esp_err_t err;
 
-    ESP_LOGI(TAG, "Initializing...");
+
+    ESP_LOGI(TAG, "Initializing timers...");
+    initialize_task_timer();
+    ESP_LOGI(TAG, "Initializing executor...");
+    initialize_task_executor();
+    ESP_LOGI(TAG, "Registering available tasks...");
+    register_all_tasks();
+
+    ESP_LOGI(TAG, "Initializing BT & BLE MESH...");
 
     err = nvs_flash_init();
     if (err == ESP_ERR_NVS_NO_FREE_PAGES) {
@@ -78,7 +67,7 @@ void app_main()
     }
 
 
-    TaskHandle_t xHandle = NULL;
-    xTaskCreate(blink_task, "blink_task", 8096, NULL, tskIDLE_PRIORITY, &xHandle);
-    configASSERT(xHandle);
+    // TaskHandle_t xHandle = NULL;
+    // xTaskCreate(blink_task, "blink_task", 8096, NULL, tskIDLE_PRIORITY, &xHandle);
+    // configASSERT(xHandle);
 }

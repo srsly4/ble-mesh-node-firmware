@@ -2,7 +2,7 @@
 # without default 'CMakeLists.txt' file.
 
 set(app_sources
-	"main.c" "ble_mesh.c"
+	"main.c" "ble_mesh.c" "tasks.c" "example/blink_task.c"
 )
 
 idf_component_register(SRCS ${app_sources})

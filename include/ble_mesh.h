@@ -1,3 +1,6 @@
+#ifndef BLE_MESH_CONF
+#define BLE_MESH_CONF
+
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -52,3 +55,5 @@ static esp_ble_mesh_prov_t provision;
 void ble_mesh_get_dev_uuid(uint8_t *dev_uuid);
 esp_err_t bluetooth_init(void);
 esp_err_t ble_mesh_init(void);
+
+#endif
