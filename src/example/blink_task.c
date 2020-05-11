@@ -25,5 +25,5 @@ task_registered_ret_t do_blink_task(void* args) {
 }
 
 void register_all_tasks() {
-    register_task(0xBB, do_blink_task);
+    register_task(0xBB, &do_blink_task);
 }

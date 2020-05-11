@@ -31,10 +31,6 @@ typedef struct task_registered_t {
 } task_registered_t;
 
 
-
-static int task_registered_funcs_len = 0;
-static task_registered_t task_registered_funcs[TASK_MAX_REGISTERED_FUNCS];
-
 typedef struct task_item_t task_item_t;
 
 struct task_item_t {
@@ -47,8 +43,8 @@ struct task_item_t {
 
 
 
-static task_item_t *tasks_queue;
-static task_item_t *tasks_finished;
+task_item_t *tasks_queue;
+task_item_t *tasks_finished;
 
 
 void enqueue_task(task_item_t *task);

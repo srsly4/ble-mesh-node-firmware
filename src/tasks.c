@@ -2,11 +2,16 @@
 #include "driver/timer.h"
 
 static xTaskHandle executor_task_handle;
-static QueueHandle_t executor_queue;
+QueueHandle_t executor_queue;
+
+static int task_registered_funcs_len = 0;
+static task_registered_t task_registered_funcs[TASK_MAX_REGISTERED_FUNCS];
+
 
 void enqueue_task(task_item_t *task) {
     uint64_t curr_time;
 
+    ESP_LOGI(TASK_TAG, "Getting current timer value");
     if (timer_get_counter_value(TIMER_GROUP_0, 0, &curr_time) != ESP_OK) {
         ESP_LOGE(TASK_TAG, "Could not get timer value");
         return;
@@ -22,26 +27,25 @@ void enqueue_task(task_item_t *task) {
         return;
     }
 
-
+    ESP_LOGI(TASK_TAG, "Adding task to task queue and setting an alarm");
     // add to task queue
     if (tasks_queue == NULL) {
         tasks_queue = task;
-        return;
+    } else {
+        task_item_t* curr = tasks_queue;
+        while (curr->next != NULL && curr->next->time < target_time) {
+            curr = curr->next;
+        }
+
+        task->next= curr->next;
+        curr->next = task;
     }
 
-    task_item_t* curr = tasks_queue;
-    while (curr->next != NULL && curr->next->time < target_time) {
-        curr = curr->next;
-    }
-
-    task->next= curr->next;
-    curr->next = task;
-
+    ESP_LOGI(TASK_TAG, "Setting an alarm");
     // set timer for this task
     timer_set_alarm_value(TIMER_GROUP_0, 0, target_time);
-    TIMERG0.hw_timer[0].config.alarm_en = TIMER_ALARM_EN;
     timer_set_alarm(TIMER_GROUP_0, 0, TIMER_ALARM_EN);
-    ESP_LOGI(TASK_TAG, "Task enqueued, alert set");
+    ESP_LOGI(TASK_TAG, "Task enqueued, alert set for %llu", target_time);
 }
 
 void finalize_task(task_item_t *task) {
@@ -81,6 +85,7 @@ uint8_t register_task(uint8_t task_id, task_func_t func) {
 void IRAM_ATTR timer_group0_isr(void *params) {
     /* Retrieve the interrupt status and the counter value
        from the timer that reported the interrupt */
+    ets_printf("timer triggered!\n");
     uint32_t intr_status = TIMERG0.int_st_timers.val;
     TIMERG0.hw_timer[0].update = 1;
     uint64_t timer_counter_value = 
@@ -94,11 +99,10 @@ void IRAM_ATTR timer_group0_isr(void *params) {
     while (tasks_queue != NULL && tasks_queue->time <= timer_counter_value) {
         next = tasks_queue->next;
         tasks_queue->next = NULL;
-        tasks_queue = next;
-
+        ets_printf("pushing to queue task_id %02x!\n", tasks_queue->func_code);
         xQueueSendFromISR(executor_queue, tasks_queue, NULL);
+        tasks_queue = next;
     }
-
 }
 
 void initialize_task_timer(void) {
@@ -133,12 +137,16 @@ void initialize_task_timer(void) {
 }
 
 static void executor_task(void* args) {
+    ESP_LOGI(TASK_TAG, "In-executor of task");
+
     task_item_t *task = (task_item_t*)args;
 
     task_registered_t *task_reg = NULL;
     for (int i = 0; i < task_registered_funcs_len; i++) {
-        if (task_registered_funcs[i].task_id == task->func_code) {
-            task_reg = &task_registered_funcs[i];
+    ESP_LOGI(TASK_TAG, "In-executor of task, iter %d", i);
+        if (task_registered_funcs[i].task_id == task->func_code) { // tu jest segmentation fault
+            task_reg = &(task_registered_funcs[i]);
+            ESP_LOGI(TASK_TAG, "In-executor of task, before break");
             break;
         }
     }
@@ -146,7 +154,12 @@ static void executor_task(void* args) {
     if (task_reg == NULL) {
         ESP_LOGE(TASK_TAG, "Could not find task function with code %02x", task->func_code);
     }
+    if (task_reg->func == NULL) {
+        ESP_LOGE(TASK_TAG, "Queued task function callback NULL");
+        return;
+    }
 
+    ESP_LOGI(TASK_TAG, "Executing inner-function of task with func id %02x", task->func_code);
     task_registered_ret_t ret = task_reg->func(task->arg_data);
 
     ESP_LOGI(TASK_TAG, "Task %02x returned with data length %u", task->func_code, (unsigned int)ret.ret_len);
@@ -165,7 +178,7 @@ static void executor_loop(void* args) {
         }
         ESP_LOGI(TASK_TAG, "Executing task with func id %02x", current_task.func_code);
 
-        xTaskCreate(executor_task, "executor_task", 8096, NULL, 3, (void *)(&current_task));
+        xTaskCreate(executor_task, "executor_task", 16384, NULL, 3, &current_task);
     }
 }
 
@@ -183,6 +196,7 @@ static void show_curr_time_task(void* args) {
 }
 
 void initialize_task_executor(void) {
+    task_registered_funcs_len = 0;
     xTaskCreate(executor_loop, "executor_loop", 8096, NULL, 3, &executor_task_handle);
     xTaskCreate(show_curr_time_task, "curr_time", 8096, NULL, 3, &show_curr_time_task);
 }
