@@ -1,11 +1,12 @@
 #include "tasks.h"
 #include "driver/timer.h"
+#include <string.h>
 
 static xTaskHandle executor_task_handle;
 QueueHandle_t executor_queue;
 
-static int task_registered_funcs_len = 0;
-static task_registered_t task_registered_funcs[TASK_MAX_REGISTERED_FUNCS];
+int task_registered_funcs_len = 0;
+static task_registered_t task_registered_funcs[TASK_MAX_REGISTERED_FUNCS] = {0};
 
 
 void enqueue_task(task_item_t *task) {
@@ -49,12 +50,10 @@ void enqueue_task(task_item_t *task) {
 }
 
 void finalize_task(task_item_t *task) {
-    tasks_queue = task->next;
-
     task->next = tasks_finished;
     tasks_finished = task;
 
-    //todo: ble mesh task completed publish
+    ESP_LOGI(TASK_TAG, "Task finished");
 }
 
 uint8_t register_task(uint8_t task_id, task_func_t func) {
@@ -70,12 +69,9 @@ uint8_t register_task(uint8_t task_id, task_func_t func) {
         }
     }
 
-    task_registered_t registered_task;
+    task_registered_funcs[task_registered_funcs_len].task_id = task_id;
+    task_registered_funcs[task_registered_funcs_len].func = func;
 
-    registered_task.task_id = task_id;
-    registered_task.func = func;
-
-    task_registered_funcs[task_registered_funcs_len] = registered_task;
 
     task_registered_funcs_len++;
 
@@ -117,36 +113,28 @@ void initialize_task_timer(void) {
     config.auto_reload = 0;
     timer_init(TIMER_GROUP_0, timer_idx, &config);
 
-    ESP_LOGI(TASK_TAG, "timer_init end");
-
     /* Timer's counter will initially start from value below.
        Also, if auto_reload is set, this value will be automatically reload on alarm */
     timer_set_counter_value(TIMER_GROUP_0, timer_idx, 0x00000000ULL);
-    ESP_LOGI(TASK_TAG, "timer_set_counter_value end");
 
     /* Configure the alarm value and the interrupt on alarm. */
     //timer_set_alarm_value(TIMER_GROUP_0, timer_idx, timer_interval_sec * TIMER_SCALE);
     timer_enable_intr(TIMER_GROUP_0, timer_idx);
-    ESP_LOGI(TASK_TAG, "timer_enable_intr end");
     timer_isr_register(TIMER_GROUP_0, timer_idx, timer_group0_isr,
                        (void *)0, ESP_INTR_FLAG_IRAM, NULL);
-    ESP_LOGI(TASK_TAG, "timer_isr_register end");
 
     timer_start(TIMER_GROUP_0, timer_idx);
-    ESP_LOGI(TASK_TAG, "timer_start end");
 }
 
 static void executor_task(void* args) {
-    ESP_LOGI(TASK_TAG, "In-executor of task");
 
     task_item_t *task = (task_item_t*)args;
 
     task_registered_t *task_reg = NULL;
     for (int i = 0; i < task_registered_funcs_len; i++) {
-    ESP_LOGI(TASK_TAG, "In-executor of task, iter %d", i);
-        if (task_registered_funcs[i].task_id == task->func_code) { // tu jest segmentation fault
-            task_reg = &(task_registered_funcs[i]);
-            ESP_LOGI(TASK_TAG, "In-executor of task, before break");
+        task_registered_t task_cmp = task_registered_funcs[i];
+        if (task_cmp.task_id == task->func_code) {
+            task_reg = &task_cmp;
             break;
         }
     }
@@ -159,26 +147,42 @@ static void executor_task(void* args) {
         return;
     }
 
-    ESP_LOGI(TASK_TAG, "Executing inner-function of task with func id %02x", task->func_code);
+    ESP_LOGI(TASK_TAG, "Executing inner-function of task with func id %02x ptr: %p arg_data ptr: %p", task->func_code, task_reg->func, task->arg_data);
     task_registered_ret_t ret = task_reg->func(task->arg_data);
 
     ESP_LOGI(TASK_TAG, "Task %02x returned with data length %u", task->func_code, (unsigned int)ret.ret_len);
+
+    task->res_data = malloc(sizeof(task_registered_ret_t));
+    *(task->res_data) = ret;
     finalize_task(task);
+    vTaskDelete(NULL);
 }
 
 static void executor_loop(void* args) {
     executor_queue = xQueueCreate(TASK_EXECUTOR_MAX_ITEMS, sizeof(task_item_t));
     
     task_item_t current_task;
-    ESP_LOGI(TASK_TAG, "Executor loop started");
+
     while (1) {
         if (xQueueReceive(executor_queue, &current_task, portMAX_DELAY) != pdTRUE) {
             ESP_LOGE(TASK_TAG, "Could not receive from queue");
             return;
         }
-        ESP_LOGI(TASK_TAG, "Executing task with func id %02x", current_task.func_code);
 
-        xTaskCreate(executor_task, "executor_task", 16384, NULL, 3, &current_task);
+        task_item_t *passed_task = malloc(sizeof(task_item_t));
+        if (passed_task == NULL) {
+            ESP_LOGE(TASK_TAG, "Couldn't malloc for task");
+            return;
+        }
+
+        memcpy(passed_task, &current_task, sizeof(task_item_t));
+
+        ESP_LOGI(TASK_TAG, "Executing task with func id %02x, ptr to task: %p", passed_task->func_code, passed_task);
+
+        TaskHandle_t handle = NULL;
+        if (xTaskCreate(executor_task, "executor_task", 16*1024, (void *)passed_task, 3, &handle) != pdTRUE) {
+            ESP_LOGE(TASK_TAG, "Could not create execution task");
+        }
     }
 }
 
@@ -198,5 +202,5 @@ static void show_curr_time_task(void* args) {
 void initialize_task_executor(void) {
     task_registered_funcs_len = 0;
     xTaskCreate(executor_loop, "executor_loop", 8096, NULL, 3, &executor_task_handle);
-    xTaskCreate(show_curr_time_task, "curr_time", 8096, NULL, 3, &show_curr_time_task);
+    xTaskCreate(show_curr_time_task, "curr_time", 8096, NULL, 3, (void*)(&show_curr_time_task));
 }

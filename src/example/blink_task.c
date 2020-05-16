@@ -1,7 +1,15 @@
 #include "example/blink_task.h"
 
+#include "esp_log.h"
+
+#define BLINK_TASK_TAG "blink"
+
+
 task_registered_ret_t do_blink_task(void* args) {
-    uint8_t count = *((uint8_t*) args);
+    ESP_LOGI(BLINK_TASK_TAG, "Task started");
+
+
+    uint8_t count = args != NULL ? *((uint8_t*) args) : 5;
 
     for (int i = 0; i < count; i++) {
         /* Blink on (output high) */

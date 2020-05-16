@@ -37,7 +37,7 @@ struct task_item_t {
     uint64_t time;
     uint16_t func_code;
     void* arg_data;
-    void* res_data;
+    task_registered_ret_t *res_data;
     struct task_item_t *next;
 };
 
