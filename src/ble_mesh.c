@@ -238,6 +238,7 @@ static void esp_ble_mesh_config_server_cb(esp_ble_mesh_cfg_server_cb_event_t eve
 static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
                                              esp_ble_mesh_model_cb_param_t *param)
 {
+    ESP_LOGI(TAG, "custom model cb");
     switch (event) {
     case ESP_BLE_MESH_MODEL_OPERATION_EVT:
         if (param->model_operation.opcode == TASK_VND_MODEL_OP_GET) {
@@ -267,6 +268,19 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
 
             ESP_LOGI(TAG, "enqueuing task");
             enqueue_task(task);
+        }
+        if (param->model_operation.opcode == TIMESYNC_VND_MODEL_OP_BEACON) {
+            ESP_LOGI(TAG, "TIMESYNC_VND_MODEL_OP_BEACON Recv 0x%06x",
+                param->model_operation.opcode);
+
+            if (param->model_operation.length < sizeof(timesync_beacon_t)) {
+                ESP_LOGW(TAG, "Beacon message is too short: %d", param->model_operation.length);
+                break;
+            }
+
+            timesync_beacon_t *beacon_data = (timesync_beacon_t*)param->model_operation.msg;
+
+            update_logic_time(beacon_data->rate, beacon_data->offset);
         }
         break;
     case ESP_BLE_MESH_MODEL_SEND_COMP_EVT:

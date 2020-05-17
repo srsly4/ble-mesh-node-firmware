@@ -8,8 +8,13 @@ QueueHandle_t executor_queue;
 int task_registered_funcs_len = 0;
 static task_registered_t task_registered_funcs[TASK_MAX_REGISTERED_FUNCS] = {0};
 
-static double logic_time_rate = 0.0;
+static uint64_t logic_time_rate = 1 * LOGIC_TIME_RATE_MULTIPLIER;
 static uint64_t logic_time_offset = 0;
+
+static bool logic_time_in_sync = false;
+
+// hardware time - local timer in ms (JS-compatible)
+// logic time - absolute time in ms
 
 uint64_t get_logic_time() {
     uint64_t hardware_time;
@@ -18,32 +23,23 @@ uint64_t get_logic_time() {
         return 0;
     }
 
-    return (uint64_t)(logic_time_rate * hardware_time) + logic_time_offset;
-}
+    hardware_time /= TIMER_SCALE_MS;
 
-uint64_t logic_time_to_hardware(uint64_t logic_time) {
-    return (uint64_t)(logic_time / logic_time_rate) - logic_time_offset;
+    return HARDWARE_TIME_TO_LOGIC(hardware_time);
 }
-
 
 void enqueue_task(task_item_t *task) {
-    uint64_t curr_time;
+    uint64_t curr_time = get_logic_time();
 
-    ESP_LOGI(TASK_TAG, "Getting current timer value");
-    if (timer_get_counter_value(TIMER_GROUP_0, 0, &curr_time) != ESP_OK) {
-        ESP_LOGE(TASK_TAG, "Could not get timer value");
-        return;
-    }
-
-    uint64_t target_time = task->time*TIMER_SCALE_MS;
-
-    if (target_time <= curr_time) {
+    if (task->time <= curr_time) {
         ESP_LOGI(TASK_TAG, "Task time before current, running immediately");
         if (xQueueSend(executor_queue, task, portMAX_DELAY) != pdTRUE) {
             ESP_LOGE(TASK_TAG, "Could not push task to queue");
         }
         return;
     }
+
+    uint64_t target_time = LOGIC_TIME_TO_HARDWARE(task->time);
 
     ESP_LOGI(TASK_TAG, "Adding task to task queue and setting an alarm");
     // add to task queue
@@ -108,8 +104,10 @@ void IRAM_ATTR timer_group0_isr(void *params) {
 
     TIMERG0.int_clr_timers.t0 = 1;
 
+    uint64_t logic_time = HARDWARE_TIME_TO_LOGIC(timer_counter_value / TIMER_SCALE_MS);
+
     task_item_t* next;
-    while (tasks_queue != NULL && tasks_queue->time <= timer_counter_value) {
+    while (tasks_queue != NULL && tasks_queue->time <= logic_time) {
         next = tasks_queue->next;
         tasks_queue->next = NULL;
         ets_printf("pushing to queue task_id %02x!\n", tasks_queue->func_code);
@@ -212,8 +210,13 @@ static void show_curr_time_task(void* args) {
             continue;
         }
 
-        ESP_LOGI(TASK_TAG, "Current local time: %llu ms, %llu ticks, timer scale ms: %u", curr_time / TIMER_SCALE_MS, curr_time, TIMER_SCALE_MS);
-        publish_timesync_data(curr_time, 0x123456789ABCDEF);
+        uint64_t hw_time = curr_time / TIMER_SCALE_MS;
+
+        ESP_LOGI(TASK_TAG, "Current local time: %llu ms, %llu ticks, timer scale ms: %u", hw_time, curr_time, TIMER_SCALE_MS);
+
+        if (logic_time_in_sync) {
+            publish_timesync_data(logic_time_rate, HARDWARE_TIME_TO_LOGIC(hw_time));
+        }
     }
 }
 
@@ -221,4 +224,38 @@ void initialize_task_executor(void) {
     task_registered_funcs_len = 0;
     xTaskCreate(executor_loop, "executor_loop", 8096, NULL, 3, &executor_task_handle);
     xTaskCreate(show_curr_time_task, "curr_time", 8096, NULL, 3, (void*)(&show_curr_time_task));
+}
+
+void update_logic_time(uint64_t logic_rate, uint64_t logic_time) {
+    uint64_t current_logic_time = get_logic_time();
+
+    ESP_LOGI(TASK_TAG, "update_logic_time, rate: %llu, time: %llu, local_logic_time: %llu", logic_rate, logic_time, current_logic_time);
+
+
+    if (logic_time > current_logic_time && logic_time > LOGIC_TIME_THRESHOLD && logic_time - current_logic_time > LOGIC_TIME_THRESHOLD) {
+        ESP_LOGI(TASK_TAG, "logic time threshold excedded, replacing local offset");
+        logic_time_offset += logic_time - current_logic_time;
+        goto set_alarm;
+    }
+
+    int64_t offset = ((int64_t)logic_time - (int64_t)current_logic_time)/2;
+
+    //todo: handle more neighbours (with map and timeouts)
+    ESP_LOGI(TASK_TAG, "updating time with offset %lld", offset);
+
+    if (offset < 0) {
+        logic_time_offset -= abs(offset);
+    } else {
+        logic_time_offset += offset;
+    }
+    logic_time_in_sync = true;
+
+    set_alarm:
+    if (tasks_queue != NULL) {
+        uint64_t target_time = LOGIC_TIME_TO_HARDWARE(tasks_queue->time);
+        ESP_LOGI(TASK_TAG, "reset alarm to HW clock %llu", target_time);
+        timer_set_alarm_value(TIMER_GROUP_0, 0, target_time);
+        timer_set_alarm(TIMER_GROUP_0, 0, TIMER_ALARM_EN);
+    }
+
 }

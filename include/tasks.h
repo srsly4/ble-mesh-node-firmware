@@ -20,6 +20,13 @@
 #define TIMER_SCALE           (TIMER_BASE_CLK / TIMER_DIVIDER)  // convert counter value to seconds
 #define TIMER_SCALE_MS        (TIMER_SCALE / 1000)
 
+#define LOGIC_TIME_RATE_MULTIPLIER 1000
+#define LOGIC_TIME_THRESHOLD 1000 * 1000
+
+
+#define LOGIC_TIME_TO_HARDWARE(logic_time) ((uint64_t)(LOGIC_TIME_RATE_MULTIPLIER * logic_time / logic_time_rate) - logic_time_offset)
+#define HARDWARE_TIME_TO_LOGIC(hardware_time) ((uint64_t)((logic_time_rate * hardware_time) / LOGIC_TIME_RATE_MULTIPLIER) + logic_time_offset)
+
 typedef struct task_registered_ret_t {
     uint8_t ret_len;
     void* data;
@@ -55,5 +62,7 @@ uint8_t register_task(uint8_t task_id, task_func_t func);
 
 void initialize_task_timer(void);
 void initialize_task_executor(void);
+
+void update_logic_time(uint64_t logic_rate, uint64_t logic_time);
 
 #endif
