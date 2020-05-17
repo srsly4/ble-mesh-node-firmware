@@ -8,6 +8,23 @@ QueueHandle_t executor_queue;
 int task_registered_funcs_len = 0;
 static task_registered_t task_registered_funcs[TASK_MAX_REGISTERED_FUNCS] = {0};
 
+static double logic_time_rate = 0.0;
+static uint64_t logic_time_offset = 0;
+
+uint64_t get_logic_time() {
+    uint64_t hardware_time;
+    if (timer_get_counter_value(TIMER_GROUP_0, 0, &hardware_time) != ESP_OK) {
+        ESP_LOGE(TASK_TAG, "Could not get timer value");
+        return 0;
+    }
+
+    return (uint64_t)(logic_time_rate * hardware_time) + logic_time_offset;
+}
+
+uint64_t logic_time_to_hardware(uint64_t logic_time) {
+    return (uint64_t)(logic_time / logic_time_rate) - logic_time_offset;
+}
+
 
 void enqueue_task(task_item_t *task) {
     uint64_t curr_time;
@@ -196,6 +213,7 @@ static void show_curr_time_task(void* args) {
         }
 
         ESP_LOGI(TASK_TAG, "Current local time: %llu ms, %llu ticks, timer scale ms: %u", curr_time / TIMER_SCALE_MS, curr_time, TIMER_SCALE_MS);
+        publish_timesync_data(curr_time, 0x123456789ABCDEF);
     }
 }
 

@@ -23,7 +23,7 @@
 #include "esp_ble_mesh_local_data_operation_api.h"
 
 
-#define TAG "demo"
+#define TAG "blemesh"
 
 static uint8_t dev_uuid[16] = { 0xdd, 0xdd };
 
@@ -36,24 +36,22 @@ static uint8_t dev_uuid[16] = { 0xdd, 0xdd };
 #define TASK_VND_MODEL_OP_STATUS        ESP_BLE_MESH_MODEL_OP_3(0x01, CID_ESP)
 #define TASK_VND_MODEL_OP_ENQUEUE       ESP_BLE_MESH_MODEL_OP_3(0x02, CID_ESP)
 
+#define TIMESYNC_VND_MODEL_ID_CLIENT    0x00A3
+#define TIMESYNC_VND_MODEL_ID_SERVER    0x00A4
 
+#define TIMESYNC_VND_MODEL_OP_BEACON    ESP_BLE_MESH_MODEL_OP_3(0x10, CID_ESP)
 
-static esp_ble_mesh_cfg_srv_t config_server;
+#define TIMESYNC_VND_MODEL_ADDRESS_PUBLISH 0xFFFF
 
-static esp_ble_mesh_model_pub_t onoff_pub_0;
-static esp_ble_mesh_gen_onoff_srv_t onoff_server_0;
-
-static esp_ble_mesh_model_op_t vnd_op[];
-static esp_ble_mesh_model_t vnd_models[];
-
-static esp_ble_mesh_model_t root_models[];
-static esp_ble_mesh_elem_t elements[];
-
-static esp_ble_mesh_comp_t composition;
-static esp_ble_mesh_prov_t provision;
+typedef struct timesync_beacon_t {
+    uint64_t rate;
+    uint64_t offset;
+} timesync_beacon_t;
 
 void ble_mesh_get_dev_uuid(uint8_t *dev_uuid);
 esp_err_t bluetooth_init(void);
 esp_err_t ble_mesh_init(void);
+
+void publish_timesync_data(uint64_t rate, uint64_t offset);
 
 #endif

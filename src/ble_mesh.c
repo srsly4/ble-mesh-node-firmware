@@ -23,6 +23,8 @@ static esp_ble_mesh_cfg_srv_t config_server = {
 
 ESP_BLE_MESH_MODEL_PUB_DEFINE(onoff_pub_0, 2 + 3, ROLE_NODE);
 
+ESP_BLE_MESH_MODEL_PUB_DEFINE(timesync_pub_0, 3 + sizeof(timesync_beacon_t), ROLE_NODE);
+
 static esp_ble_mesh_gen_onoff_srv_t onoff_server_0 = {
     .rsp_ctrl.get_auto_rsp = ESP_BLE_MESH_SERVER_AUTO_RSP,
     .rsp_ctrl.set_auto_rsp = ESP_BLE_MESH_SERVER_AUTO_RSP,
@@ -30,16 +32,23 @@ static esp_ble_mesh_gen_onoff_srv_t onoff_server_0 = {
 
 
 // VENDOR MODEL
-static esp_ble_mesh_model_op_t vnd_op[] = {
+static esp_ble_mesh_model_op_t task_vnd_op[] = {
     ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_GET, 1),
     ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_ENQUEUE, 2),
     ESP_BLE_MESH_MODEL_OP_END,
 };
 
-static esp_ble_mesh_model_t vnd_models[] = {
-    ESP_BLE_MESH_VENDOR_MODEL(CID_ESP, TASK_VND_MODEL_ID_SERVER,
-    vnd_op, NULL, NULL),
+static esp_ble_mesh_model_op_t timesync_vnd_op[] = {
+    ESP_BLE_MESH_MODEL_OP(TIMESYNC_VND_MODEL_OP_BEACON, 1),
+    ESP_BLE_MESH_MODEL_OP_END,
 };
+
+static esp_ble_mesh_model_t vnd_models[] = {
+    ESP_BLE_MESH_VENDOR_MODEL(CID_ESP, TASK_VND_MODEL_ID_SERVER, task_vnd_op, NULL, NULL),
+    ESP_BLE_MESH_VENDOR_MODEL(CID_ESP, TIMESYNC_VND_MODEL_ID_SERVER, timesync_vnd_op, &timesync_pub_0, NULL)
+};
+
+static esp_ble_mesh_model_t *timesync_model = &(vnd_models[1]);
 
 
 // ROOT ELEMENT
@@ -270,6 +279,26 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
     default:
         break;
     }
+}
+
+void publish_timesync_data(uint64_t rate, uint64_t offset) {
+    timesync_beacon_t beacon;
+
+    beacon.rate = rate;
+    beacon.offset = offset;
+
+    esp_ble_mesh_msg_ctx_t msg;
+    msg.addr = TIMESYNC_VND_MODEL_ADDRESS_PUBLISH;
+    msg.send_ttl = 1;
+    msg.send_rel = 0;
+    msg.net_idx = 0;
+    msg.app_idx = 0;
+    msg.model = timesync_model;
+
+    if (esp_ble_mesh_server_model_send_msg(timesync_model, &msg, TIMESYNC_VND_MODEL_OP_BEACON, sizeof(timesync_beacon_t), (uint8_t*)(&beacon))!= ESP_OK) {
+            ESP_LOGE(TAG, "Could not publish timesync beacon");
+    }
+    
 }
 
 

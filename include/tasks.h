@@ -9,6 +9,7 @@
 #include "freertos/queue.h"
 #include "driver/periph_ctrl.h"
 #include "driver/timer.h"
+#include "ble_mesh.h"
 
 #define TASK_MAX_REGISTERED_FUNCS 8
 #define TASK_EXECUTOR_MAX_ITEMS 4
