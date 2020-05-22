@@ -7,7 +7,7 @@
 typedef struct timesync_beacon_t {
     double rate;
     double logic_time;
-    uint64_t hardware_time;
+    double hardware_time; // miliseconds instead of ticks!
 } timesync_beacon_t;
 
 typedef struct time_model_t {
@@ -48,7 +48,8 @@ typedef struct task_item_t task_item_t;
 
 struct task_item_t {
     uint16_t tid;
-    hardware_predicted_time_t time;
+    uint64_t time;
+    hardware_predicted_time_t predicted_time;
     uint16_t func_code;
     void* arg_data;
     task_registered_ret_t *res_data;

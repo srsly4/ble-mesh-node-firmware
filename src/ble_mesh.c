@@ -272,7 +272,7 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
             task_item_t *task = malloc(sizeof(task_item_t));
             task->tid = task_enqueue->tid;
             task->func_code = task_enqueue->func_code;
-            task->time.base.logic_time = task_enqueue->time;
+            task->time = task_enqueue->time;
             task->arg_data = NULL;
             // if (param->model_operation.length > sizeof(task_enqueue_t) - sizeof(void*)) {
             //     size_t arg_size = param->model_operation.length - (sizeof(task_enqueue_t) - sizeof(void*));

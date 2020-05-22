@@ -13,7 +13,7 @@ static task_registered_t task_registered_funcs[TASK_MAX_REGISTERED_FUNCS] = {0};
 // logic time - ms doubkle
 
 static double logic_time_base = 0.0;
-static double logic_time_rate = 1.0;
+static double logic_time_rate = 0.0;
 static double logic_time_offset = 0.0;
 
 static uint64_t last_time_request = 0; // in timer ticks
@@ -40,7 +40,7 @@ time_model_t get_logic_time() {
     // hw_time_d already includes hardware clock drift
     double hw_time_d = (double)(timer_time - last_time_request) / TIMER_SCALE_MS;
 
-    logic_time_base += hw_time_d * logic_time_rate;
+    logic_time_base += hw_time_d * logic_time_rate + hw_time_d;
     last_time_request = timer_time;
 
     time_model_t time_model = {
@@ -62,21 +62,21 @@ time_model_t get_logic_time() {
 
 hardware_predicted_time_t get_hardware_predicted_time_for_logic(double given_logic_time) {
     time_model_t time_model = get_logic_time();
-    double diff = given_logic_time - time_model.logic_time; // positive if in the future
+    double diff = (given_logic_time - time_model.logic_time) * TIMER_SCALE_MS; // positive if in the future
 
     hardware_predicted_time_t predicted;
 
     predicted.base = time_model;
-    predicted.predicted = time_model.hardware_time + (uint64_t)(diff*TIMER_SCALE_MS/logic_time_rate);
+    predicted.predicted = time_model.hardware_time + (uint64_t)(diff/(1.0 + logic_time_rate));
 
     return predicted;
 }
 
 void enqueue_task(task_item_t *task) {
-    task->time = get_hardware_predicted_time_for_logic(task->time.base.logic_time);
+    task->predicted_time = get_hardware_predicted_time_for_logic(task->time);
     task->next = NULL;
 
-    if (task->time.predicted <= task->time.base.hardware_time) {
+    if (task->predicted_time.predicted <= task->predicted_time.base.hardware_time) {
         ESP_LOGI(TASK_TAG, "Task time before current, running immediately");
         if (xQueueSend(executor_queue, task, portMAX_DELAY) != pdTRUE) {
             ESP_LOGE(TASK_TAG, "Could not push task to queue");
@@ -84,7 +84,7 @@ void enqueue_task(task_item_t *task) {
         return;
     }
 
-    uint64_t target_time = task->time.predicted;
+    uint64_t target_time = task->predicted_time.predicted;
 
     ESP_LOGI(TASK_TAG, "Adding task to task queue and setting an alarm");
     // add to task queue
@@ -92,7 +92,7 @@ void enqueue_task(task_item_t *task) {
         tasks_queue = task;
     } else {
         task_item_t* curr = tasks_queue;
-        while (curr->next != NULL && curr->next->time.predicted < target_time) {
+        while (curr->next != NULL && curr->next->predicted_time.predicted < target_time) {
             curr = curr->next;
         }
 
@@ -149,7 +149,7 @@ void IRAM_ATTR timer_group0_isr(void *params) {
     TIMERG0.int_clr_timers.t0 = 1;
 
     task_item_t *next, *current;
-    while (tasks_queue != NULL && tasks_queue->time.predicted <= timer_counter_value) {
+    while (tasks_queue != NULL && tasks_queue->predicted_time.predicted <= timer_counter_value) {
         next = tasks_queue->next;
         tasks_queue->next = NULL;
 
@@ -279,7 +279,7 @@ static void time_beacon_task(void* args) {
             }
 
             avgRate += curr->relative_logic_rate;
-            avgOffset += curr->beacon.logic_time - time.logic_time;
+            avgOffset += curr->beacon.logic_time - curr->time_recv.logic_time;
 
             neighbour_count++;
             prev = curr;
@@ -289,15 +289,15 @@ static void time_beacon_task(void* args) {
         avgRate /= neighbour_count + 1;
         avgOffset /= neighbour_count + 1;
 
-        logic_time_offset += avgOffset;
-        logic_time_rate = avgRate;
+        logic_time_offset += avgOffset * 0.5;
+        // logic_time_rate = avgRate;
 
-        ESP_LOGI(TASK_TAG, "Current local logic time: %f ms", time.logic_time);
+        ESP_LOGI(TASK_TAG, "Current local logic time: %f ms, offset diff/rate: %f/%f", time.logic_time, avgOffset, logic_time_rate);
 
         if (logic_time_in_sync) {
             time = get_logic_time();
             timesync_beacon_t beacon;
-            beacon.hardware_time = time.hardware_time;
+            beacon.hardware_time = (double)(time.hardware_time / TIMER_SCALE_MS);
             beacon.logic_time = time.logic_time;
             beacon.rate = logic_time_rate;
 
@@ -307,16 +307,13 @@ static void time_beacon_task(void* args) {
         // update all predicted task times
         task_item_t *task = tasks_queue;
         while (task != NULL) {
-            ESP_LOGI(TASK_TAG, "Recalculating alarm for task %u: %f ms", task->func_code, task->time.base.logic_time);
-            task->time = get_hardware_predicted_time_for_logic(task->time.base.logic_time);
-            ESP_LOGI(TASK_TAG, "New alarm is for %llu. Next? %d", task->time.predicted, task->next != NULL ? 1 : 0);
+            task->predicted_time = get_hardware_predicted_time_for_logic(task->time);
             task = task->next;
         }
         
         // update alarm for the first task
         if (tasks_queue != NULL) {
-            ESP_LOGI(TASK_TAG, "Reset alarm to HW clock %llu", tasks_queue->time.predicted);
-            timer_set_alarm_value(TIMER_GROUP_0, 0, tasks_queue->time.predicted);
+            timer_set_alarm_value(TIMER_GROUP_0, 0, tasks_queue->predicted_time.predicted);
             timer_set_alarm(TIMER_GROUP_0, 0, TIMER_ALARM_EN);
         }
 
@@ -330,9 +327,21 @@ void initialize_task_executor(void) {
 }
 
 void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon) {
+    // beacon->hardware_time += TIME_TRANSMISSION_DELAY;
+    // beacon->logic_time += TIME_TRANSMISSION_DELAY;
     time_model_t current_time = get_logic_time();
 
     gtsp_neighbour_t *curr = neighbours, *prev = NULL;
+
+
+    //todo: verify somehow if offset is not significantly larger than previously received (due to retransmissions) – idea: storing 5 last offsets
+    double offset = beacon->logic_time - current_time.logic_time;
+    if (offset > LOGIC_TIME_THRESHOLD) {
+        ESP_LOGI(TASK_TAG, "Logic time threshold excedded, jumping into the future of %fms", beacon->logic_time);
+        logic_time_offset = offset;
+        logic_time_in_sync = true;
+        return;
+    }
 
     while (curr != NULL) {
         // node found
@@ -349,7 +358,7 @@ void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon) {
         curr = malloc(sizeof(gtsp_neighbour_t));
         curr->sender = sender;
         curr->next = NULL; // append new neighbour to the end
-        curr->relative_logic_rate = 1.0;
+        curr->relative_logic_rate = 0.0;
 
         if (prev) {
             prev->next = curr;
@@ -359,26 +368,19 @@ void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon) {
         }
 
     } else {
-        uint64_t delta_local = current_time.hardware_time - curr->time_recv.hardware_time; // hi
-        uint64_t delta_neighbour = beacon->hardware_time - curr->beacon.hardware_time; // hj
+        double delta_local = (double)(current_time.hardware_time - curr->time_recv.hardware_time) / TIMER_SCALE_MS; // hi
+        double delta_neighbour = beacon->hardware_time - curr->beacon.hardware_time; // hj - ile faktycznie minęło na innym nodzie
 
-        double current_rate = (double)delta_neighbour / (double)delta_local; // hj / hi
+        double current_rate = (delta_neighbour - delta_local) / delta_local; // hj / hi
 
-        curr->relative_logic_rate = 1.0 + current_rate * beacon->rate; // xj * hi
+        curr->relative_logic_rate = 0.9*current_rate * beacon->rate + 0.1*current_rate; // xj * hi
+        ESP_LOGI(TASK_TAG, "delta local/neighbour: %f/%f", delta_local, delta_neighbour);
     }
 
     curr->iteration = gtsp_current_iteration;
     curr->beacon = *beacon;
     curr->time_recv = current_time;
 
-    double offset = beacon->logic_time - current_time.logic_time;
-
     ESP_LOGI(TASK_TAG, "Beacon from 0x%04x: relative_logic_rate %f, offset %f", sender, curr->relative_logic_rate, offset);
-    ESP_LOGI(TASK_TAG, "logic time/rate: %f/%f hardware_time: %llu", beacon->logic_time, beacon->rate, beacon->hardware_time);
-
-    if (offset > LOGIC_TIME_THRESHOLD) {
-        ESP_LOGI(TASK_TAG, "Logic time threshold excedded, jumping into the future of %fms", beacon->logic_time);
-        logic_time_offset = offset;
-        logic_time_in_sync = true;
-    }
+    ESP_LOGI(TASK_TAG, "logic time/rate: %f/%f hardware_time: %f", beacon->logic_time, beacon->rate, beacon->hardware_time);
 }
