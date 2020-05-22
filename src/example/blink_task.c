@@ -14,7 +14,7 @@ task_registered_ret_t do_blink_task(void* args) {
     for (int i = 0; i < count; i++) {
         /* Blink on (output high) */
         gpio_set_level(CONFIG_BLINK_GPIO, 1);
-        vTaskDelay(50 / portTICK_PERIOD_MS);
+        vTaskDelay(100 / portTICK_PERIOD_MS);
 
         /* Blink off (output low) */
         gpio_set_level(CONFIG_BLINK_GPIO, 0);

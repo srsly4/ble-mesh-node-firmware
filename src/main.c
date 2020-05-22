@@ -12,19 +12,7 @@
 
 #define BLINK_GPIO CONFIG_BLINK_GPIO
 
-
-#define LED_ON  1
-#define LED_OFF 0
-
-struct _led_state {
-    uint8_t current;
-    uint8_t previous;
-    uint8_t pin;
-    char *name;
-};
-
-extern struct _led_state led_state[3];
-
+static uint8_t dev_uuid[16] = { 0xdd, 0xdd };
 
 void app_main()
 {

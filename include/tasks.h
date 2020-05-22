@@ -9,6 +9,7 @@
 #include "freertos/queue.h"
 #include "driver/periph_ctrl.h"
 #include "driver/timer.h"
+#include "types.h"
 #include "ble_mesh.h"
 
 #define TASK_MAX_REGISTERED_FUNCS 8
@@ -23,32 +24,13 @@
 #define LOGIC_TIME_RATE_MULTIPLIER 1000
 #define LOGIC_TIME_THRESHOLD 1000 * 1000
 
+#define TIME_TRANSMISSION_DELAY 15 // ms
+#define TIME_BEACON_DELAY_BASE 5000 // ms
+#define TIME_BEACON_DELAY_THERESHOLD 500 // ms
+#define TIME_BEACON_MAX_ITERATION_DIFFERENCE 5
 
 #define LOGIC_TIME_TO_HARDWARE(logic_time) ((uint64_t)(LOGIC_TIME_RATE_MULTIPLIER * logic_time / logic_time_rate) - logic_time_offset)
 #define HARDWARE_TIME_TO_LOGIC(hardware_time) ((uint64_t)((logic_time_rate * hardware_time) / LOGIC_TIME_RATE_MULTIPLIER) + logic_time_offset)
-
-typedef struct task_registered_ret_t {
-    uint8_t ret_len;
-    void* data;
-} task_registered_ret_t;
-
-typedef task_registered_ret_t (*task_func_t)(void*);
-typedef struct task_registered_t {
-    uint8_t task_id;
-    task_func_t func;
-} task_registered_t;
-
-
-typedef struct task_item_t task_item_t;
-
-struct task_item_t {
-    uint64_t time;
-    uint16_t func_code;
-    void* arg_data;
-    task_registered_ret_t *res_data;
-    struct task_item_t *next;
-};
-
 
 
 task_item_t *tasks_queue;
@@ -63,6 +45,6 @@ uint8_t register_task(uint8_t task_id, task_func_t func);
 void initialize_task_timer(void);
 void initialize_task_executor(void);
 
-void update_logic_time(uint64_t logic_rate, uint64_t logic_time);
+void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon);
 
 #endif

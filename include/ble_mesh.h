@@ -22,10 +22,10 @@
 #include "esp_ble_mesh_generic_model_api.h"
 #include "esp_ble_mesh_local_data_operation_api.h"
 
+#include "types.h"
+#include "tasks.h"
 
 #define TAG "blemesh"
-
-static uint8_t dev_uuid[16] = { 0xdd, 0xdd };
 
 #define CID_ESP 0x02E5
 
@@ -43,15 +43,18 @@ static uint8_t dev_uuid[16] = { 0xdd, 0xdd };
 
 #define TIMESYNC_VND_MODEL_ADDRESS_PUBLISH 0xFFFF
 
-typedef struct timesync_beacon_t {
-    uint64_t rate;
-    uint64_t offset;
-} timesync_beacon_t;
+
+typedef struct __attribute__ ((__packed__)) task_enqueue_t {
+    uint16_t tid;
+    uint8_t func_code;
+    uint64_t time;
+    void* args;
+} __attribute__ ((__packed__)) task_enqueue_t;
 
 void ble_mesh_get_dev_uuid(uint8_t *dev_uuid);
 esp_err_t bluetooth_init(void);
 esp_err_t ble_mesh_init(void);
 
-void publish_timesync_data(uint64_t rate, uint64_t offset);
+void publish_timesync_data(timesync_beacon_t beacon_data);
 
 #endif

@@ -1,6 +1,7 @@
 #include "ble_mesh.h"
 #include "tasks.h"
 
+static uint8_t dev_uuid[16] = { 0xdd, 0xdd };
 // SERVER CONFIG
 
 static esp_ble_mesh_cfg_srv_t config_server = {
@@ -85,6 +86,8 @@ static esp_ble_mesh_prov_t provision = {
 #endif
 };
 
+static uint16_t current_net_idx = 0;
+static uint16_t current_address = 0x0000;
 
 static void prov_complete(uint16_t net_idx, uint16_t addr, uint8_t flags, uint32_t iv_index)
 {
@@ -92,6 +95,8 @@ static void prov_complete(uint16_t net_idx, uint16_t addr, uint8_t flags, uint32
     ESP_LOGI(TAG, "flags: 0x%02x, iv_index: 0x%08x", flags, iv_index);
 
     ESP_LOGI(TAG, "Provision COMPLETED!");
+    current_address = addr;
+    current_net_idx = net_idx;
 }
 
 static void esp_handle_gen_onoff_msg(esp_ble_mesh_model_t *model,
@@ -235,6 +240,7 @@ static void esp_ble_mesh_config_server_cb(esp_ble_mesh_cfg_server_cb_event_t eve
     }
 }
 
+static uint16_t last_tid = 0;
 static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
                                              esp_ble_mesh_model_cb_param_t *param)
 {
@@ -252,26 +258,43 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
             }
         }
         if (param->model_operation.opcode == TASK_VND_MODEL_OP_ENQUEUE) {
-            uint8_t func_code = *(uint8_t *)param->model_operation.msg;
-            uint64_t time = *(uint64_t *)(param->model_operation.msg + 1);
-            ESP_LOGI(TAG, "TASK_VND_MODEL_OP_ENQUEUE Recv 0x%06x, func code 0x%02x, data len: %u, time: %llu",
-                param->model_operation.opcode, func_code, (unsigned int)param->model_operation.length, time);
-            task_item_t *task = malloc(sizeof(task_item_t));
-            task->func_code = func_code;
-            task->time = time;
-            task->arg_data = NULL;
-            if (param->model_operation.length > 9) {
-                size_t arg_size = param->model_operation.length - 9;
-                task->arg_data = malloc(arg_size);
-                memcpy(task->arg_data, param->model_operation.msg + 9, arg_size);
+            task_enqueue_t *task_enqueue = (task_enqueue_t*)(param->model_operation.msg);
+            
+            if (task_enqueue->tid <= last_tid) {
+                break;
             }
+
+            last_tid = task_enqueue->tid;
+
+            ESP_LOGI(TAG, "TASK_VND_MODEL_OP_ENQUEUE Recv 0x%06x, func code 0x%02x, data len: %u, time: %llu",
+                param->model_operation.opcode, task_enqueue->func_code, (unsigned int)param->model_operation.length, task_enqueue->time);
+
+            task_item_t *task = malloc(sizeof(task_item_t));
+            task->tid = task_enqueue->tid;
+            task->func_code = task_enqueue->func_code;
+            task->time.base.logic_time = task_enqueue->time;
+            task->arg_data = NULL;
+            // if (param->model_operation.length > sizeof(task_enqueue_t) - sizeof(void*)) {
+            //     size_t arg_size = param->model_operation.length - (sizeof(task_enqueue_t) - sizeof(void*));
+            //     task->arg_data = malloc(arg_size);
+            //     memcpy(task->arg_data, param->model_operation.msg + 9, arg_size);
+            // }
 
             ESP_LOGI(TAG, "enqueuing task");
             enqueue_task(task);
         }
         if (param->model_operation.opcode == TIMESYNC_VND_MODEL_OP_BEACON) {
-            ESP_LOGI(TAG, "TIMESYNC_VND_MODEL_OP_BEACON Recv 0x%06x",
-                param->model_operation.opcode);
+            if (param->model_operation.ctx->addr == current_address) {
+                break;
+            }
+
+            if (param->model_operation.ctx->addr != 1) {
+                break;
+            }
+
+            ESP_LOGI(TAG, "TIMESYNC_VND_MODEL_OP_BEACON Recv 0x%06x for addr %04x",
+                param->model_operation.opcode,
+                param->model_operation.ctx->addr);
 
             if (param->model_operation.length < sizeof(timesync_beacon_t)) {
                 ESP_LOGW(TAG, "Beacon message is too short: %d", param->model_operation.length);
@@ -279,8 +302,7 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
             }
 
             timesync_beacon_t *beacon_data = (timesync_beacon_t*)param->model_operation.msg;
-
-            update_logic_time(beacon_data->rate, beacon_data->offset);
+            update_neighbour_time_beacon(param->model_operation.ctx->addr, beacon_data);
         }
         break;
     case ESP_BLE_MESH_MODEL_SEND_COMP_EVT:
@@ -295,24 +317,19 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
     }
 }
 
-void publish_timesync_data(uint64_t rate, uint64_t offset) {
-    timesync_beacon_t beacon;
-
-    beacon.rate = rate;
-    beacon.offset = offset;
-
+void publish_timesync_data(timesync_beacon_t beacon_data) {
     esp_ble_mesh_msg_ctx_t msg;
     msg.addr = TIMESYNC_VND_MODEL_ADDRESS_PUBLISH;
-    msg.send_ttl = 1;
+    msg.send_ttl = 0;
     msg.send_rel = 0;
-    msg.net_idx = 0;
+    msg.net_idx = current_net_idx;
     msg.app_idx = 0;
     msg.model = timesync_model;
 
-    if (esp_ble_mesh_server_model_send_msg(timesync_model, &msg, TIMESYNC_VND_MODEL_OP_BEACON, sizeof(timesync_beacon_t), (uint8_t*)(&beacon))!= ESP_OK) {
-            ESP_LOGE(TAG, "Could not publish timesync beacon");
+    esp_err_t ret = esp_ble_mesh_server_model_send_msg(timesync_model, &msg, TIMESYNC_VND_MODEL_OP_BEACON, sizeof(timesync_beacon_t), (uint8_t*)(&beacon_data));
+    if (ret != ESP_OK) {
+            ESP_LOGE(TAG, "Could not publish timesync beacon: %d", ret);
     }
-    
 }
 
 
