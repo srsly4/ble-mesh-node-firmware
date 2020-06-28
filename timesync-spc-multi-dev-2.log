@@ -1,0 +1,56 @@
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at http://bit.ly/pio-monitor-filters
+--- Enter port index or full name: ␛[0;32mI (80616) tasks: Time beacon task iteration 16␛[0m
+␛[0;32mI (85616) tasks: Time beacon task iteration 17␛[0m
+␛[0;32mI (90616) tasks: Time beacon task iteration 18␛[0m
+␛[0;32mI (95616) tasks: Time beacon task iteration 19␛[0m
+␛[0;32mI (100616) tasks: Time beacon task iteration 20␛[0m
+␛[0;32mI (105616) tasks: Time beacon task iteration 21␛[0m
+␛[0;32mI (110616) tasks: Time beacon task iteration 22␛[0m
+␛[0;32mI (115616) tasks: Time beacon task iteration 23␛[0m
+␛[0;32mI (120616) tasks: Time beacon task iteration 24␛[0m
+␛[0;32mI (125616) tasks: Time beacon task iteration 25␛[0m
+␛[0;32mI (130616) tasks: Time beacon task iteration 26␛[0m
+␛[0;32mI (135616) tasks: Time beacon task iteration 27␛[0m
+␛[0;32mI (140616) tasks: Time beacon task iteration 28␛[0m
+␛[0;32mI (145616) tasks: Time beacon task iteration 29␛[0m
+␛[0;32mI (150616) tasks: Time beacon task iteration 30␛[0m
+␛[0;32mI (155616) tasks: Time beacon task iteration 31␛[0m
+␛[0;32mI (156276) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_OPEN_EVT, bearer PB-ADV␛[0m
+␛[0;33mW (156596) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;32mI (160616) tasks: Time beacon task iteration 32␛[0m
+␛[0;32mI (161096) blemesh: ESP_BLE_MESH_NODE_PROV_COMPLETE_EVT␛[0m
+␛[0;32mI (161096) blemesh: net_idx: 0x0000, addr: 0x0003␛[0m
+␛[0;32mI (161096) blemesh: flags: 0x00, iv_index: 0x00000000␛[0m
+␛[0;32mI (161096) blemesh: Provision COMPLETED!␛[0m
+␛[0;33mW (161556) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;32mI (161556) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_CLOSE_EVT, bearer PB-ADV␛[0m
+␛[0;32mI (162806) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (162806) blemesh: ESP_BLE_MESH_MODEL_OP_APP_KEY_ADD␛[0m
+␛[0;32mI (162806) blemesh: net_idx 0x0000, app_idx 0x0000␛[0m
+␛[0;32mI (162816) AppKey: 33 0c 2e 0c 59 0c 44 0c 4f 92 59 90 43 18 59 6f ␛[0m
+␛[0;33mW (163256) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (163466) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (163466) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (163466) blemesh: elem_addr 0x0003, app_idx 0x0000, cid 0x02e5, mod_id 0x00a2␛[0m
+␛[0;32mI (164126) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (164126) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (164126) blemesh: elem_addr 0x0003, app_idx 0x0000, cid 0x02e5, mod_id 0x00a4␛[0m
+␛[0;32mI (165116) blemesh: custom model cb␛[0m
+␛[0;32mI (165616) tasks: Time beacon task iteration 33␛[0m
+␛[0;32mI (169716) blemesh: custom model cb␛[0m
+␛[0;32mI (170616) tasks: Time beacon task iteration 34␛[0m
+␛[0;32mI (174736) blemesh: custom model cb␛[0m
+␛[0;32mI (175616) tasks: Time beacon task iteration 35␛[0m
+␛[0;32mI (179736) blemesh: custom model cb␛[0m
+␛[0;32mI (180616) tasks: Time beacon task iteration 36␛[0m
+␛[0;32mI (184736) blemesh: custom model cb␛[0m
+␛[0;32mI (185616) tasks: Time beacon task iteration 37␛[0m
+␛[0;32mI (189736) blemesh: custom model cb␛[0m
+␛[0;32mI (190616) tasks: Time beacon task iteration 38␛[0m
+␛[0;32mI (194736) blemesh: custom model cb␛[0m
+␛[0;32mI (195616) tasks: Time beacon task iteration 39␛[0m
+␛[0;32mI (199736) blemesh: custom model cb␛[0m
+␛[0;32mI (200616) tasks: Time beacon task iteration 40␛[0m
+␛[0;32mI (204736) blemesh: custom model cb␛[0m
+␛[0;32mI (205616) tasks: Time beacon task iteration 41␛[0m

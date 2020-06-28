@@ -1,0 +1,293 @@
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at http://bit.ly/pio-monitor-filters
+␛[0;32mI (10615) tasks: Time beacon task iteration 2␛[0m
+␛[0;32mI (15615) tasks: Time beacon task iteration 3␛[0m
+␛[0;32mI (16155) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_OPEN_EVT, bearer PB-ADV␛[0m
+␛[0;33mW (16665) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;32mI (20615) tasks: Time beacon task iteration 4␛[0m
+␛[0;32mI (22325) blemesh: ESP_BLE_MESH_NODE_PROV_COMPLETE_EVT␛[0m
+␛[0;32mI (22325) blemesh: net_idx: 0x0000, addr: 0x0008␛[0m
+␛[0;32mI (22325) blemesh: flags: 0x00, iv_index: 0x00000000␛[0m
+␛[0;32mI (22325) blemesh: Provision COMPLETED!␛[0m
+␛[0;33mW (22805) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;32mI (22805) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_CLOSE_EVT, bearer PB-ADV␛[0m
+␛[0;32mI (23905) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (23905) blemesh: ESP_BLE_MESH_MODEL_OP_APP_KEY_ADD␛[0m
+␛[0;32mI (23905) blemesh: net_idx 0x0000, app_idx 0x0000␛[0m
+␛[0;32mI (23915) AppKey: 33 0c 2e 0c 59 0c 44 0c 4f 92 59 90 43 18 59 6f ␛[0m
+␛[0;33mW (24465) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (24645) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (24765) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (24765) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (24945) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (24945) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (25065) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (25065) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (25245) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (25245) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (25245) blemesh: elem_addr 0x0008, app_idx 0x0000, cid 0x02e5, mod_id 0x00a2␛[0m
+␛[0;32mI (25615) tasks: Time beacon task iteration 5␛[0m
+␛[0;33mW (29365) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (29465) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (29665) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (29765) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (29845) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (29965) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (30445) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (30615) tasks: Time beacon task iteration 6␛[0m
+␛[0;33mW (31045) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (31645) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (32045) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (32045) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (32045) blemesh: elem_addr 0x0008, app_idx 0x0000, cid 0x02e5, mod_id 0x00a4␛[0m
+␛[0;33mW (32245) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (32845) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (33445) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (34045) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (34065) BLE_MESH: Duplicate SDU from src 0x0001␛[0m
+␛[0;33mW (34365) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (34565) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (34865) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (34955) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (35055) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (35055) blemesh: custom model cb␛[0m
+␛[0;32mI (35055) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (35055) tasks: Logic time threshold excedded, jumping into the future of 1590251796034.000000ms␛[0m
+␛[0;32mI (35615) tasks: Time beacon task iteration 7␛[0m
+␛[0;32mI (35615) tasks: Current local logic time: 1590251796586.057617 ms, offset diff/rate: 0.000000/0.000000␛[0m
+␛[0;33mW (35615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (35625) blemesh: custom model cb␛[0m
+␛[0;32mI (35625) blemesh: custom model cb␛[0m
+␛[0;32mI (35625) blemesh: Send 0xd002e5␛[0m
+␛[0;33mW (39365) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (39365) blemesh: custom model cb␛[0m
+␛[0;32mI (39365) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (39365) tasks: New neighbour detected: 0x0001␛[0m
+␛[0;32mI (39375) tasks: Beacon from 0x0001: relative_logic_rate 0.000000, offset 685.269287␛[0m
+␛[0;32mI (39385) tasks: logic time/rate: 1590251801036.000000/0.000000 hardware_time: 1590251801036.000000␛[0m
+␛[0;33mW (39655) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (39655) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (39765) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (39765) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (39865) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (39865) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (39965) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (39965) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (40065) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (40065) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (40165) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (40165) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (40615) tasks: Time beacon task iteration 8␛[0m
+␛[0;32mI (40615) tasks: Current local logic time: 1590251801594.140869 ms, offset diff/rate: 342.634644/0.000000␛[0m
+␛[0;33mW (40615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (40625) blemesh: custom model cb␛[0m
+␛[0;32mI (40625) blemesh: custom model cb␛[0m
+␛[0;32mI (40625) blemesh: Send 0xd002e5␛[0m
+␛[0;33mW (44265) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (44265) blemesh: custom model cb␛[0m
+␛[0;32mI (44265) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (44265) tasks: Relative delay: -2451.442308 Min delay: -2451.442308␛[0m
+␛[0;32mI (44275) tasks: delta local/neighbour: 4907.884615/5003.000000␛[0m
+␛[0;32mI (44285) tasks: Beacon from 0x0001: relative_logic_rate 0.019380, offset 609.067383␛[0m
+␛[0;32mI (44295) tasks: logic time/rate: 1590251806039.000000/0.000000 hardware_time: 1590251806039.000000␛[0m
+␛[0;33mW (44365) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (44365) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (44465) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (44465) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (44565) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (44565) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (44665) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (44665) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (44765) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (44765) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (44845) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (44845) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (45165) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (45165) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (45615) tasks: Time beacon task iteration 9␛[0m
+␛[0;32mI (45615) tasks: Current local logic time: 1590251806773.522461 ms, offset diff/rate: 304.533691/0.000000␛[0m
+␛[0;33mW (45615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (45625) blemesh: custom model cb␛[0m
+␛[0;32mI (45625) blemesh: custom model cb␛[0m
+␛[0;32mI (45625) blemesh: Send 0xd002e5␛[0m
+␛[0;33mW (46785) BLE_MESH: Ran out of retransmit attempts␛[0m
+␛[0;33mW (49265) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (49265) blemesh: custom model cb␛[0m
+␛[0;32mI (49265) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (49265) tasks: Relative delay: -2501.483974 Min delay: -2501.483974␛[0m
+␛[0;32mI (49275) tasks: delta local/neighbour: 5007.967949/5004.000000␛[0m
+␛[0;32mI (49285) tasks: Beacon from 0x0001: relative_logic_rate -0.000792, offset 452.832520␛[0m
+␛[0;32mI (49295) tasks: logic time/rate: 1590251811043.000000/0.000000 hardware_time: 1590251811043.000000␛[0m
+␛[0;33mW (49465) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (49465) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (49565) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (49565) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (49665) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (49665) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (49765) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (49765) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (49865) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (49865) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (49965) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (49965) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (50065) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (50065) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (50165) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (50165) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (50615) tasks: Time beacon task iteration 10␛[0m
+␛[0;32mI (50615) tasks: Current local logic time: 1590251811933.750732 ms, offset diff/rate: 226.416260/0.000000␛[0m
+␛[0;33mW (50615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (50625) blemesh: custom model cb␛[0m
+␛[0;32mI (50625) blemesh: custom model cb␛[0m
+␛[0;32mI (50625) blemesh: Send 0xd002e5␛[0m
+␛[0;33mW (54265) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (54265) blemesh: custom model cb␛[0m
+␛[0;32mI (54265) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (54265) tasks: Relative delay: -2501.528846 Min delay: -2501.528846␛[0m
+␛[0;32mI (54275) tasks: delta local/neighbour: 5008.057692/5002.000000␛[0m
+␛[0;32mI (54285) tasks: Beacon from 0x0001: relative_logic_rate -0.001210, offset 333.566895␛[0m
+␛[0;32mI (54295) tasks: logic time/rate: 1590251816045.000000/0.000000 hardware_time: 1590251816045.000000␛[0m
+␛[0;33mW (54365) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (54365) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (54465) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (54465) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (54565) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (54565) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (54765) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (54765) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (55615) tasks: Time beacon task iteration 11␛[0m
+␛[0;32mI (55615) tasks: Current local logic time: 1590251817054.978027 ms, offset diff/rate: 166.783447/0.000000␛[0m
+␛[0;33mW (55615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (55625) blemesh: custom model cb␛[0m
+␛[0;32mI (55625) blemesh: custom model cb␛[0m
+␛[0;32mI (55625) blemesh: Send 0xd002e5␛[0m
+␛[0;33mW (59365) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (59365) blemesh: custom model cb␛[0m
+␛[0;32mI (59365) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (59365) tasks: Relative delay: -2551.570513 Min delay: -2551.570513␛[0m
+␛[0;32mI (59375) tasks: delta local/neighbour: 5108.141026/5003.000000␛[0m
+␛[0;32mI (59385) tasks: Beacon from 0x0001: relative_logic_rate -0.020583, offset 145.034180␛[0m
+␛[0;32mI (59395) tasks: logic time/rate: 1590251821048.000000/0.000000 hardware_time: 1590251821048.000000␛[0m
+␛[0;33mW (59485) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (59485) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (59565) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (59565) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (59685) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (59685) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (59785) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (59785) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (59865) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (59865) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (59985) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (59985) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (60055) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (60055) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (60175) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (60175) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (60615) tasks: Time beacon task iteration 12␛[0m
+␛[0;32mI (60615) tasks: Current local logic time: 1590251822146.433838 ms, offset diff/rate: 72.517090/0.000000␛[0m
+␛[0;33mW (60615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (60625) blemesh: custom model cb␛[0m
+␛[0;32mI (60625) blemesh: custom model cb␛[0m
+␛[0;32mI (60625) blemesh: Send 0xd002e5␛[0m
+␛[0;33mW (64365) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (64365) blemesh: custom model cb␛[0m
+␛[0;32mI (64365) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (64365) tasks: Relative delay: -2501.032051 Min delay: -2551.570513␛[0m
+␛[0;32mI (64375) tasks: delta local/neighbour: 5007.064103/5004.000000␛[0m
+␛[0;32mI (64385) tasks: Beacon from 0x0001: relative_logic_rate -0.000612, offset 105.711426␛[0m
+␛[0;32mI (64395) tasks: logic time/rate: 1590251826052.000000/0.000000 hardware_time: 1590251826052.000000␛[0m
+␛[0;33mW (64765) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (64765) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (64885) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (64885) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (65085) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (65085) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (65615) tasks: Time beacon task iteration 13␛[0m
+␛[0;32mI (65615) tasks: Current local logic time: 1590251827190.711670 ms, offset diff/rate: 52.855713/0.000000␛[0m
+␛[0;33mW (65615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (65625) blemesh: custom model cb␛[0m
+␛[0;32mI (65625) blemesh: custom model cb␛[0m
+␛[0;32mI (65625) blemesh: Send 0xd002e5␛[0m
+␛[0;33mW (69285) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (69285) blemesh: custom model cb␛[0m
+␛[0;32mI (69285) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (69285) tasks: Relative delay: -2461.919872 Min delay: -2551.570513␛[0m
+␛[0;32mI (69295) tasks: delta local/neighbour: 4928.839744/5003.000000␛[0m
+␛[0;32mI (69305) tasks: Beacon from 0x0001: relative_logic_rate 0.015046, offset 153.443848␛[0m
+␛[0;32mI (69315) tasks: logic time/rate: 1590251831055.000000/0.000000 hardware_time: 1590251831055.000000␛[0m
+␛[0;33mW (69375) BLE_MESH: Ran out of retransmit attempts␛[0m
+␛[0;33mW (69385) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (69385) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (69485) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (69485) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (69585) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (69585) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (69685) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (69685) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (69765) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (69765) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (69975) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (69975) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (70085) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (70085) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (70185) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (70185) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (70615) tasks: Time beacon task iteration 14␛[0m
+␛[0;32mI (70615) tasks: Current local logic time: 1590251832225.101074 ms, offset diff/rate: 76.721924/0.000000␛[0m
+␛[0;33mW (70615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (70625) blemesh: custom model cb␛[0m
+␛[0;32mI (70625) blemesh: custom model cb␛[0m
+␛[0;32mI (70625) blemesh: Send 0xd002e5␛[0m
+␛[0;33mW (74385) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (74485) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (74585) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (74585) blemesh: custom model cb␛[0m
+␛[0;32mI (74585) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (74585) tasks: Relative delay: -2651.737179 Min delay: -2651.737179␛[0m
+␛[0;32mI (74595) tasks: delta local/neighbour: 5308.474359/5003.000000␛[0m
+␛[0;32mI (74605) tasks: Beacon from 0x0001: relative_logic_rate -0.057545, offset -190.391357␛[0m
+␛[0;32mI (74615) tasks: logic time/rate: 1590251836058.000000/0.000000 hardware_time: 1590251836058.000000␛[0m
+␛[0;33mW (74685) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (74685) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (74785) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (74785) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (74885) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (74885) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (74985) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (74985) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (75615) tasks: Time beacon task iteration 15␛[0m
+␛[0;32mI (75615) tasks: Current local logic time: 1590251837276.827393 ms, offset diff/rate: -95.195679/0.000000␛[0m
+␛[0;33mW (75625) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (75625) blemesh: custom model cb␛[0m
+␛[0;32mI (75635) blemesh: custom model cb␛[0m
+␛[0;32mI (75635) blemesh: Send 0xd002e5␛[0m
+␛[0;33mW (79285) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (79285) blemesh: custom model cb␛[0m
+␛[0;32mI (79285) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (79285) tasks: Relative delay: -2351.282051 Min delay: -2651.737179␛[0m
+␛[0;32mI (79295) tasks: delta local/neighbour: 4707.564103/5001.000000␛[0m
+␛[0;32mI (79305) tasks: Beacon from 0x0001: relative_logic_rate 0.062333, offset 150.642334␛[0m
+␛[0;32mI (79315) tasks: logic time/rate: 1590251841059.000000/0.000000 hardware_time: 1590251841059.000000␛[0m
+␛[0;33mW (79385) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (79385) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (79485) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (79485) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (79685) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (79685) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (79785) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (79785) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (79885) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (79885) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (79985) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (79985) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (80085) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (80085) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (80185) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (80185) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (80625) tasks: Time beacon task iteration 16␛[0m
+␛[0;32mI (80625) tasks: Current local logic time: 1590251842241.908936 ms, offset diff/rate: 75.321167/0.000000␛[0m
+␛[0;33mW (80625) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (80635) blemesh: custom model cb␛[0m
+␛[0;32mI (80635) blemesh: custom model cb␛[0m
+␛[0;32mI (80635) blemesh: Send 0xd002e5␛[0m

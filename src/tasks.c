@@ -1,4 +1,5 @@
 #include "tasks.h"
+#include <math.h>
 #include "driver/timer.h"
 #include <string.h>
 
@@ -33,20 +34,26 @@ uint64_t get_hardware_time() {
     return timer_time;
 }
 
+time_model_t last_time_model;
 // calculates logic time based on local hw time difference
 time_model_t get_logic_time() {
     uint64_t timer_time = get_hardware_time();
+    uint64_t previous_time_request = last_time_request;
+    last_time_request = timer_time;
 
     // hw_time_d already includes hardware clock drift
-    double hw_time_d = (double)(timer_time - last_time_request) / TIMER_SCALE_MS;
+    double hw_time_d = (double)(timer_time - previous_time_request);
 
-    logic_time_base += hw_time_d * logic_time_rate + hw_time_d;
-    last_time_request = timer_time;
+    logic_time_base += ((hw_time_d * logic_time_rate) + hw_time_d) / TIMER_SCALE_MS_FP;
 
     time_model_t time_model = {
         .logic_time = logic_time_base + logic_time_offset,
         .hardware_time = timer_time
     };
+
+    // ESP_LOGI(TASK_TAG, "GET_LOGIC_TIME (hw_diff, logic_diff): %llu, %.12f", time_model.hardware_time - last_time_model.hardware_time, time_model.logic_time - last_time_model.logic_time);
+    last_time_model = time_model;
+
 
     return time_model;
 }
@@ -62,7 +69,7 @@ time_model_t get_logic_time() {
 
 hardware_predicted_time_t get_hardware_predicted_time_for_logic(double given_logic_time) {
     time_model_t time_model = get_logic_time();
-    double diff = (given_logic_time - time_model.logic_time) * TIMER_SCALE_MS; // positive if in the future
+    double diff = (given_logic_time - time_model.logic_time) * TIMER_SCALE_MS_FP; // positive if in the future
 
     hardware_predicted_time_t predicted;
 
@@ -249,7 +256,7 @@ static void executor_loop(void* args) {
 static void time_beacon_task(void* args) {
     while (1) {
         // todo: add random additional delay
-        vTaskDelay((TIME_BEACON_DELAY_BASE) / portTICK_PERIOD_MS);
+        vTaskDelay((TIME_BEACON_DELAY_BASE - 500) / portTICK_PERIOD_MS);
 
         gtsp_current_iteration++;
         ESP_LOGI(TASK_TAG, "Time beacon task iteration %u", gtsp_current_iteration);
@@ -277,11 +284,19 @@ static void time_beacon_task(void* args) {
                 curr = curr->next;
                 continue;
             }
+            if (!curr->read && curr->is_drift_recv) {
+                curr->read = true;
+                avgRate += curr->relative_logic_rate;
+                avgOffset += (double)BEACON_LOGIC_TIME(curr->beacon) - curr->time_recv.logic_time;
+                neighbour_count++;
+            } else if (curr->time_authority) {
+                double hw_time_diff = (double)(time.hardware_time - curr->time_recv.hardware_time) / TIMER_SCALE_MS_FP;
+                double predicted_logic_time = BEACON_LOGIC_TIME(curr->beacon) + hw_time_diff;
 
-            avgRate += curr->relative_logic_rate;
-            avgOffset += curr->beacon.logic_time - curr->time_recv.logic_time;
+                avgOffset += predicted_logic_time - time.logic_time;
+                neighbour_count++;   
+            }
 
-            neighbour_count++;
             prev = curr;
             curr = curr->next;
         }
@@ -289,20 +304,32 @@ static void time_beacon_task(void* args) {
         avgRate /= neighbour_count + 1;
         avgOffset /= neighbour_count + 1;
 
-        logic_time_offset += avgOffset * 0.5;
-        // logic_time_rate = avgRate;
+        logic_time_offset += avgOffset;
+        logic_time_rate = 0;
 
-        ESP_LOGI(TASK_TAG, "Current local logic time: %f ms, offset diff/rate: %f/%f", time.logic_time, avgOffset, logic_time_rate);
+        ESP_LOGI(TASK_TAG, "Current local logic time: %f ms, hardware time: %llu, offset diff/rate: %f/%f", time.logic_time, time.hardware_time/TIMER_SCALE_MS, avgOffset, logic_time_rate);
 
         if (logic_time_in_sync) {
             time = get_logic_time();
             timesync_beacon_t beacon;
-            beacon.hardware_time = (double)(time.hardware_time / TIMER_SCALE_MS);
-            beacon.logic_time = time.logic_time;
-            beacon.rate = logic_time_rate;
+            beacon.hardware_time = (double)(time.hardware_time / TIMER_SCALE_MS_FP);
+
+            uint64_t logic_time_val = (uint64_t)time.logic_time;
+
+            beacon.logic_time_low = (uint32_t)(logic_time_val); // truncate
+            beacon.logic_time_high = (uint32_t)(logic_time_val >> 32);
 
             publish_timesync_data(beacon);
+            vTaskDelay((TIME_BEACON_DELAY_BASE - 500) / portTICK_PERIOD_MS);
+
+            time = get_logic_time();
+            timesync_drift_beacon_t drift_beacon;
+            drift_beacon.hardware_time = (double)(time.hardware_time / TIMER_SCALE_MS_FP);
+            drift_beacon.rate = (int32_t)(logic_time_rate * 2147483647.0);
+
+            publish_timedrift_data(drift_beacon);
         }
+
 
         // update all predicted task times
         task_item_t *task = tasks_queue;
@@ -333,11 +360,12 @@ void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon) {
 
     gtsp_neighbour_t *curr = neighbours, *prev = NULL;
 
-
+    timesync_beacon_t beacon_val = *beacon;
     //todo: verify somehow if offset is not significantly larger than previously received (due to retransmissions) – idea: storing 5 last offsets
-    double offset = beacon->logic_time - current_time.logic_time;
+    double offset = (double)BEACON_LOGIC_TIME(beacon_val) - current_time.logic_time;
+
     if (offset > LOGIC_TIME_THRESHOLD) {
-        ESP_LOGI(TASK_TAG, "Logic time threshold excedded, jumping into the future of %fms", beacon->logic_time);
+        ESP_LOGI(TASK_TAG, "Logic time threshold excedded, jumping into the future of %llums", BEACON_LOGIC_TIME(beacon_val));
         logic_time_offset = offset;
         logic_time_in_sync = true;
         return;
@@ -358,7 +386,9 @@ void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon) {
         curr = malloc(sizeof(gtsp_neighbour_t));
         curr->sender = sender;
         curr->next = NULL; // append new neighbour to the end
-        curr->relative_logic_rate = 0.0;
+        curr->relative_logic_rate = 1.0;
+        curr->time_authority = sender == 1;
+        curr->is_drift_recv = false;
 
         if (prev) {
             prev->next = curr;
@@ -368,19 +398,72 @@ void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon) {
         }
 
     } else {
-        double delta_local = (double)(current_time.hardware_time - curr->time_recv.hardware_time) / TIMER_SCALE_MS; // hi
-        double delta_neighbour = beacon->hardware_time - curr->beacon.hardware_time; // hj - ile faktycznie minęło na innym nodzie
+        // double delta_local = (double)(current_time.hardware_time - curr->time_recv.hardware_time) / TIMER_SCALE_MS; // hi
+        // uint16_t delta_neighbour = beacon->hardware_time - curr->beacon.hardware_time; // hj - ile faktycznie minęło na innym nodzie
 
-        double current_rate = (delta_neighbour - delta_local) / delta_local; // hj / hi
+        // if (delta_neighbour == 0) { // it's a retransmission
+        //     ESP_LOGI(TASK_TAG, "Already received beacon with this hardware_time, ignoring");
+        //     return;
+        // }
 
-        curr->relative_logic_rate = 0.9*current_rate * beacon->rate + 0.1*current_rate; // xj * hi
-        ESP_LOGI(TASK_TAG, "delta local/neighbour: %f/%f", delta_local, delta_neighbour);
+        // double current_rate = ((double)delta_neighbour - delta_local) / delta_local; // hj / hi
+
+        // curr->relative_logic_rate = current_rate; //
+        // ESP_LOGI(TASK_TAG, "delta local/neighbour: %f/%u", delta_local, delta_neighbour);
     }
 
     curr->iteration = gtsp_current_iteration;
     curr->beacon = *beacon;
     curr->time_recv = current_time;
+    curr->read = false;
 
     ESP_LOGI(TASK_TAG, "Beacon from 0x%04x: relative_logic_rate %f, offset %f", sender, curr->relative_logic_rate, offset);
-    ESP_LOGI(TASK_TAG, "logic time/rate: %f/%f hardware_time: %f", beacon->logic_time, beacon->rate, beacon->hardware_time);
+    ESP_LOGI(TASK_TAG, "logic time: %llu (high/low: %u %u) hardware_time: %u", BEACON_LOGIC_TIME(beacon_val), beacon_val.logic_time_high, beacon_val.logic_time_low, beacon->hardware_time);
+}
+
+void update_neighbour_drift_beacon(uint16_t sender, timesync_drift_beacon_t *beacon) {
+    time_model_t current_time = get_logic_time();
+
+    gtsp_neighbour_t *curr = neighbours, *prev = NULL;
+
+    while (curr != NULL) {
+        // node found
+        if (curr->sender == sender) {
+            break;
+        }
+
+        prev = curr;
+        curr = curr->next;
+    }
+
+    if (curr == NULL) {
+        ESP_LOGI(TASK_TAG, "Rate beacon from unknown neighbour: 0x%04x", sender);
+        return;
+    }
+
+    if (curr->is_drift_recv == false) {
+        curr->is_drift_recv = true;
+        curr->drift_beacon = *beacon;
+        curr->drift_recv = current_time;
+        ESP_LOGI(TASK_TAG, "First rate beacon from neighbour: 0x%04x", sender);
+        return;
+    }
+
+    double delta_local = (double)(current_time.hardware_time - curr->drift_recv.hardware_time) / TIMER_SCALE_MS_FP; // hi
+    uint16_t delta_neighbour = beacon->hardware_time - curr->beacon.hardware_time; // hj - ile faktycznie minęło na innym nodzie
+
+    double current_rate = ((double)delta_neighbour) / delta_local; // hj / hi
+
+    double beacon_logic_rate = ((double)beacon->rate) / 2147483647.0;
+    curr->relative_logic_rate = current_rate * beacon_logic_rate;
+
+    if (curr->relative_logic_rate > 0.1) {
+        curr->relative_logic_rate = 0.1;
+    }
+    if (curr->relative_logic_rate < -0.1) {
+        curr->relative_logic_rate = -0.1;
+    }
+
+    ESP_LOGI(TASK_TAG, "Drift beacon, delta local/neighbour: %f/%u", delta_local, delta_neighbour);
+
 }

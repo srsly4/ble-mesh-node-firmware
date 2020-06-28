@@ -1,0 +1,1433 @@
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at http://bit.ly/pio-monitor-filters
+--- Enter port index or full name: ␛[0;32mI (30616) tasks: Time beacon task iteration 6␛[0m
+␛[0;32mI (35616) tasks: Time beacon task iteration 7␛[0m
+␛[0;32mI (40616) tasks: Time beacon task iteration 8␛[0m
+␛[0;32mI (45616) tasks: Time beacon task iteration 9␛[0m
+␛[0;32mI (50616) tasks: Time beacon task iteration 10␛[0m
+␛[0;32mI (55616) tasks: Time beacon task iteration 11␛[0m
+␛[0;32mI (56166) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_OPEN_EVT, bearer PB-ADV␛[0m
+␛[0;33mW (56506) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;32mI (60616) tasks: Time beacon task iteration 12␛[0m
+␛[0;32mI (60656) blemesh: ESP_BLE_MESH_NODE_PROV_COMPLETE_EVT␛[0m
+␛[0;32mI (60666) blemesh: net_idx: 0x0000, addr: 0x0003␛[0m
+␛[0;32mI (60666) blemesh: flags: 0x00, iv_index: 0x00000000␛[0m
+␛[0;32mI (60666) blemesh: Provision COMPLETED!␛[0m
+␛[0;33mW (60726) BLE_MESH: sdu_recv, No matching AppKey␛[0m
+␛[0;33mW (61126) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;32mI (61126) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_CLOSE_EVT, bearer PB-ADV␛[0m
+␛[0;33mW (61316) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (61766) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (61766) blemesh: ESP_BLE_MESH_MODEL_OP_APP_KEY_ADD␛[0m
+␛[0;32mI (61766) blemesh: net_idx 0x0000, app_idx 0x0000␛[0m
+␛[0;32mI (61766) AppKey: 33 0c 2e 0c 59 0c 44 0c 4f 92 59 90 43 18 59 6f ␛[0m
+␛[0;32mI (62146) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (62146) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (62146) blemesh: elem_addr 0x0003, app_idx 0x0000, cid 0x02e5, mod_id 0x00a2␛[0m
+␛[0;32mI (62486) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (62486) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (62486) blemesh: elem_addr 0x0003, app_idx 0x0000, cid 0x02e5, mod_id 0x00a4␛[0m
+␛[0;33mW (62756) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;33mW (63416) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (64086) blemesh: custom model cb␛[0m
+␛[0;32mI (64086) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (64086) tasks: Logic time threshold excedded, jumping into the future of 1590260003754ms␛[0m
+␛[0;32mI (65546) blemesh: custom model cb␛[0m
+␛[0;32mI (65546) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (65546) tasks: New neighbour detected: 0x0002␛[0m
+␛[0;32mI (65546) tasks: Beacon from 0x0002: relative_logic_rate 0.000000, offset 895.692383␛[0m
+␛[0;32mI (65556) tasks: logic time: 1590260006112 (high/low: 370 1122106592) hardware_time: 59689␛[0m
+␛[0;32mI (65616) tasks: Time beacon task iteration 13␛[0m
+␛[0;32mI (65616) tasks: Current local logic time: 1590260005285.256348 ms, offset diff/rate: 447.846191/0.000000␛[0m
+␛[0;32mI (65616) blemesh: custom model cb␛[0m
+␛[0;32mI (65616) blemesh: custom model cb␛[0m
+␛[0;32mI (65626) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (68106) blemesh: custom model cb␛[0m
+␛[0;32mI (68106) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (68106) tasks: New neighbour detected: 0x0001␛[0m
+␛[0;32mI (68106) tasks: Beacon from 0x0001: relative_logic_rate 0.000000, offset 527.051270␛[0m
+␛[0;32mI (68116) tasks: logic time: 1590260008756 (high/low: 370 1122109236) hardware_time: 1844␛[0m
+␛[0;33mW (68156) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (70546) blemesh: custom model cb␛[0m
+␛[0;32mI (70546) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (70546) tasks: delta local/neighbour: 5007.858974/5018␛[0m
+␛[0;32mI (70546) tasks: Beacon from 0x0002: relative_logic_rate 0.002025, offset 294.987305␛[0m
+␛[0;32mI (70556) tasks: logic time: 1590260010967 (high/low: 370 1122111447) hardware_time: 64707␛[0m
+␛[0;32mI (70616) tasks: Time beacon task iteration 14␛[0m
+␛[0;32mI (70616) tasks: Current local logic time: 1590260010741.115479 ms, offset diff/rate: 274.012858/0.000000␛[0m
+␛[0;32mI (70616) blemesh: custom model cb␛[0m
+␛[0;32mI (70616) blemesh: custom model cb␛[0m
+␛[0;32mI (70626) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (73126) blemesh: custom model cb␛[0m
+␛[0;32mI (73126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (73126) tasks: delta local/neighbour: 5027.615385/5001␛[0m
+␛[0;32mI (73126) tasks: Beacon from 0x0001: relative_logic_rate -0.005294, offset 225.423096␛[0m
+␛[0;32mI (73136) tasks: logic time: 1590260013756 (high/low: 370 1122114236) hardware_time: 6845␛[0m
+␛[0;33mW (73156) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (75566) blemesh: custom model cb␛[0m
+␛[0;32mI (75566) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (75566) tasks: delta local/neighbour: 5028.128205/5018␛[0m
+␛[0;32mI (75566) tasks: Beacon from 0x0002: relative_logic_rate -0.002014, offset 43.845947␛[0m
+␛[0;32mI (75576) tasks: logic time: 1590260016018 (high/low: 370 1122116498) hardware_time: 4189␛[0m
+␛[0;32mI (75616) tasks: Time beacon task iteration 15␛[0m
+␛[0;32mI (75616) tasks: Current local logic time: 1590260016023.141113 ms, offset diff/rate: 89.756348/0.000000␛[0m
+␛[0;32mI (75616) blemesh: custom model cb␛[0m
+␛[0;32mI (75616) blemesh: custom model cb␛[0m
+␛[0;32mI (75626) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (78126) blemesh: custom model cb␛[0m
+␛[0;32mI (78126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (78126) tasks: delta local/neighbour: 5008.358974/5001␛[0m
+␛[0;32mI (78126) tasks: Beacon from 0x0001: relative_logic_rate -0.001469, offset 129.307617␛[0m
+␛[0;32mI (78136) tasks: logic time: 1590260018758 (high/low: 370 1122119238) hardware_time: 11846␛[0m
+␛[0;33mW (78156) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (80566) blemesh: custom model cb␛[0m
+␛[0;32mI (80566) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (80566) tasks: delta local/neighbour: 5008.006410/5018␛[0m
+␛[0;32mI (80566) tasks: Beacon from 0x0002: relative_logic_rate 0.001996, offset 3.083252␛[0m
+␛[0;32mI (80576) tasks: logic time: 1590260021075 (high/low: 370 1122121555) hardware_time: 9207␛[0m
+␛[0;32mI (80616) tasks: Time beacon task iteration 16␛[0m
+␛[0;32mI (80616) tasks: Current local logic time: 1590260021120.910400 ms, offset diff/rate: 44.130290/0.000000␛[0m
+␛[0;32mI (80616) blemesh: custom model cb␛[0m
+␛[0;32mI (80616) blemesh: custom model cb␛[0m
+␛[0;32mI (80626) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (83266) blemesh: custom model cb␛[0m
+␛[0;32mI (83266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (83266) tasks: delta local/neighbour: 5148.166667/5000␛[0m
+␛[0;32mI (83266) tasks: Beacon from 0x0001: relative_logic_rate -0.028780, offset -62.989258␛[0m
+␛[0;32mI (83276) tasks: logic time: 1590260023758 (high/low: 370 1122124238) hardware_time: 16846␛[0m
+␛[0;32mI (85586) blemesh: custom model cb␛[0m
+␛[0;32mI (85586) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (85586) tasks: delta local/neighbour: 5028.032051/5018␛[0m
+␛[0;32mI (85586) tasks: Beacon from 0x0002: relative_logic_rate -0.001995, offset -25.079102␛[0m
+␛[0;32mI (85596) tasks: logic time: 1590260026119 (high/low: 370 1122126599) hardware_time: 14225␛[0m
+␛[0;32mI (85616) tasks: Time beacon task iteration 17␛[0m
+␛[0;32mI (85616) tasks: Current local logic time: 1590260026173.053467 ms, offset diff/rate: -29.356120/0.000000␛[0m
+␛[0;32mI (85626) blemesh: custom model cb␛[0m
+␛[0;32mI (85626) blemesh: custom model cb␛[0m
+␛[0;32mI (85626) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (88126) blemesh: custom model cb␛[0m
+␛[0;32mI (88126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (88126) tasks: delta local/neighbour: 4867.852564/5000␛[0m
+␛[0;32mI (88126) tasks: Beacon from 0x0001: relative_logic_rate 0.027147, offset 98.514160␛[0m
+␛[0;32mI (88136) tasks: logic time: 1590260028758 (high/low: 370 1122129238) hardware_time: 21846␛[0m
+␛[0;33mW (88316) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (90576) blemesh: custom model cb␛[0m
+␛[0;32mI (90576) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (90576) tasks: delta local/neighbour: 5003.134615/5018␛[0m
+␛[0;32mI (90586) tasks: Beacon from 0x0002: relative_logic_rate 0.002971, offset -2.857422␛[0m
+␛[0;32mI (90596) tasks: logic time: 1590260031115 (high/low: 370 1122131595) hardware_time: 19243␛[0m
+␛[0;32mI (90626) tasks: Time beacon task iteration 18␛[0m
+␛[0;32mI (90626) tasks: Current local logic time: 1590260031161.729248 ms, offset diff/rate: 31.885579/0.000000␛[0m
+␛[0;32mI (90626) blemesh: custom model cb␛[0m
+␛[0;32mI (90626) blemesh: custom model cb␛[0m
+␛[0;32mI (90636) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (93126) blemesh: custom model cb␛[0m
+␛[0;32mI (93126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (93126) tasks: delta local/neighbour: 5007.987179/5000␛[0m
+␛[0;32mI (93126) tasks: Beacon from 0x0001: relative_logic_rate -0.001595, offset 58.641602␛[0m
+␛[0;32mI (93136) tasks: logic time: 1590260033758 (high/low: 370 1122134238) hardware_time: 26846␛[0m
+␛[0;33mW (93216) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (95606) blemesh: custom model cb␛[0m
+␛[0;32mI (95606) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (95606) tasks: delta local/neighbour: 5032.948718/5018␛[0m
+␛[0;32mI (95606) tasks: Beacon from 0x0002: relative_logic_rate -0.002970, offset -54.691650␛[0m
+␛[0;32mI (95616) tasks: logic time: 1590260036128 (high/low: 370 1122136608) hardware_time: 24261␛[0m
+␛[0;32mI (95626) tasks: Time beacon task iteration 19␛[0m
+␛[0;32mI (95626) tasks: Current local logic time: 1590260036211.262207 ms, offset diff/rate: 1.316650/0.000000␛[0m
+␛[0;32mI (95646) blemesh: custom model cb␛[0m
+␛[0;32mI (95646) blemesh: custom model cb␛[0m
+␛[0;32mI (95646) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (98126) blemesh: custom model cb␛[0m
+␛[0;32mI (98126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (98126) tasks: delta local/neighbour: 5008.012821/5003␛[0m
+␛[0;32mI (98126) tasks: Beacon from 0x0001: relative_logic_rate -0.001001, offset 51.312012␛[0m
+␛[0;32mI (98136) tasks: logic time: 1590260038760 (high/low: 370 1122139240) hardware_time: 31849␛[0m
+␛[0;33mW (98316) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (100606) blemesh: custom model cb␛[0m
+␛[0;32mI (100606) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (100606) tasks: delta local/neighbour: 5008.173077/5018␛[0m
+␛[0;32mI (100606) tasks: Beacon from 0x0002: relative_logic_rate 0.001962, offset -84.181396␛[0m
+␛[0;32mI (100616) tasks: logic time: 1590260041108 (high/low: 370 1122141588) hardware_time: 29279␛[0m
+␛[0;32mI (100646) tasks: Time beacon task iteration 20␛[0m
+␛[0;32mI (100646) tasks: Current local logic time: 1590260041230.989258 ms, offset diff/rate: -10.956462/0.000000␛[0m
+␛[0;32mI (100646) blemesh: custom model cb␛[0m
+␛[0;32mI (100646) blemesh: custom model cb␛[0m
+␛[0;32mI (100656) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (103166) blemesh: custom model cb␛[0m
+␛[0;32mI (103166) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (103166) tasks: delta local/neighbour: 5047.955128/5001␛[0m
+␛[0;32mI (103166) tasks: Beacon from 0x0001: relative_logic_rate -0.009302, offset 15.313477␛[0m
+␛[0;32mI (103176) tasks: logic time: 1590260043761 (high/low: 370 1122144241) hardware_time: 36850␛[0m
+␛[0;32mI (105626) blemesh: custom model cb␛[0m
+␛[0;32mI (105626) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (105626) tasks: delta local/neighbour: 5028.019231/5018␛[0m
+␛[0;32mI (105626) tasks: Beacon from 0x0002: relative_logic_rate -0.001993, offset -47.244141␛[0m
+␛[0;32mI (105636) tasks: logic time: 1590260046162 (high/low: 370 1122146642) hardware_time: 34297␛[0m
+␛[0;32mI (105646) tasks: Time beacon task iteration 21␛[0m
+␛[0;32mI (105656) tasks: Current local logic time: 1590260046238.212158 ms, offset diff/rate: -10.643555/0.000000␛[0m
+␛[0;32mI (105666) blemesh: custom model cb␛[0m
+␛[0;32mI (105666) blemesh: custom model cb␛[0m
+␛[0;32mI (105666) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (108126) blemesh: custom model cb␛[0m
+␛[0;32mI (108126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (108126) tasks: delta local/neighbour: 4968.224359/5000␛[0m
+␛[0;32mI (108126) tasks: Beacon from 0x0001: relative_logic_rate 0.006396, offset 57.732666␛[0m
+␛[0;32mI (108136) tasks: logic time: 1590260048761 (high/low: 370 1122149241) hardware_time: 41850␛[0m
+␛[0;33mW (108156) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (110626) blemesh: custom model cb␛[0m
+␛[0;32mI (110626) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (110626) tasks: delta local/neighbour: 5008.051282/5018␛[0m
+␛[0;32mI (110626) tasks: Beacon from 0x0002: relative_logic_rate 0.001987, offset -54.651855␛[0m
+␛[0;32mI (110636) tasks: logic time: 1590260051152 (high/low: 370 1122151632) hardware_time: 39315␛[0m
+␛[0;32mI (110666) tasks: Time beacon task iteration 22␛[0m
+␛[0;32mI (110666) tasks: Current local logic time: 1590260051245.446777 ms, offset diff/rate: 1.026937/0.000000␛[0m
+␛[0;32mI (110666) blemesh: custom model cb␛[0m
+␛[0;32mI (110666) blemesh: custom model cb␛[0m
+␛[0;32mI (110676) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (113126) blemesh: custom model cb␛[0m
+␛[0;32mI (113126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (113126) tasks: delta local/neighbour: 5008.006410/4999␛[0m
+␛[0;32mI (113126) tasks: Beacon from 0x0001: relative_logic_rate -0.001798, offset 48.699463␛[0m
+␛[0;32mI (113136) tasks: logic time: 1590260053761 (high/low: 370 1122154241) hardware_time: 46849␛[0m
+␛[0;33mW (113276) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (115646) blemesh: custom model cb␛[0m
+␛[0;32mI (115646) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (115646) tasks: delta local/neighbour: 5027.903846/5018␛[0m
+␛[0;32mI (115646) tasks: Beacon from 0x0002: relative_logic_rate -0.001970, offset -49.582520␛[0m
+␛[0;32mI (115656) tasks: logic time: 1590260056186 (high/low: 370 1122156666) hardware_time: 44333␛[0m
+␛[0;32mI (115666) tasks: Time beacon task iteration 23␛[0m
+␛[0;32mI (115676) tasks: Current local logic time: 1590260056264.479980 ms, offset diff/rate: -0.294352/0.000000␛[0m
+␛[0;32mI (115686) blemesh: custom model cb␛[0m
+␛[0;32mI (115686) blemesh: custom model cb␛[0m
+␛[0;32mI (115686) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (118126) blemesh: custom model cb␛[0m
+␛[0;32mI (118126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (118126) tasks: delta local/neighbour: 5008.006410/5001␛[0m
+␛[0;32mI (118126) tasks: Beacon from 0x0001: relative_logic_rate -0.001399, offset 40.987549␛[0m
+␛[0;32mI (118136) tasks: logic time: 1590260058761 (high/low: 370 1122159241) hardware_time: 51850␛[0m
+␛[0;33mW (118216) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (120646) blemesh: custom model cb␛[0m
+␛[0;32mI (120646) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (120646) tasks: delta local/neighbour: 5008.147436/5018␛[0m
+␛[0;32mI (120646) tasks: Beacon from 0x0002: relative_logic_rate 0.001967, offset -85.435547␛[0m
+␛[0;32mI (120656) tasks: logic time: 1590260061158 (high/low: 370 1122161638) hardware_time: 49351␛[0m
+␛[0;32mI (120686) tasks: Time beacon task iteration 24␛[0m
+␛[0;32mI (120686) tasks: Current local logic time: 1590260061282.236816 ms, offset diff/rate: -14.815999/0.000000␛[0m
+␛[0;32mI (120686) blemesh: custom model cb␛[0m
+␛[0;32mI (120686) blemesh: custom model cb␛[0m
+␛[0;32mI (120696) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (123126) blemesh: custom model cb␛[0m
+␛[0;32mI (123126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (123126) tasks: delta local/neighbour: 5007.743590/5002␛[0m
+␛[0;32mI (123126) tasks: Beacon from 0x0001: relative_logic_rate -0.001147, offset 51.059814␛[0m
+␛[0;32mI (123136) tasks: logic time: 1590260063764 (high/low: 370 1122164244) hardware_time: 56852␛[0m
+␛[0;33mW (123476) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (125666) blemesh: custom model cb␛[0m
+␛[0;32mI (125666) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (125666) tasks: delta local/neighbour: 5027.923077/5018␛[0m
+␛[0;32mI (125666) tasks: Beacon from 0x0002: relative_logic_rate -0.001974, offset -53.542725␛[0m
+␛[0;32mI (125676) tasks: logic time: 1590260066203 (high/low: 370 1122166683) hardware_time: 54369␛[0m
+␛[0;32mI (125686) tasks: Time beacon task iteration 25␛[0m
+␛[0;32mI (125696) tasks: Current local logic time: 1590260066285.433838 ms, offset diff/rate: -0.827637/0.000000␛[0m
+␛[0;32mI (125706) blemesh: custom model cb␛[0m
+␛[0;32mI (125706) blemesh: custom model cb␛[0m
+␛[0;32mI (125706) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (128126) blemesh: custom model cb␛[0m
+␛[0;32mI (128126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (128126) tasks: delta local/neighbour: 5008.237179/5001␛[0m
+␛[0;32mI (128126) tasks: Beacon from 0x0001: relative_logic_rate -0.001445, offset 44.650146␛[0m
+␛[0;32mI (128136) tasks: logic time: 1590260068765 (high/low: 370 1122169245) hardware_time: 61853␛[0m
+␛[0;33mW (128176) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (130666) blemesh: custom model cb␛[0m
+␛[0;32mI (130666) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (130666) tasks: delta local/neighbour: 5008.128205/5018␛[0m
+␛[0;32mI (130666) tasks: Beacon from 0x0002: relative_logic_rate 0.001971, offset -64.843262␛[0m
+␛[0;32mI (130676) tasks: logic time: 1590260071199 (high/low: 370 1122171679) hardware_time: 59387␛[0m
+␛[0;32mI (130706) tasks: Time beacon task iteration 26␛[0m
+␛[0;32mI (130706) tasks: Current local logic time: 1590260071302.651123 ms, offset diff/rate: -6.731038/0.000000␛[0m
+␛[0;32mI (130706) blemesh: custom model cb␛[0m
+␛[0;32mI (130706) blemesh: custom model cb␛[0m
+␛[0;32mI (130716) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (133126) blemesh: custom model cb␛[0m
+␛[0;32mI (133126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (133126) tasks: delta local/neighbour: 5007.788462/5000␛[0m
+␛[0;32mI (133126) tasks: Beacon from 0x0001: relative_logic_rate -0.001555, offset 43.592773␛[0m
+␛[0;32mI (133136) tasks: logic time: 1590260073765 (high/low: 370 1122174245) hardware_time: 1317␛[0m
+␛[0;33mW (133176) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (135686) blemesh: custom model cb␛[0m
+␛[0;32mI (135686) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (135686) tasks: delta local/neighbour: 5028.051282/5018␛[0m
+␛[0;32mI (135686) tasks: Beacon from 0x0002: relative_logic_rate -0.001999, offset -52.163574␛[0m
+␛[0;32mI (135696) tasks: logic time: 1590260076233 (high/low: 370 1122176713) hardware_time: 64405␛[0m
+␛[0;32mI (135706) tasks: Time beacon task iteration 27␛[0m
+␛[0;32mI (135716) tasks: Current local logic time: 1590260076314.054688 ms, offset diff/rate: -2.856934/0.000000␛[0m
+␛[0;32mI (135726) blemesh: custom model cb␛[0m
+␛[0;32mI (135726) blemesh: custom model cb␛[0m
+␛[0;32mI (135726) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (138116) blemesh: custom model cb␛[0m
+␛[0;32mI (138116) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (138116) tasks: delta local/neighbour: 5003.326923/5000␛[0m
+␛[0;32mI (138126) tasks: Beacon from 0x0001: relative_logic_rate -0.000665, offset 43.122803␛[0m
+␛[0;32mI (138136) tasks: logic time: 1590260078765 (high/low: 370 1122179245) hardware_time: 6317␛[0m
+␛[0;33mW (138156) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (140686) blemesh: custom model cb␛[0m
+␛[0;32mI (140686) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (140686) tasks: delta local/neighbour: 5008.032051/5018␛[0m
+␛[0;32mI (140686) tasks: Beacon from 0x0002: relative_logic_rate 0.001990, offset -70.338867␛[0m
+␛[0;32mI (140696) tasks: logic time: 1590260081220 (high/low: 370 1122181700) hardware_time: 3887␛[0m
+␛[0;32mI (140726) tasks: Time beacon task iteration 28␛[0m
+␛[0;32mI (140726) tasks: Current local logic time: 1590260081329.120850 ms, offset diff/rate: -9.072021/0.000000␛[0m
+␛[0;32mI (140726) blemesh: custom model cb␛[0m
+␛[0;32mI (140726) blemesh: custom model cb␛[0m
+␛[0;32mI (140736) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (145706) blemesh: custom model cb␛[0m
+␛[0;32mI (145706) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (145706) tasks: delta local/neighbour: 5027.916667/5018␛[0m
+␛[0;32mI (145706) tasks: Beacon from 0x0002: relative_logic_rate -0.001972, offset -60.183350␛[0m
+␛[0;32mI (145716) tasks: logic time: 1590260086249 (high/low: 370 1122186729) hardware_time: 8905␛[0m
+␛[0;32mI (145726) tasks: Time beacon task iteration 29␛[0m
+␛[0;32mI (145736) tasks: Current local logic time: 1590260086337.997559 ms, offset diff/rate: -5.686849/0.000000␛[0m
+␛[0;32mI (145746) blemesh: custom model cb␛[0m
+␛[0;32mI (145746) blemesh: custom model cb␛[0m
+␛[0;32mI (145746) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (150706) blemesh: custom model cb␛[0m
+␛[0;32mI (150706) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (150706) tasks: delta local/neighbour: 5008.282051/5018␛[0m
+␛[0;32mI (150706) tasks: Beacon from 0x0002: relative_logic_rate 0.001940, offset -74.778809␛[0m
+␛[0;32mI (150716) tasks: logic time: 1590260091237 (high/low: 370 1122191717) hardware_time: 13923␛[0m
+␛[0;32mI (150746) tasks: Time beacon task iteration 30␛[0m
+␛[0;32mI (150746) tasks: Current local logic time: 1590260091350.419678 ms, offset diff/rate: -10.552002/0.000000␛[0m
+␛[0;32mI (150746) blemesh: custom model cb␛[0m
+␛[0;32mI (150746) blemesh: custom model cb␛[0m
+␛[0;32mI (150756) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (155726) blemesh: custom model cb␛[0m
+␛[0;32mI (155726) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (155726) tasks: delta local/neighbour: 5028.057692/5018␛[0m
+␛[0;32mI (155726) tasks: Beacon from 0x0002: relative_logic_rate -0.002000, offset -62.284424␛[0m
+␛[0;32mI (155736) tasks: logic time: 1590260096267 (high/low: 370 1122196747) hardware_time: 18941␛[0m
+␛[0;32mI (155746) tasks: Time beacon task iteration 31␛[0m
+␛[0;32mI (155756) tasks: Current local logic time: 1590260096358.188232 ms, offset diff/rate: -6.387207/0.000000␛[0m
+␛[0;32mI (155766) blemesh: custom model cb␛[0m
+␛[0;32mI (155766) blemesh: custom model cb␛[0m
+␛[0;32mI (155766) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (160726) blemesh: custom model cb␛[0m
+␛[0;32mI (160726) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (160726) tasks: delta local/neighbour: 5007.967949/5018␛[0m
+␛[0;32mI (160726) tasks: Beacon from 0x0002: relative_logic_rate 0.002003, offset -67.865234␛[0m
+␛[0;32mI (160736) tasks: logic time: 1590260101263 (high/low: 370 1122201743) hardware_time: 23959␛[0m
+␛[0;32mI (160766) tasks: Time beacon task iteration 32␛[0m
+␛[0;32mI (160766) tasks: Current local logic time: 1590260101369.538086 ms, offset diff/rate: -8.247477/0.000000␛[0m
+␛[0;32mI (160766) blemesh: custom model cb␛[0m
+␛[0;32mI (160766) blemesh: custom model cb␛[0m
+␛[0;32mI (160776) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (165746) blemesh: custom model cb␛[0m
+␛[0;32mI (165746) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (165746) tasks: delta local/neighbour: 5027.775641/5023␛[0m
+␛[0;32mI (165746) tasks: Beacon from 0x0002: relative_logic_rate -0.000950, offset -72.393311␛[0m
+␛[0;32mI (165756) tasks: logic time: 1590260106278 (high/low: 370 1122206758) hardware_time: 28982␛[0m
+␛[0;32mI (165766) tasks: Time beacon task iteration 33␛[0m
+␛[0;32mI (165776) tasks: Deleting neighbour 0001␛[0m
+␛[0;32mI (165776) tasks: Current local logic time: 1590260106379.297119 ms, offset diff/rate: -36.196655/0.000000␛[0m
+␛[0;32mI (165786) blemesh: custom model cb␛[0m
+␛[0;32mI (165786) blemesh: custom model cb␛[0m
+␛[0;32mI (165796) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (170746) blemesh: custom model cb␛[0m
+␛[0;32mI (170746) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (170746) tasks: delta local/neighbour: 5008.301282/5014␛[0m
+␛[0;32mI (170746) tasks: Beacon from 0x0002: relative_logic_rate 0.001138, offset -52.498047␛[0m
+␛[0;32mI (170756) tasks: logic time: 1590260111270 (high/low: 370 1122211750) hardware_time: 33996␛[0m
+␛[0;32mI (170786) tasks: Time beacon task iteration 34␛[0m
+␛[0;32mI (170786) tasks: Current local logic time: 1590260111361.151855 ms, offset diff/rate: -26.249023/0.000000␛[0m
+␛[0;32mI (170786) blemesh: custom model cb␛[0m
+␛[0;32mI (170786) blemesh: custom model cb␛[0m
+␛[0;32mI (170796) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (175756) blemesh: custom model cb␛[0m
+␛[0;32mI (175766) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (175766) tasks: delta local/neighbour: 5027.692308/5018␛[0m
+␛[0;32mI (175766) tasks: Beacon from 0x0002: relative_logic_rate -0.001928, offset -59.941162␛[0m
+␛[0;32mI (175776) tasks: logic time: 1590260116264 (high/low: 370 1122216744) hardware_time: 39014␛[0m
+␛[0;32mI (175786) tasks: Time beacon task iteration 35␛[0m
+␛[0;32mI (175796) tasks: Current local logic time: 1590260116352.844971 ms, offset diff/rate: -29.970581/0.000000␛[0m
+␛[0;32mI (175806) blemesh: custom model cb␛[0m
+␛[0;32mI (175806) blemesh: custom model cb␛[0m
+␛[0;32mI (175806) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (180766) blemesh: custom model cb␛[0m
+␛[0;32mI (180766) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (180766) tasks: delta local/neighbour: 5008.378205/5018␛[0m
+␛[0;32mI (180766) tasks: Beacon from 0x0002: relative_logic_rate 0.001921, offset -100.348633␛[0m
+␛[0;32mI (180776) tasks: logic time: 1590260121202 (high/low: 370 1122221682) hardware_time: 44032␛[0m
+␛[0;32mI (180806) tasks: Time beacon task iteration 36␛[0m
+␛[0;32mI (180806) tasks: Current local logic time: 1590260121340.989746 ms, offset diff/rate: -50.174316/0.000000␛[0m
+␛[0;32mI (180806) blemesh: custom model cb␛[0m
+␛[0;32mI (180806) blemesh: custom model cb␛[0m
+␛[0;32mI (180816) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (185786) blemesh: custom model cb␛[0m
+␛[0;32mI (185786) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (185786) tasks: delta local/neighbour: 5027.750000/5018␛[0m
+␛[0;32mI (185786) tasks: Beacon from 0x0002: relative_logic_rate -0.001939, offset -71.924316␛[0m
+␛[0;32mI (185796) tasks: logic time: 1590260126208 (high/low: 370 1122226688) hardware_time: 49050␛[0m
+␛[0;32mI (185806) tasks: Time beacon task iteration 37␛[0m
+␛[0;32mI (185816) tasks: Current local logic time: 1590260126308.834717 ms, offset diff/rate: -35.962158/0.000000␛[0m
+␛[0;32mI (185826) blemesh: custom model cb␛[0m
+␛[0;32mI (185826) blemesh: custom model cb␛[0m
+␛[0;32mI (185826) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (190786) blemesh: custom model cb␛[0m
+␛[0;32mI (190786) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (190786) tasks: delta local/neighbour: 5007.987179/5018␛[0m
+␛[0;32mI (190786) tasks: Beacon from 0x0002: relative_logic_rate 0.001999, offset -91.949463␛[0m
+␛[0;32mI (190796) tasks: logic time: 1590260131160 (high/low: 370 1122231640) hardware_time: 54068␛[0m
+␛[0;32mI (190826) tasks: Time beacon task iteration 38␛[0m
+␛[0;32mI (190826) tasks: Current local logic time: 1590260131290.910889 ms, offset diff/rate: -45.974731/0.000000␛[0m
+␛[0;32mI (190826) blemesh: custom model cb␛[0m
+␛[0;32mI (190826) blemesh: custom model cb␛[0m
+␛[0;32mI (190836) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (195806) blemesh: custom model cb␛[0m
+␛[0;32mI (195806) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (195806) tasks: delta local/neighbour: 5028.083333/5018␛[0m
+␛[0;32mI (195806) tasks: Beacon from 0x0002: relative_logic_rate -0.002005, offset -70.057861␛[0m
+␛[0;32mI (195816) tasks: logic time: 1590260136164 (high/low: 370 1122236644) hardware_time: 59086␛[0m
+␛[0;32mI (195826) tasks: Time beacon task iteration 39␛[0m
+␛[0;32mI (195836) tasks: Current local logic time: 1590260136262.961670 ms, offset diff/rate: -35.028931/0.000000␛[0m
+␛[0;32mI (195846) blemesh: custom model cb␛[0m
+␛[0;32mI (195846) blemesh: custom model cb␛[0m
+␛[0;32mI (195846) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (200806) blemesh: custom model cb␛[0m
+␛[0;32mI (200806) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (200806) tasks: delta local/neighbour: 5008.294872/5018␛[0m
+␛[0;32mI (200806) tasks: Beacon from 0x0002: relative_logic_rate 0.001938, offset -102.323975␛[0m
+␛[0;32mI (200816) tasks: logic time: 1590260141105 (high/low: 370 1122241585) hardware_time: 64104␛[0m
+␛[0;32mI (200846) tasks: Time beacon task iteration 40␛[0m
+␛[0;32mI (200846) tasks: Current local logic time: 1590260141245.965088 ms, offset diff/rate: -51.161987/0.000000␛[0m
+␛[0;32mI (200846) blemesh: custom model cb␛[0m
+␛[0;32mI (200846) blemesh: custom model cb␛[0m
+␛[0;32mI (200856) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (205826) blemesh: custom model cb␛[0m
+␛[0;32mI (205826) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (205826) tasks: delta local/neighbour: 5028.057692/5018␛[0m
+␛[0;32mI (205826) tasks: Beacon from 0x0002: relative_logic_rate -0.002000, offset -73.219482␛[0m
+␛[0;32mI (205836) tasks: logic time: 1590260146111 (high/low: 370 1122246591) hardware_time: 3586␛[0m
+␛[0;32mI (205846) tasks: Time beacon task iteration 41␛[0m
+␛[0;32mI (205856) tasks: Current local logic time: 1590260146213.033691 ms, offset diff/rate: -36.609741/0.000000␛[0m
+␛[0;32mI (205866) blemesh: custom model cb␛[0m
+␛[0;32mI (205866) blemesh: custom model cb␛[0m
+␛[0;32mI (205866) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (210826) blemesh: custom model cb␛[0m
+␛[0;32mI (210826) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (210826) tasks: delta local/neighbour: 5008.006410/5018␛[0m
+␛[0;32mI (210826) tasks: Beacon from 0x0002: relative_logic_rate 0.001996, offset -102.616211␛[0m
+␛[0;32mI (210836) tasks: logic time: 1590260151053 (high/low: 370 1122251533) hardware_time: 8604␛[0m
+␛[0;32mI (210866) tasks: Time beacon task iteration 42␛[0m
+␛[0;32mI (210866) tasks: Current local logic time: 1590260151194.250732 ms, offset diff/rate: -51.308105/0.000000␛[0m
+␛[0;32mI (210866) blemesh: custom model cb␛[0m
+␛[0;32mI (210866) blemesh: custom model cb␛[0m
+␛[0;32mI (210876) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (215846) blemesh: custom model cb␛[0m
+␛[0;32mI (215846) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (215846) tasks: delta local/neighbour: 5027.730769/5018␛[0m
+␛[0;32mI (215846) tasks: Beacon from 0x0002: relative_logic_rate -0.001935, offset -73.038818␛[0m
+␛[0;32mI (215856) tasks: logic time: 1590260156059 (high/low: 370 1122256539) hardware_time: 13622␛[0m
+␛[0;32mI (215866) tasks: Time beacon task iteration 43␛[0m
+␛[0;32mI (215876) tasks: Current local logic time: 1590260156160.948975 ms, offset diff/rate: -36.519409/0.000000␛[0m
+␛[0;32mI (215886) blemesh: custom model cb␛[0m
+␛[0;32mI (215886) blemesh: custom model cb␛[0m
+␛[0;32mI (215886) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (220846) blemesh: custom model cb␛[0m
+␛[0;32mI (220846) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (220846) tasks: delta local/neighbour: 5008.282051/5018␛[0m
+␛[0;32mI (220846) tasks: Beacon from 0x0002: relative_logic_rate 0.001940, offset -92.801270␛[0m
+␛[0;32mI (220856) tasks: logic time: 1590260161011 (high/low: 370 1122261491) hardware_time: 18640␛[0m
+␛[0;32mI (220886) tasks: Time beacon task iteration 44␛[0m
+␛[0;32mI (220886) tasks: Current local logic time: 1590260161142.487305 ms, offset diff/rate: -46.400635/0.000000␛[0m
+␛[0;32mI (220886) blemesh: custom model cb␛[0m
+␛[0;32mI (220886) blemesh: custom model cb␛[0m
+␛[0;32mI (220896) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (225866) blemesh: custom model cb␛[0m
+␛[0;32mI (225866) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (225866) tasks: delta local/neighbour: 5027.750000/5018␛[0m
+␛[0;32mI (225866) tasks: Beacon from 0x0002: relative_logic_rate -0.001939, offset -70.150635␛[0m
+␛[0;32mI (225876) tasks: logic time: 1590260166015 (high/low: 370 1122266495) hardware_time: 23658␛[0m
+␛[0;32mI (225886) tasks: Time beacon task iteration 45␛[0m
+␛[0;32mI (225896) tasks: Current local logic time: 1590260166114.054443 ms, offset diff/rate: -35.075317/0.000000␛[0m
+␛[0;32mI (225906) blemesh: custom model cb␛[0m
+␛[0;32mI (225906) blemesh: custom model cb␛[0m
+␛[0;32mI (225906) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (230866) blemesh: custom model cb␛[0m
+␛[0;32mI (230866) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (230866) tasks: delta local/neighbour: 5008.000000/5018␛[0m
+␛[0;32mI (230866) tasks: Beacon from 0x0002: relative_logic_rate 0.001997, offset -102.075195␛[0m
+␛[0;32mI (230876) tasks: logic time: 1590260170956 (high/low: 370 1122271436) hardware_time: 28676␛[0m
+␛[0;32mI (230906) tasks: Time beacon task iteration 46␛[0m
+␛[0;32mI (230906) tasks: Current local logic time: 1590260171097.062500 ms, offset diff/rate: -51.037598/0.000000␛[0m
+␛[0;32mI (230906) blemesh: custom model cb␛[0m
+␛[0;32mI (230906) blemesh: custom model cb␛[0m
+␛[0;32mI (230916) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (235886) blemesh: custom model cb␛[0m
+␛[0;32mI (235886) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (235886) tasks: delta local/neighbour: 5028.403846/5018␛[0m
+␛[0;32mI (235886) tasks: Beacon from 0x0002: relative_logic_rate -0.002069, offset -73.441406␛[0m
+␛[0;32mI (235896) tasks: logic time: 1590260175962 (high/low: 370 1122276442) hardware_time: 33694␛[0m
+␛[0;32mI (235906) tasks: Time beacon task iteration 47␛[0m
+␛[0;32mI (235916) tasks: Current local logic time: 1590260176064.345215 ms, offset diff/rate: -36.720703/0.000000␛[0m
+␛[0;32mI (235926) blemesh: custom model cb␛[0m
+␛[0;32mI (235926) blemesh: custom model cb␛[0m
+␛[0;32mI (235926) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (240886) blemesh: custom model cb␛[0m
+␛[0;32mI (240886) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (240886) tasks: delta local/neighbour: 5007.993590/5018␛[0m
+␛[0;32mI (240886) tasks: Beacon from 0x0002: relative_logic_rate 0.001998, offset -102.714355␛[0m
+␛[0;32mI (240896) tasks: logic time: 1590260180904 (high/low: 370 1122281384) hardware_time: 38712␛[0m
+␛[0;32mI (240926) tasks: Time beacon task iteration 48␛[0m
+␛[0;32mI (240926) tasks: Current local logic time: 1590260181045.361816 ms, offset diff/rate: -51.357178/0.000000␛[0m
+␛[0;32mI (240926) blemesh: custom model cb␛[0m
+␛[0;32mI (240926) blemesh: custom model cb␛[0m
+␛[0;32mI (240936) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (245906) blemesh: custom model cb␛[0m
+␛[0;32mI (245906) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (245906) tasks: delta local/neighbour: 5027.756410/5018␛[0m
+␛[0;32mI (245906) tasks: Beacon from 0x0002: relative_logic_rate -0.001941, offset -73.113525␛[0m
+␛[0;32mI (245916) tasks: logic time: 1590260185910 (high/low: 370 1122286390) hardware_time: 43730␛[0m
+␛[0;32mI (245926) tasks: Time beacon task iteration 49␛[0m
+␛[0;32mI (245936) tasks: Current local logic time: 1590260186012.023926 ms, offset diff/rate: -36.556763/0.000000␛[0m
+␛[0;32mI (245946) blemesh: custom model cb␛[0m
+␛[0;32mI (245946) blemesh: custom model cb␛[0m
+␛[0;32mI (245946) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (250906) blemesh: custom model cb␛[0m
+␛[0;32mI (250906) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (250906) tasks: delta local/neighbour: 5008.282051/5018␛[0m
+␛[0;32mI (250906) tasks: Beacon from 0x0002: relative_logic_rate 0.001940, offset -92.838867␛[0m
+␛[0;32mI (250916) tasks: logic time: 1590260190862 (high/low: 370 1122291342) hardware_time: 48748␛[0m
+␛[0;32mI (250946) tasks: Time beacon task iteration 50␛[0m
+␛[0;32mI (250946) tasks: Current local logic time: 1590260190993.511963 ms, offset diff/rate: -46.419434/0.000000␛[0m
+␛[0;32mI (250946) blemesh: custom model cb␛[0m
+␛[0;32mI (250946) blemesh: custom model cb␛[0m
+␛[0;32mI (250956) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (255926) blemesh: custom model cb␛[0m
+␛[0;32mI (255926) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (255926) tasks: delta local/neighbour: 5028.083333/5018␛[0m
+␛[0;32mI (255926) tasks: Beacon from 0x0002: relative_logic_rate -0.002005, offset -70.502686␛[0m
+␛[0;32mI (255936) tasks: logic time: 1590260195866 (high/low: 370 1122296346) hardware_time: 53766␛[0m
+␛[0;32mI (255946) tasks: Time beacon task iteration 51␛[0m
+␛[0;32mI (255956) tasks: Current local logic time: 1590260195965.406494 ms, offset diff/rate: -35.251343/0.000000␛[0m
+␛[0;32mI (255966) blemesh: custom model cb␛[0m
+␛[0;32mI (255966) blemesh: custom model cb␛[0m
+␛[0;32mI (255966) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (260926) blemesh: custom model cb␛[0m
+␛[0;32mI (260926) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (260926) tasks: delta local/neighbour: 5007.993590/5018␛[0m
+␛[0;32mI (260926) tasks: Beacon from 0x0002: relative_logic_rate 0.001998, offset -102.244873␛[0m
+␛[0;32mI (260936) tasks: logic time: 1590260200807 (high/low: 370 1122301287) hardware_time: 58784␛[0m
+␛[0;32mI (260966) tasks: Time beacon task iteration 52␛[0m
+␛[0;32mI (260966) tasks: Current local logic time: 1590260200947.892334 ms, offset diff/rate: -51.122437/0.000000␛[0m
+␛[0;32mI (260966) blemesh: custom model cb␛[0m
+␛[0;32mI (260966) blemesh: custom model cb␛[0m
+␛[0;32mI (260976) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (265946) blemesh: custom model cb␛[0m
+␛[0;32mI (265946) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (265946) tasks: delta local/neighbour: 5028.064103/5018␛[0m
+␛[0;32mI (265946) tasks: Beacon from 0x0002: relative_logic_rate -0.002002, offset -73.186279␛[0m
+␛[0;32mI (265956) tasks: logic time: 1590260205813 (high/low: 370 1122306293) hardware_time: 63802␛[0m
+␛[0;32mI (265966) tasks: Time beacon task iteration 53␛[0m
+␛[0;32mI (265976) tasks: Current local logic time: 1590260205915.090088 ms, offset diff/rate: -36.593140/0.000000␛[0m
+␛[0;32mI (265986) blemesh: custom model cb␛[0m
+␛[0;32mI (265986) blemesh: custom model cb␛[0m
+␛[0;32mI (265986) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (270946) blemesh: custom model cb␛[0m
+␛[0;32mI (270946) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (270946) tasks: delta local/neighbour: 5007.974359/5018␛[0m
+␛[0;32mI (270946) tasks: Beacon from 0x0002: relative_logic_rate 0.002002, offset -92.567383␛[0m
+␛[0;32mI (270956) tasks: logic time: 1590260210765 (high/low: 370 1122311245) hardware_time: 3284␛[0m
+␛[0;32mI (270986) tasks: Time beacon task iteration 54␛[0m
+␛[0;32mI (270986) tasks: Current local logic time: 1590260210896.234131 ms, offset diff/rate: -46.283691/0.000000␛[0m
+␛[0;32mI (270986) blemesh: custom model cb␛[0m
+␛[0;32mI (270986) blemesh: custom model cb␛[0m
+␛[0;32mI (270996) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (275966) blemesh: custom model cb␛[0m
+␛[0;32mI (275966) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (275966) tasks: delta local/neighbour: 5027.756410/5018␛[0m
+␛[0;32mI (275966) tasks: Beacon from 0x0002: relative_logic_rate -0.001941, offset -70.040039␛[0m
+␛[0;32mI (275976) tasks: logic time: 1590260215769 (high/low: 370 1122316249) hardware_time: 8302␛[0m
+␛[0;32mI (275986) tasks: Time beacon task iteration 55␛[0m
+␛[0;32mI (275996) tasks: Current local logic time: 1590260215867.860596 ms, offset diff/rate: -35.020020/0.000000␛[0m
+␛[0;32mI (276006) blemesh: custom model cb␛[0m
+␛[0;32mI (276006) blemesh: custom model cb␛[0m
+␛[0;32mI (276006) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (280966) blemesh: custom model cb␛[0m
+␛[0;32mI (280966) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (280966) tasks: delta local/neighbour: 5008.320513/5018␛[0m
+␛[0;32mI (280966) tasks: Beacon from 0x0002: relative_logic_rate 0.001933, offset -102.340576␛[0m
+␛[0;32mI (280976) tasks: logic time: 1590260220710 (high/low: 370 1122321190) hardware_time: 13320␛[0m
+␛[0;32mI (281006) tasks: Time beacon task iteration 56␛[0m
+␛[0;32mI (281006) tasks: Current local logic time: 1590260220850.988037 ms, offset diff/rate: -51.170288/0.000000␛[0m
+␛[0;32mI (281006) blemesh: custom model cb␛[0m
+␛[0;32mI (281006) blemesh: custom model cb␛[0m
+␛[0;32mI (281016) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (285986) blemesh: custom model cb␛[0m
+␛[0;32mI (285986) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (285986) tasks: delta local/neighbour: 5028.051282/5018␛[0m
+␛[0;32mI (285986) tasks: Beacon from 0x0002: relative_logic_rate -0.001999, offset -73.221436␛[0m
+␛[0;32mI (285996) tasks: logic time: 1590260225716 (high/low: 370 1122326196) hardware_time: 18338␛[0m
+␛[0;32mI (286006) tasks: Time beacon task iteration 57␛[0m
+␛[0;32mI (286016) tasks: Current local logic time: 1590260225818.131836 ms, offset diff/rate: -36.610718/0.000000␛[0m
+␛[0;32mI (286026) blemesh: custom model cb␛[0m
+␛[0;32mI (286026) blemesh: custom model cb␛[0m
+␛[0;32mI (286026) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (290976) blemesh: custom model cb␛[0m
+␛[0;32mI (290986) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (290986) tasks: delta local/neighbour: 5007.653846/5018␛[0m
+␛[0;32mI (290986) tasks: Beacon from 0x0002: relative_logic_rate 0.002066, offset -92.264404␛[0m
+␛[0;32mI (290996) tasks: logic time: 1590260230668 (high/low: 370 1122331148) hardware_time: 23356␛[0m
+␛[0;32mI (291026) tasks: Time beacon task iteration 58␛[0m
+␛[0;32mI (291026) tasks: Current local logic time: 1590260230799.270996 ms, offset diff/rate: -46.132202/0.000000␛[0m
+␛[0;32mI (291026) blemesh: custom model cb␛[0m
+␛[0;32mI (291026) blemesh: custom model cb␛[0m
+␛[0;32mI (291036) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (296006) blemesh: custom model cb␛[0m
+␛[0;32mI (296006) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (296006) tasks: delta local/neighbour: 5028.416667/5018␛[0m
+␛[0;32mI (296006) tasks: Beacon from 0x0002: relative_logic_rate -0.002072, offset -70.548828␛[0m
+␛[0;32mI (296016) tasks: logic time: 1590260235672 (high/low: 370 1122336152) hardware_time: 28374␛[0m
+␛[0;32mI (296026) tasks: Time beacon task iteration 59␛[0m
+␛[0;32mI (296036) tasks: Current local logic time: 1590260235771.452637 ms, offset diff/rate: -35.274414/0.000000␛[0m
+␛[0;32mI (296046) blemesh: custom model cb␛[0m
+␛[0;32mI (296046) blemesh: custom model cb␛[0m
+␛[0;32mI (296046) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (301006) blemesh: custom model cb␛[0m
+␛[0;32mI (301006) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (301006) tasks: delta local/neighbour: 5007.955128/5018␛[0m
+␛[0;32mI (301006) tasks: Beacon from 0x0002: relative_logic_rate 0.002006, offset -92.229492␛[0m
+␛[0;32mI (301016) tasks: logic time: 1590260240623 (high/low: 370 1122341103) hardware_time: 33392␛[0m
+␛[0;32mI (301046) tasks: Time beacon task iteration 60␛[0m
+␛[0;32mI (301046) tasks: Current local logic time: 1590260240753.915527 ms, offset diff/rate: -46.114746/0.000000␛[0m
+␛[0;32mI (301046) blemesh: custom model cb␛[0m
+␛[0;32mI (301046) blemesh: custom model cb␛[0m
+␛[0;32mI (301056) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (306026) blemesh: custom model cb␛[0m
+␛[0;32mI (306026) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (306026) tasks: delta local/neighbour: 5028.102564/5018␛[0m
+␛[0;32mI (306026) tasks: Beacon from 0x0002: relative_logic_rate -0.002009, offset -70.217285␛[0m
+␛[0;32mI (306036) tasks: logic time: 1590260245627 (high/low: 370 1122346107) hardware_time: 38410␛[0m
+␛[0;32mI (306046) tasks: Time beacon task iteration 61␛[0m
+␛[0;32mI (306056) tasks: Current local logic time: 1590260245726.127686 ms, offset diff/rate: -35.108643/0.000000␛[0m
+␛[0;32mI (306066) blemesh: custom model cb␛[0m
+␛[0;32mI (306066) blemesh: custom model cb␛[0m
+␛[0;32mI (306066) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (311026) blemesh: custom model cb␛[0m
+␛[0;32mI (311026) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (311026) tasks: delta local/neighbour: 5007.961538/5018␛[0m
+␛[0;32mI (311026) tasks: Beacon from 0x0002: relative_logic_rate 0.002005, offset -92.070312␛[0m
+␛[0;32mI (311036) tasks: logic time: 1590260250578 (high/low: 370 1122351058) hardware_time: 43428␛[0m
+␛[0;32mI (311066) tasks: Time beacon task iteration 62␛[0m
+␛[0;32mI (311066) tasks: Current local logic time: 1590260250708.749756 ms, offset diff/rate: -46.035156/0.000000␛[0m
+␛[0;32mI (311066) blemesh: custom model cb␛[0m
+␛[0;32mI (311066) blemesh: custom model cb␛[0m
+␛[0;32mI (311076) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (316046) blemesh: custom model cb␛[0m
+␛[0;32mI (316046) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (316046) tasks: delta local/neighbour: 5028.096154/5018␛[0m
+␛[0;32mI (316046) tasks: Beacon from 0x0002: relative_logic_rate -0.002008, offset -70.131348␛[0m
+␛[0;32mI (316056) tasks: logic time: 1590260255582 (high/low: 370 1122356062) hardware_time: 48446␛[0m
+␛[0;32mI (316066) tasks: Time beacon task iteration 63␛[0m
+␛[0;32mI (316076) tasks: Current local logic time: 1590260255681.041504 ms, offset diff/rate: -35.065674/0.000000␛[0m
+␛[0;32mI (316086) blemesh: custom model cb␛[0m
+␛[0;32mI (316086) blemesh: custom model cb␛[0m
+␛[0;32mI (316086) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (321046) blemesh: custom model cb␛[0m
+␛[0;32mI (321046) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (321046) tasks: delta local/neighbour: 5007.967949/5018␛[0m
+␛[0;32mI (321046) tasks: Beacon from 0x0002: relative_logic_rate 0.002003, offset -92.033447␛[0m
+␛[0;32mI (321056) tasks: logic time: 1590260260533 (high/low: 370 1122361013) hardware_time: 53464␛[0m
+␛[0;32mI (321086) tasks: Time beacon task iteration 64␛[0m
+␛[0;32mI (321086) tasks: Current local logic time: 1590260260663.706543 ms, offset diff/rate: -46.016724/0.000000␛[0m
+␛[0;32mI (321086) blemesh: custom model cb␛[0m
+␛[0;32mI (321086) blemesh: custom model cb␛[0m
+␛[0;32mI (321096) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (326066) blemesh: custom model cb␛[0m
+␛[0;32mI (326066) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (326066) tasks: delta local/neighbour: 5028.089744/5018␛[0m
+␛[0;32mI (326066) tasks: Beacon from 0x0002: relative_logic_rate -0.002007, offset -70.106689␛[0m
+␛[0;32mI (326076) tasks: logic time: 1590260265537 (high/low: 370 1122366017) hardware_time: 58482␛[0m
+␛[0;32mI (326086) tasks: Time beacon task iteration 65␛[0m
+␛[0;32mI (326096) tasks: Current local logic time: 1590260265636.016846 ms, offset diff/rate: -35.053345/0.000000␛[0m
+␛[0;32mI (326106) blemesh: custom model cb␛[0m
+␛[0;32mI (326106) blemesh: custom model cb␛[0m
+␛[0;32mI (326106) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (331066) blemesh: custom model cb␛[0m
+␛[0;32mI (331066) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (331066) tasks: delta local/neighbour: 5007.974359/5018␛[0m
+␛[0;32mI (331066) tasks: Beacon from 0x0002: relative_logic_rate 0.002002, offset -92.027832␛[0m
+␛[0;32mI (331076) tasks: logic time: 1590260270488 (high/low: 370 1122370968) hardware_time: 63500␛[0m
+␛[0;32mI (331106) tasks: Time beacon task iteration 66␛[0m
+␛[0;32mI (331106) tasks: Current local logic time: 1590260270618.700928 ms, offset diff/rate: -46.013916/0.000000␛[0m
+␛[0;32mI (331106) blemesh: custom model cb␛[0m
+␛[0;32mI (331106) blemesh: custom model cb␛[0m
+␛[0;32mI (331116) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (336086) blemesh: custom model cb␛[0m
+␛[0;32mI (336086) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (336086) tasks: delta local/neighbour: 5027.775641/5018␛[0m
+␛[0;32mI (336086) tasks: Beacon from 0x0002: relative_logic_rate -0.001944, offset -69.789551␛[0m
+␛[0;32mI (336096) tasks: logic time: 1590260275492 (high/low: 370 1122375972) hardware_time: 2982␛[0m
+␛[0;32mI (336106) tasks: Time beacon task iteration 67␛[0m
+␛[0;32mI (336116) tasks: Current local logic time: 1590260275590.603760 ms, offset diff/rate: -34.894775/0.000000␛[0m
+␛[0;32mI (336126) blemesh: custom model cb␛[0m
+␛[0;32mI (336126) blemesh: custom model cb␛[0m
+␛[0;32mI (336126) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (341086) blemesh: custom model cb␛[0m
+␛[0;32mI (341086) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (341086) tasks: delta local/neighbour: 5008.307692/5018␛[0m
+␛[0;32mI (341086) tasks: Beacon from 0x0002: relative_logic_rate 0.001935, offset -102.202393␛[0m
+␛[0;32mI (341096) tasks: logic time: 1590260280433 (high/low: 370 1122380913) hardware_time: 8000␛[0m
+␛[0;32mI (341126) tasks: Time beacon task iteration 68␛[0m
+␛[0;32mI (341126) tasks: Current local logic time: 1590260280573.843506 ms, offset diff/rate: -51.101196/0.000000␛[0m
+␛[0;32mI (341126) blemesh: custom model cb␛[0m
+␛[0;32mI (341126) blemesh: custom model cb␛[0m
+␛[0;32mI (341136) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (346106) blemesh: custom model cb␛[0m
+␛[0;32mI (346106) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (346106) tasks: delta local/neighbour: 5027.743590/5019␛[0m
+␛[0;32mI (346106) tasks: Beacon from 0x0002: relative_logic_rate -0.001739, offset -72.844971␛[0m
+␛[0;32mI (346116) tasks: logic time: 1590260285439 (high/low: 370 1122385919) hardware_time: 13019␛[0m
+␛[0;32mI (346126) tasks: Time beacon task iteration 69␛[0m
+␛[0;32mI (346136) tasks: Current local logic time: 1590260285540.748779 ms, offset diff/rate: -36.422485/0.000000␛[0m
+␛[0;32mI (346146) blemesh: custom model cb␛[0m
+␛[0;32mI (346146) blemesh: custom model cb␛[0m
+␛[0;32mI (346146) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (351106) blemesh: custom model cb␛[0m
+␛[0;32mI (351106) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (351106) tasks: delta local/neighbour: 5008.025641/5018␛[0m
+␛[0;32mI (351106) tasks: Beacon from 0x0002: relative_logic_rate 0.001992, offset -152.448242␛[0m
+␛[0;32mI (351116) tasks: logic time: 1590260290331 (high/low: 370 1122390811) hardware_time: 18037␛[0m
+␛[0;32mI (351146) tasks: Time beacon task iteration 70␛[0m
+␛[0;32mI (351146) tasks: Current local logic time: 1590260290522.377686 ms, offset diff/rate: -76.224121/0.000000␛[0m
+␛[0;32mI (351146) blemesh: custom model cb␛[0m
+␛[0;32mI (351146) blemesh: custom model cb␛[0m
+␛[0;32mI (351156) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (356126) blemesh: custom model cb␛[0m
+␛[0;32mI (356126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (356126) tasks: delta local/neighbour: 5028.346154/5017␛[0m
+␛[0;32mI (356126) tasks: Beacon from 0x0002: relative_logic_rate -0.002256, offset -86.570312␛[0m
+␛[0;32mI (356136) tasks: logic time: 1590260295349 (high/low: 370 1122395829) hardware_time: 23054␛[0m
+␛[0;32mI (356146) tasks: Time beacon task iteration 71␛[0m
+␛[0;32mI (356156) tasks: Current local logic time: 1590260295464.480469 ms, offset diff/rate: -43.285156/0.000000␛[0m
+␛[0;32mI (356166) blemesh: custom model cb␛[0m
+␛[0;32mI (356166) blemesh: custom model cb␛[0m
+␛[0;32mI (356166) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (361126) blemesh: custom model cb␛[0m
+␛[0;32mI (361126) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (361126) tasks: delta local/neighbour: 5007.967949/5019␛[0m
+␛[0;32mI (361126) tasks: Beacon from 0x0002: relative_logic_rate 0.002203, offset -95.253174␛[0m
+␛[0;32mI (361136) tasks: logic time: 1590260300305 (high/low: 370 1122400785) hardware_time: 28073␛[0m
+␛[0;32mI (361166) tasks: Time beacon task iteration 72␛[0m
+␛[0;32mI (361166) tasks: Current local logic time: 1590260300438.926270 ms, offset diff/rate: -47.626587/0.000000␛[0m
+␛[0;32mI (361166) blemesh: custom model cb␛[0m
+␛[0;32mI (361166) blemesh: custom model cb␛[0m
+␛[0;32mI (361176) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (366146) blemesh: custom model cb␛[0m
+␛[0;32mI (366146) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (366146) tasks: delta local/neighbour: 5028.089744/5018␛[0m
+␛[0;32mI (366146) tasks: Beacon from 0x0002: relative_logic_rate -0.002007, offset -71.716309␛[0m
+␛[0;32mI (366156) tasks: logic time: 1590260305309 (high/low: 370 1122405789) hardware_time: 33091␛[0m
+␛[0;32mI (366166) tasks: Time beacon task iteration 73␛[0m
+␛[0;32mI (366176) tasks: Current local logic time: 1590260305409.620117 ms, offset diff/rate: -35.858154/0.000000␛[0m
+␛[0;32mI (366186) blemesh: custom model cb␛[0m
+␛[0;32mI (366186) blemesh: custom model cb␛[0m
+␛[0;32mI (366186) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (371146) blemesh: custom model cb␛[0m
+␛[0;32mI (371146) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (371146) tasks: delta local/neighbour: 5007.987179/5018␛[0m
+␛[0;32mI (371146) tasks: Beacon from 0x0002: relative_logic_rate 0.001999, offset -101.845459␛[0m
+␛[0;32mI (371156) tasks: logic time: 1590260310251 (high/low: 370 1122410731) hardware_time: 38109␛[0m
+␛[0;32mI (371186) tasks: Time beacon task iteration 74␛[0m
+␛[0;32mI (371186) tasks: Current local logic time: 1590260310391.499268 ms, offset diff/rate: -50.922729/0.000000␛[0m
+␛[0;32mI (371186) blemesh: custom model cb␛[0m
+␛[0;32mI (371186) blemesh: custom model cb␛[0m
+␛[0;32mI (371196) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (376166) blemesh: custom model cb␛[0m
+␛[0;32mI (376166) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (376166) tasks: delta local/neighbour: 5027.820513/5018␛[0m
+␛[0;32mI (376166) tasks: Beacon from 0x0002: relative_logic_rate -0.001953, offset -72.743408␛[0m
+␛[0;32mI (376176) tasks: logic time: 1590260315257 (high/low: 370 1122415737) hardware_time: 43127␛[0m
+␛[0;32mI (376186) tasks: Time beacon task iteration 75␛[0m
+␛[0;32mI (376196) tasks: Current local logic time: 1590260315358.647217 ms, offset diff/rate: -36.371704/0.000000␛[0m
+␛[0;32mI (376206) blemesh: custom model cb␛[0m
+␛[0;32mI (376206) blemesh: custom model cb␛[0m
+␛[0;32mI (376206) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (381166) blemesh: custom model cb␛[0m
+␛[0;32mI (381166) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (381166) tasks: delta local/neighbour: 5008.230769/5018␛[0m
+␛[0;32mI (381166) tasks: Beacon from 0x0002: relative_logic_rate 0.001951, offset -92.602539␛[0m
+␛[0;32mI (381176) tasks: logic time: 1590260320209 (high/low: 370 1122420689) hardware_time: 48145␛[0m
+␛[0;32mI (381206) tasks: Time beacon task iteration 76␛[0m
+␛[0;32mI (381206) tasks: Current local logic time: 1590260320340.262695 ms, offset diff/rate: -46.301270/0.000000␛[0m
+␛[0;32mI (381206) blemesh: custom model cb␛[0m
+␛[0;32mI (381206) blemesh: custom model cb␛[0m
+␛[0;32mI (381216) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (386186) blemesh: custom model cb␛[0m
+␛[0;32mI (386186) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (386186) tasks: delta local/neighbour: 5028.083333/5018␛[0m
+␛[0;32mI (386186) tasks: Beacon from 0x0002: relative_logic_rate -0.002005, offset -70.384521␛[0m
+␛[0;32mI (386196) tasks: logic time: 1590260325213 (high/low: 370 1122425693) hardware_time: 53163␛[0m
+␛[0;32mI (386206) tasks: Time beacon task iteration 77␛[0m
+␛[0;32mI (386216) tasks: Current local logic time: 1590260325312.288330 ms, offset diff/rate: -35.192261/0.000000␛[0m
+␛[0;32mI (386226) blemesh: custom model cb␛[0m
+␛[0;32mI (386226) blemesh: custom model cb␛[0m
+␛[0;32mI (386226) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (391186) blemesh: custom model cb␛[0m
+␛[0;32mI (391186) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (391186) tasks: delta local/neighbour: 5008.000000/5018␛[0m
+␛[0;32mI (391186) tasks: Beacon from 0x0002: relative_logic_rate 0.001997, offset -102.192139␛[0m
+␛[0;32mI (391196) tasks: logic time: 1590260330154 (high/low: 370 1122430634) hardware_time: 58181␛[0m
+␛[0;32mI (391226) tasks: Time beacon task iteration 78␛[0m
+␛[0;32mI (391226) tasks: Current local logic time: 1590260330294.826904 ms, offset diff/rate: -51.096069/0.000000␛[0m
+␛[0;32mI (391226) blemesh: custom model cb␛[0m
+␛[0;32mI (391226) blemesh: custom model cb␛[0m
+␛[0;32mI (391236) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (396206) blemesh: custom model cb␛[0m
+␛[0;32mI (396206) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (396206) tasks: delta local/neighbour: 5028.051282/5018␛[0m
+␛[0;32mI (396206) tasks: Beacon from 0x0002: relative_logic_rate -0.001999, offset -73.147217␛[0m
+␛[0;32mI (396216) tasks: logic time: 1590260335160 (high/low: 370 1122435640) hardware_time: 63199␛[0m
+␛[0;32mI (396226) tasks: Time beacon task iteration 79␛[0m
+␛[0;32mI (396236) tasks: Current local logic time: 1590260335262.051025 ms, offset diff/rate: -36.573608/0.000000␛[0m
+␛[0;32mI (396246) blemesh: custom model cb␛[0m
+␛[0;32mI (396246) blemesh: custom model cb␛[0m
+␛[0;32mI (396246) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (401206) blemesh: custom model cb␛[0m
+␛[0;32mI (401206) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (401206) tasks: delta local/neighbour: 5007.980769/5018␛[0m
+␛[0;32mI (401206) tasks: Beacon from 0x0002: relative_logic_rate 0.002001, offset -92.554199␛[0m
+␛[0;32mI (401216) tasks: logic time: 1590260340112 (high/low: 370 1122440592) hardware_time: 2681␛[0m
+␛[0;32mI (401246) tasks: Time beacon task iteration 80␛[0m
+␛[0;32mI (401246) tasks: Current local logic time: 1590260340243.214600 ms, offset diff/rate: -46.277100/0.000000␛[0m
+␛[0;32mI (401246) blemesh: custom model cb␛[0m
+␛[0;32mI (401246) blemesh: custom model cb␛[0m
+␛[0;32mI (401256) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (406226) blemesh: custom model cb␛[0m
+␛[0;32mI (406226) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (406226) tasks: delta local/neighbour: 5027.717949/5018␛[0m
+␛[0;32mI (406226) tasks: Beacon from 0x0002: relative_logic_rate -0.001933, offset -69.995117␛[0m
+␛[0;32mI (406236) tasks: logic time: 1590260345116 (high/low: 370 1122445596) hardware_time: 7699␛[0m
+␛[0;32mI (406246) tasks: Time beacon task iteration 81␛[0m
+␛[0;32mI (406256) tasks: Current local logic time: 1590260345214.815674 ms, offset diff/rate: -34.997559/0.000000␛[0m
+␛[0;32mI (406266) blemesh: custom model cb␛[0m
+␛[0;32mI (406266) blemesh: custom model cb␛[0m
+␛[0;32mI (406266) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (411226) blemesh: custom model cb␛[0m
+␛[0;32mI (411226) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (411226) tasks: delta local/neighbour: 5008.333333/5018␛[0m
+␛[0;32mI (411226) tasks: Beacon from 0x0002: relative_logic_rate 0.001930, offset -92.331055␛[0m
+␛[0;32mI (411236) tasks: logic time: 1590260350067 (high/low: 370 1122450547) hardware_time: 12717␛[0m
+␛[0;32mI (411266) tasks: Time beacon task iteration 82␛[0m
+␛[0;32mI (411266) tasks: Current local logic time: 1590260350197.997559 ms, offset diff/rate: -46.165527/0.000000␛[0m
+␛[0;32mI (411266) blemesh: custom model cb␛[0m
+␛[0;32mI (411266) blemesh: custom model cb␛[0m
+␛[0;32mI (411276) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (416246) blemesh: custom model cb␛[0m
+␛[0;32mI (416246) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (416246) tasks: delta local/neighbour: 5027.833333/5018␛[0m
+␛[0;32mI (416246) tasks: Beacon from 0x0002: relative_logic_rate -0.001956, offset -69.998779␛[0m
+␛[0;32mI (416256) tasks: logic time: 1590260355071 (high/low: 370 1122455551) hardware_time: 17735␛[0m
+␛[0;32mI (416266) tasks: Time beacon task iteration 83␛[0m
+␛[0;32mI (416276) tasks: Current local logic time: 1590260355169.902588 ms, offset diff/rate: -34.999390/0.000000␛[0m
+␛[0;32mI (416286) blemesh: custom model cb␛[0m
+␛[0;32mI (416286) blemesh: custom model cb␛[0m
+␛[0;32mI (416286) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (421246) blemesh: custom model cb␛[0m
+␛[0;32mI (421246) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (421246) tasks: delta local/neighbour: 5007.961538/5018␛[0m
+␛[0;32mI (421246) tasks: Beacon from 0x0002: relative_logic_rate 0.002005, offset -101.960938␛[0m
+␛[0;32mI (421256) tasks: logic time: 1590260360012 (high/low: 370 1122460492) hardware_time: 22753␛[0m
+␛[0;32mI (421286) tasks: Time beacon task iteration 84␛[0m
+␛[0;32mI (421286) tasks: Current local logic time: 1590260360152.890381 ms, offset diff/rate: -50.980469/0.000000␛[0m
+␛[0;32mI (421286) blemesh: custom model cb␛[0m
+␛[0;32mI (421286) blemesh: custom model cb␛[0m
+␛[0;32mI (421296) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (426266) blemesh: custom model cb␛[0m
+␛[0;32mI (426266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (426266) tasks: delta local/neighbour: 5028.346154/5018␛[0m
+␛[0;32mI (426266) tasks: Beacon from 0x0002: relative_logic_rate -0.002058, offset -73.326660␛[0m
+␛[0;32mI (426276) tasks: logic time: 1590260365018 (high/low: 370 1122465498) hardware_time: 27771␛[0m
+␛[0;32mI (426286) tasks: Time beacon task iteration 85␛[0m
+␛[0;32mI (426296) tasks: Current local logic time: 1590260365120.237061 ms, offset diff/rate: -36.663330/0.000000␛[0m
+␛[0;32mI (426306) blemesh: custom model cb␛[0m
+␛[0;32mI (426306) blemesh: custom model cb␛[0m
+␛[0;32mI (426306) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (431266) blemesh: custom model cb␛[0m
+␛[0;32mI (431266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (431266) tasks: delta local/neighbour: 5007.974359/5018␛[0m
+␛[0;32mI (431266) tasks: Beacon from 0x0002: relative_logic_rate 0.002002, offset -92.637695␛[0m
+␛[0;32mI (431276) tasks: logic time: 1590260369970 (high/low: 370 1122470450) hardware_time: 32789␛[0m
+␛[0;32mI (431306) tasks: Time beacon task iteration 86␛[0m
+␛[0;32mI (431306) tasks: Current local logic time: 1590260370101.304443 ms, offset diff/rate: -46.318848/0.000000␛[0m
+␛[0;32mI (431306) blemesh: custom model cb␛[0m
+␛[0;32mI (431306) blemesh: custom model cb␛[0m
+␛[0;32mI (431316) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (436286) blemesh: custom model cb␛[0m
+␛[0;32mI (436286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (436286) tasks: delta local/neighbour: 5027.820513/5018␛[0m
+␛[0;32mI (436286) tasks: Beacon from 0x0002: relative_logic_rate -0.001953, offset -70.139404␛[0m
+␛[0;32mI (436296) tasks: logic time: 1590260374974 (high/low: 370 1122475454) hardware_time: 37807␛[0m
+␛[0;32mI (436306) tasks: Time beacon task iteration 87␛[0m
+␛[0;32mI (436316) tasks: Current local logic time: 1590260375073.049561 ms, offset diff/rate: -35.069702/0.000000␛[0m
+␛[0;32mI (436326) blemesh: custom model cb␛[0m
+␛[0;32mI (436326) blemesh: custom model cb␛[0m
+␛[0;32mI (436326) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (441286) blemesh: custom model cb␛[0m
+␛[0;32mI (441286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (441286) tasks: delta local/neighbour: 5008.269231/5018␛[0m
+␛[0;32mI (441286) tasks: Beacon from 0x0002: relative_logic_rate 0.001943, offset -102.339111␛[0m
+␛[0;32mI (441296) tasks: logic time: 1590260379915 (high/low: 370 1122480395) hardware_time: 42825␛[0m
+␛[0;32mI (441326) tasks: Time beacon task iteration 88␛[0m
+␛[0;32mI (441326) tasks: Current local logic time: 1590260380055.973633 ms, offset diff/rate: -51.169556/0.000000␛[0m
+␛[0;32mI (441326) blemesh: custom model cb␛[0m
+␛[0;32mI (441326) blemesh: custom model cb␛[0m
+␛[0;32mI (441336) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (446306) blemesh: custom model cb␛[0m
+␛[0;32mI (446306) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (446306) tasks: delta local/neighbour: 5028.038462/5018␛[0m
+␛[0;32mI (446306) tasks: Beacon from 0x0002: relative_logic_rate -0.001996, offset -73.208008␛[0m
+␛[0;32mI (446316) tasks: logic time: 1590260384921 (high/low: 370 1122485401) hardware_time: 47843␛[0m
+␛[0;32mI (446326) tasks: Time beacon task iteration 89␛[0m
+␛[0;32mI (446336) tasks: Current local logic time: 1590260385023.111816 ms, offset diff/rate: -36.604004/0.000000␛[0m
+␛[0;32mI (446346) blemesh: custom model cb␛[0m
+␛[0;32mI (446346) blemesh: custom model cb␛[0m
+␛[0;32mI (446346) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (451306) blemesh: custom model cb␛[0m
+␛[0;32mI (451306) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (451306) tasks: delta local/neighbour: 5008.019231/5018␛[0m
+␛[0;32mI (451306) tasks: Beacon from 0x0002: relative_logic_rate 0.001993, offset -152.623291␛[0m
+␛[0;32mI (451316) tasks: logic time: 1590260389813 (high/low: 370 1122490293) hardware_time: 52861␛[0m
+␛[0;32mI (451346) tasks: Time beacon task iteration 90␛[0m
+␛[0;32mI (451346) tasks: Current local logic time: 1590260390004.257812 ms, offset diff/rate: -76.311646/0.000000␛[0m
+␛[0;32mI (451346) blemesh: custom model cb␛[0m
+␛[0;32mI (451346) blemesh: custom model cb␛[0m
+␛[0;32mI (451356) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (456326) blemesh: custom model cb␛[0m
+␛[0;32mI (456326) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (456326) tasks: delta local/neighbour: 5028.038462/5018␛[0m
+␛[0;32mI (456326) tasks: Beacon from 0x0002: relative_logic_rate -0.001996, offset -86.350342␛[0m
+␛[0;32mI (456336) tasks: logic time: 1590260394831 (high/low: 370 1122495311) hardware_time: 57879␛[0m
+␛[0;32mI (456346) tasks: Time beacon task iteration 91␛[0m
+␛[0;32mI (456356) tasks: Current local logic time: 1590260394946.254150 ms, offset diff/rate: -43.175171/0.000000␛[0m
+␛[0;32mI (456366) blemesh: custom model cb␛[0m
+␛[0;32mI (456366) blemesh: custom model cb␛[0m
+␛[0;32mI (456366) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (461326) blemesh: custom model cb␛[0m
+␛[0;32mI (461326) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (461326) tasks: delta local/neighbour: 5008.000000/5018␛[0m
+␛[0;32mI (461326) tasks: Beacon from 0x0002: relative_logic_rate 0.001997, offset -95.175049␛[0m
+␛[0;32mI (461336) tasks: logic time: 1590260399787 (high/low: 370 1122500267) hardware_time: 62897␛[0m
+␛[0;32mI (461366) tasks: Time beacon task iteration 92␛[0m
+␛[0;32mI (461366) tasks: Current local logic time: 1590260399920.828857 ms, offset diff/rate: -47.587524/0.000000␛[0m
+␛[0;32mI (461366) blemesh: custom model cb␛[0m
+␛[0;32mI (461366) blemesh: custom model cb␛[0m
+␛[0;32mI (461376) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (463246) blemesh: custom model cb␛[0m
+␛[0;32mI (463246) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (463246) tasks: New neighbour detected: 0x0001␛[0m
+␛[0;32mI (463246) tasks: Beacon from 0x0001: relative_logic_rate 0.000000, offset 2120.175293␛[0m
+␛[0;32mI (463256) tasks: logic time: 1590260403878 (high/low: 370 1122504358) hardware_time: 3750␛[0m
+␛[0;33mW (463496) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (466346) blemesh: custom model cb␛[0m
+␛[0;32mI (466346) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (466346) tasks: delta local/neighbour: 5027.929487/5018␛[0m
+␛[0;32mI (466346) tasks: Beacon from 0x0002: relative_logic_rate -0.001975, offset 643.482910␛[0m
+␛[0;32mI (466356) tasks: logic time: 1590260405506 (high/low: 370 1122505986) hardware_time: 2379␛[0m
+␛[0;32mI (466366) tasks: Time beacon task iteration 93␛[0m
+␛[0;32mI (466376) tasks: Current local logic time: 1590260404891.331055 ms, offset diff/rate: 921.219401/0.000000␛[0m
+␛[0;32mI (466386) blemesh: custom model cb␛[0m
+␛[0;32mI (466386) blemesh: custom model cb␛[0m
+␛[0;32mI (466386) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (468246) blemesh: custom model cb␛[0m
+␛[0;32mI (468246) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (468246) tasks: delta local/neighbour: 5008.275641/5000␛[0m
+␛[0;32mI (468246) tasks: Beacon from 0x0001: relative_logic_rate -0.001652, offset 1190.680176␛[0m
+␛[0;32mI (468256) tasks: logic time: 1590260408878 (high/low: 370 1122509358) hardware_time: 8750␛[0m
+␛[0;33mW (468396) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (471346) blemesh: custom model cb␛[0m
+␛[0;32mI (471346) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (471346) tasks: delta local/neighbour: 5007.967949/5018␛[0m
+␛[0;32mI (471346) tasks: Beacon from 0x0002: relative_logic_rate 0.002003, offset 242.295654␛[0m
+␛[0;32mI (471356) tasks: logic time: 1590260411034 (high/low: 370 1122511514) hardware_time: 7397␛[0m
+␛[0;32mI (471386) tasks: Time beacon task iteration 94␛[0m
+␛[0;32mI (471386) tasks: Current local logic time: 1590260410830.518555 ms, offset diff/rate: 477.658610/0.000000␛[0m
+␛[0;32mI (471386) blemesh: custom model cb␛[0m
+␛[0;32mI (471386) blemesh: custom model cb␛[0m
+␛[0;32mI (471396) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (473246) blemesh: custom model cb␛[0m
+␛[0;32mI (473246) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (473246) tasks: delta local/neighbour: 5008.089744/5003␛[0m
+␛[0;32mI (473246) tasks: Beacon from 0x0001: relative_logic_rate -0.001016, offset 706.931641␛[0m
+␛[0;32mI (473256) tasks: logic time: 1590260413880 (high/low: 370 1122514360) hardware_time: 13753␛[0m
+␛[0;33mW (473296) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (476366) blemesh: custom model cb␛[0m
+␛[0;32mI (476366) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (476366) tasks: delta local/neighbour: 5028.057692/5018␛[0m
+␛[0;32mI (476366) tasks: Beacon from 0x0002: relative_logic_rate -0.002000, offset 109.579102␛[0m
+␛[0;32mI (476376) tasks: logic time: 1590260416407 (high/low: 370 1122516887) hardware_time: 12415␛[0m
+␛[0;32mI (476386) tasks: Time beacon task iteration 95␛[0m
+␛[0;32mI (476396) tasks: Current local logic time: 1590260416326.324707 ms, offset diff/rate: 272.170247/0.000000␛[0m
+␛[0;32mI (476406) blemesh: custom model cb␛[0m
+␛[0;32mI (476406) blemesh: custom model cb␛[0m
+␛[0;32mI (476406) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (478406) blemesh: custom model cb␛[0m
+␛[0;32mI (478406) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (478406) tasks: delta local/neighbour: 5168.243590/5000␛[0m
+␛[0;32mI (478406) tasks: Beacon from 0x0001: relative_logic_rate -0.032553, offset 267.518066␛[0m
+␛[0;32mI (478416) tasks: logic time: 1590260418881 (high/low: 370 1122519361) hardware_time: 18753␛[0m
+␛[0;32mI (481366) blemesh: custom model cb␛[0m
+␛[0;32mI (481366) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (481366) tasks: delta local/neighbour: 5008.198718/5018␛[0m
+␛[0;32mI (481366) tasks: Beacon from 0x0002: relative_logic_rate 0.001957, offset 19.210205␛[0m
+␛[0;32mI (481376) tasks: logic time: 1590260421597 (high/low: 370 1122522077) hardware_time: 17433␛[0m
+␛[0;32mI (481406) tasks: Time beacon task iteration 96␛[0m
+␛[0;32mI (481406) tasks: Current local logic time: 1590260421616.405029 ms, offset diff/rate: 95.576090/0.000000␛[0m
+␛[0;32mI (481406) blemesh: custom model cb␛[0m
+␛[0;32mI (481406) blemesh: custom model cb␛[0m
+␛[0;32mI (481416) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (483406) blemesh: custom model cb␛[0m
+␛[0;32mI (483406) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (483406) tasks: delta local/neighbour: 5008.019231/5003␛[0m
+␛[0;32mI (483406) tasks: Beacon from 0x0001: relative_logic_rate -0.001002, offset 165.922607␛[0m
+␛[0;32mI (483416) tasks: logic time: 1590260423883 (high/low: 370 1122524363) hardware_time: 23756␛[0m
+␛[0;32mI (486386) blemesh: custom model cb␛[0m
+␛[0;32mI (486386) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (486386) tasks: delta local/neighbour: 5028.064103/5018␛[0m
+␛[0;32mI (486386) tasks: Beacon from 0x0002: relative_logic_rate -0.002002, offset 35.570068␛[0m
+␛[0;32mI (486396) tasks: logic time: 1590260426737 (high/low: 370 1122527217) hardware_time: 22451␛[0m
+␛[0;32mI (486406) tasks: Time beacon task iteration 97␛[0m
+␛[0;32mI (486416) tasks: Current local logic time: 1590260426730.244141 ms, offset diff/rate: 67.164225/0.000000␛[0m
+␛[0;32mI (486426) blemesh: custom model cb␛[0m
+␛[0;32mI (486426) blemesh: custom model cb␛[0m
+␛[0;32mI (486426) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (488266) blemesh: custom model cb␛[0m
+␛[0;32mI (488266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (488266) tasks: delta local/neighbour: 4867.743590/5001␛[0m
+␛[0;32mI (488266) tasks: Beacon from 0x0001: relative_logic_rate 0.027375, offset 233.014648␛[0m
+␛[0;32mI (488276) tasks: logic time: 1590260428885 (high/low: 370 1122529365) hardware_time: 28757␛[0m
+␛[0;33mW (488516) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (491386) blemesh: custom model cb␛[0m
+␛[0;32mI (491386) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (491386) tasks: delta local/neighbour: 5007.794872/5018␛[0m
+␛[0;32mI (491386) tasks: Beacon from 0x0002: relative_logic_rate 0.002038, offset 5.610840␛[0m
+␛[0;32mI (491396) tasks: logic time: 1590260431782 (high/low: 370 1122532262) hardware_time: 27469␛[0m
+␛[0;32mI (491426) tasks: Time beacon task iteration 98␛[0m
+␛[0;32mI (491426) tasks: Current local logic time: 1590260431815.203369 ms, offset diff/rate: 79.541829/0.000000␛[0m
+␛[0;32mI (491426) blemesh: custom model cb␛[0m
+␛[0;32mI (491426) blemesh: custom model cb␛[0m
+␛[0;32mI (491436) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (493406) blemesh: custom model cb␛[0m
+␛[0;32mI (493406) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (493406) tasks: delta local/neighbour: 5148.019231/5002␛[0m
+␛[0;32mI (493406) tasks: Beacon from 0x0001: relative_logic_rate -0.028364, offset 6.453613␛[0m
+␛[0;32mI (493416) tasks: logic time: 1590260433886 (high/low: 370 1122534366) hardware_time: 33759␛[0m
+␛[0;32mI (496406) blemesh: custom model cb␛[0m
+␛[0;32mI (496406) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (496406) tasks: delta local/neighbour: 5028.275641/5018␛[0m
+␛[0;32mI (496406) tasks: Beacon from 0x0002: relative_logic_rate -0.002044, offset -17.206543␛[0m
+␛[0;32mI (496416) tasks: logic time: 1590260436867 (high/low: 370 1122537347) hardware_time: 32487␛[0m
+␛[0;32mI (496426) tasks: Time beacon task iteration 99␛[0m
+␛[0;32mI (496436) tasks: Current local logic time: 1590260436913.104004 ms, offset diff/rate: -3.584310/0.000000␛[0m
+␛[0;32mI (496446) blemesh: custom model cb␛[0m
+␛[0;32mI (496446) blemesh: custom model cb␛[0m
+␛[0;32mI (496446) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (498406) blemesh: custom model cb␛[0m
+␛[0;32mI (498406) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (498406) tasks: delta local/neighbour: 5008.262821/5001␛[0m
+␛[0;32mI (498406) tasks: Beacon from 0x0001: relative_logic_rate -0.001450, offset 3.775146␛[0m
+␛[0;32mI (498416) tasks: logic time: 1590260438888 (high/low: 370 1122539368) hardware_time: 38760␛[0m
+␛[0;32mI (501406) blemesh: custom model cb␛[0m
+␛[0;32mI (501406) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (501406) tasks: delta local/neighbour: 5008.012821/5018␛[0m
+␛[0;32mI (501406) tasks: Beacon from 0x0002: relative_logic_rate 0.001994, offset -18.635254␛[0m
+␛[0;32mI (501416) tasks: logic time: 1590260441870 (high/low: 370 1122542350) hardware_time: 37505␛[0m
+␛[0;32mI (501446) tasks: Time beacon task iteration 100␛[0m
+␛[0;32mI (501446) tasks: Current local logic time: 1590260441927.218506 ms, offset diff/rate: -4.953369/0.000000␛[0m
+␛[0;32mI (501446) blemesh: custom model cb␛[0m
+␛[0;32mI (501446) blemesh: custom model cb␛[0m
+␛[0;32mI (501456) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (503266) blemesh: custom model cb␛[0m
+␛[0;32mI (503266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (503266) tasks: delta local/neighbour: 4867.801282/5003␛[0m
+␛[0;32mI (503266) tasks: Beacon from 0x0001: relative_logic_rate 0.027774, offset 142.927246␛[0m
+␛[0;32mI (503276) tasks: logic time: 1590260443890 (high/low: 370 1122544370) hardware_time: 43763␛[0m
+␛[0;33mW (503316) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (506426) blemesh: custom model cb␛[0m
+␛[0;32mI (506426) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (506426) tasks: delta local/neighbour: 5027.737179/5018␛[0m
+␛[0;32mI (506426) tasks: Beacon from 0x0002: relative_logic_rate -0.001937, offset -4.418945␛[0m
+␛[0;32mI (506436) tasks: logic time: 1590260446907 (high/low: 370 1122547387) hardware_time: 42523␛[0m
+␛[0;32mI (506446) tasks: Time beacon task iteration 101␛[0m
+␛[0;32mI (506456) tasks: Current local logic time: 1590260446940.316406 ms, offset diff/rate: 46.169434/0.000000␛[0m
+␛[0;32mI (506466) blemesh: custom model cb␛[0m
+␛[0;32mI (506466) blemesh: custom model cb␛[0m
+␛[0;32mI (506466) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (508256) blemesh: custom model cb␛[0m
+␛[0;32mI (508256) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (508256) tasks: delta local/neighbour: 5005.423077/5001␛[0m
+␛[0;32mI (508266) tasks: Beacon from 0x0001: relative_logic_rate -0.000884, offset 93.334717␛[0m
+␛[0;32mI (508276) tasks: logic time: 1590260448892 (high/low: 370 1122549372) hardware_time: 48764␛[0m
+␛[0;33mW (508296) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (511426) blemesh: custom model cb␛[0m
+␛[0;32mI (511426) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (511426) tasks: delta local/neighbour: 5008.089744/5018␛[0m
+␛[0;32mI (511426) tasks: Beacon from 0x0002: relative_logic_rate 0.001979, offset -45.678223␛[0m
+␛[0;32mI (511436) tasks: logic time: 1590260451920 (high/low: 370 1122552400) hardware_time: 47541␛[0m
+␛[0;32mI (511466) tasks: Time beacon task iteration 102␛[0m
+␛[0;32mI (511466) tasks: Current local logic time: 1590260452004.492188 ms, offset diff/rate: 15.885498/0.000000␛[0m
+␛[0;32mI (511466) blemesh: custom model cb␛[0m
+␛[0;32mI (511466) blemesh: custom model cb␛[0m
+␛[0;32mI (511476) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (513266) blemesh: custom model cb␛[0m
+␛[0;32mI (513266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (513266) tasks: delta local/neighbour: 5010.333333/5002␛[0m
+␛[0;32mI (513266) tasks: Beacon from 0x0001: relative_logic_rate -0.001663, offset 69.115723␛[0m
+␛[0;32mI (513276) tasks: logic time: 1590260453894 (high/low: 370 1122554374) hardware_time: 53766␛[0m
+␛[0;33mW (513416) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (516446) blemesh: custom model cb␛[0m
+␛[0;32mI (516446) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (516446) tasks: delta local/neighbour: 5028.083333/5018␛[0m
+␛[0;32mI (516446) tasks: Beacon from 0x0002: relative_logic_rate -0.002005, offset -45.646973␛[0m
+␛[0;32mI (516456) tasks: logic time: 1590260456964 (high/low: 370 1122557444) hardware_time: 52559␛[0m
+␛[0;32mI (516466) tasks: Time beacon task iteration 103␛[0m
+␛[0;32mI (516476) tasks: Current local logic time: 1590260457038.634277 ms, offset diff/rate: 7.822917/0.000000␛[0m
+␛[0;32mI (516486) blemesh: custom model cb␛[0m
+␛[0;32mI (516486) blemesh: custom model cb␛[0m
+␛[0;32mI (516486) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (518266) blemesh: custom model cb␛[0m
+␛[0;32mI (518266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (518266) tasks: delta local/neighbour: 5008.294872/5001␛[0m
+␛[0;32mI (518266) tasks: Beacon from 0x0001: relative_logic_rate -0.001457, offset 53.998047␛[0m
+␛[0;32mI (518276) tasks: logic time: 1590260458895 (high/low: 370 1122559375) hardware_time: 58767␛[0m
+␛[0;33mW (518316) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (521446) blemesh: custom model cb␛[0m
+␛[0;32mI (521446) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (521446) tasks: delta local/neighbour: 5007.846154/5019␛[0m
+␛[0;32mI (521446) tasks: Beacon from 0x0002: relative_logic_rate 0.002227, offset -68.316162␛[0m
+␛[0;32mI (521456) tasks: logic time: 1590260461957 (high/low: 370 1122562437) hardware_time: 57578␛[0m
+␛[0;32mI (521486) tasks: Time beacon task iteration 104␛[0m
+␛[0;32mI (521486) tasks: Current local logic time: 1590260462064.258545 ms, offset diff/rate: -4.772705/0.000000␛[0m
+␛[0;32mI (521486) blemesh: custom model cb␛[0m
+␛[0;32mI (521486) blemesh: custom model cb␛[0m
+␛[0;32mI (521496) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (523266) blemesh: custom model cb␛[0m
+␛[0;32mI (523266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (523266) tasks: delta local/neighbour: 5008.000000/5000␛[0m
+␛[0;32mI (523266) tasks: Beacon from 0x0001: relative_logic_rate -0.001597, offset 50.770752␛[0m
+␛[0;32mI (523276) tasks: logic time: 1590260463895 (high/low: 370 1122564375) hardware_time: 63767␛[0m
+␛[0;32mI (526466) blemesh: custom model cb␛[0m
+␛[0;32mI (526466) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (526466) tasks: delta local/neighbour: 5028.448718/5017␛[0m
+␛[0;32mI (526466) tasks: Beacon from 0x0002: relative_logic_rate -0.002277, offset -51.992188␛[0m
+␛[0;32mI (526476) tasks: logic time: 1590260466997 (high/low: 370 1122567477) hardware_time: 62595␛[0m
+␛[0;32mI (526486) tasks: Time beacon task iteration 105␛[0m
+␛[0;32mI (526496) tasks: Current local logic time: 1590260467077.979248 ms, offset diff/rate: -0.407145/0.000000␛[0m
+␛[0;32mI (526506) blemesh: custom model cb␛[0m
+␛[0;32mI (526506) blemesh: custom model cb␛[0m
+␛[0;32mI (526506) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (528266) blemesh: custom model cb␛[0m
+␛[0;32mI (528266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (528266) tasks: delta local/neighbour: 5008.038462/5000␛[0m
+␛[0;32mI (528266) tasks: Beacon from 0x0001: relative_logic_rate -0.001605, offset 43.139404␛[0m
+␛[0;32mI (528276) tasks: logic time: 1590260468895 (high/low: 370 1122569375) hardware_time: 3231␛[0m
+␛[0;33mW (528416) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (531466) blemesh: custom model cb␛[0m
+␛[0;32mI (531466) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (531466) tasks: delta local/neighbour: 5007.750000/5019␛[0m
+␛[0;32mI (531466) tasks: Beacon from 0x0002: relative_logic_rate 0.002247, offset -71.334961␛[0m
+␛[0;32mI (531476) tasks: logic time: 1590260471985 (high/low: 370 1122572465) hardware_time: 2078␛[0m
+␛[0;32mI (531506) tasks: Time beacon task iteration 106␛[0m
+␛[0;32mI (531506) tasks: Current local logic time: 1590260472095.136230 ms, offset diff/rate: -9.398519/0.000000␛[0m
+␛[0;32mI (531506) blemesh: custom model cb␛[0m
+␛[0;32mI (531506) blemesh: custom model cb␛[0m
+␛[0;32mI (531516) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (533266) blemesh: custom model cb␛[0m
+␛[0;32mI (533266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (533266) tasks: delta local/neighbour: 5008.006410/5000␛[0m
+␛[0;32mI (533266) tasks: Beacon from 0x0001: relative_logic_rate -0.001599, offset 44.531494␛[0m
+␛[0;32mI (533276) tasks: logic time: 1590260473895 (high/low: 370 1122574375) hardware_time: 8231␛[0m
+␛[0;33mW (533316) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (536486) blemesh: custom model cb␛[0m
+␛[0;32mI (536486) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (536486) tasks: delta local/neighbour: 5028.064103/5018␛[0m
+␛[0;32mI (536486) tasks: Beacon from 0x0002: relative_logic_rate -0.002002, offset -53.000488␛[0m
+␛[0;32mI (536496) tasks: logic time: 1590260477022 (high/low: 370 1122577502) hardware_time: 7096␛[0m
+␛[0;32mI (536506) tasks: Time beacon task iteration 107␛[0m
+␛[0;32mI (536516) tasks: Current local logic time: 1590260477103.904541 ms, offset diff/rate: -2.822998/0.000000␛[0m
+␛[0;32mI (536526) blemesh: custom model cb␛[0m
+␛[0;32mI (536526) blemesh: custom model cb␛[0m
+␛[0;32mI (536526) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (538266) blemesh: custom model cb␛[0m
+␛[0;32mI (538266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (538266) tasks: delta local/neighbour: 5007.948718/5002␛[0m
+␛[0;32mI (538266) tasks: Beacon from 0x0001: relative_logic_rate -0.001188, offset 40.405762␛[0m
+␛[0;32mI (538276) tasks: logic time: 1590260478896 (high/low: 370 1122579376) hardware_time: 13233␛[0m
+␛[0;33mW (538416) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (541486) blemesh: custom model cb␛[0m
+␛[0;32mI (541486) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (541486) tasks: delta local/neighbour: 5007.987179/5018␛[0m
+␛[0;32mI (541486) tasks: Beacon from 0x0002: relative_logic_rate 0.001999, offset -65.164795␛[0m
+␛[0;32mI (541496) tasks: logic time: 1590260482015 (high/low: 370 1122582495) hardware_time: 12114␛[0m
+␛[0;32mI (541526) tasks: Time beacon task iteration 108␛[0m
+␛[0;32mI (541526) tasks: Current local logic time: 1590260482118.972412 ms, offset diff/rate: -8.253011/0.000000␛[0m
+␛[0;32mI (541526) blemesh: custom model cb␛[0m
+␛[0;32mI (541526) blemesh: custom model cb␛[0m
+␛[0;32mI (541536) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (543266) blemesh: custom model cb␛[0m
+␛[0;32mI (543266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (543266) tasks: delta local/neighbour: 5007.750000/5001␛[0m
+␛[0;32mI (543266) tasks: Beacon from 0x0001: relative_logic_rate -0.001348, offset 42.908691␛[0m
+␛[0;32mI (543276) tasks: logic time: 1590260483898 (high/low: 370 1122584378) hardware_time: 18234␛[0m
+␛[0;33mW (543316) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (546506) blemesh: custom model cb␛[0m
+␛[0;32mI (546506) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (546506) tasks: delta local/neighbour: 5028.064103/5018␛[0m
+␛[0;32mI (546506) tasks: Beacon from 0x0002: relative_logic_rate -0.002002, offset -51.975830␛[0m
+␛[0;32mI (546516) tasks: logic time: 1590260487048 (high/low: 370 1122587528) hardware_time: 17132␛[0m
+␛[0;32mI (546526) tasks: Time beacon task iteration 109␛[0m
+␛[0;32mI (546536) tasks: Current local logic time: 1590260487128.975830 ms, offset diff/rate: -3.022380/0.000000␛[0m
+␛[0;32mI (546546) blemesh: custom model cb␛[0m
+␛[0;32mI (546546) blemesh: custom model cb␛[0m
+␛[0;32mI (546546) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (548426) blemesh: custom model cb␛[0m
+␛[0;32mI (548426) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (548426) tasks: delta local/neighbour: 5168.512821/5003␛[0m
+␛[0;32mI (548426) tasks: Beacon from 0x0001: relative_logic_rate -0.032023, offset -120.581787␛[0m
+␛[0;32mI (548436) tasks: logic time: 1590260488900 (high/low: 370 1122589380) hardware_time: 23237␛[0m
+␛[0;32mI (551506) blemesh: custom model cb␛[0m
+␛[0;32mI (551506) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (551506) tasks: delta local/neighbour: 5008.173077/5018␛[0m
+␛[0;32mI (551506) tasks: Beacon from 0x0002: relative_logic_rate 0.001962, offset -65.126465␛[0m
+␛[0;32mI (551516) tasks: logic time: 1590260492040 (high/low: 370 1122592520) hardware_time: 22150␛[0m
+␛[0;32mI (551546) tasks: Time beacon task iteration 110␛[0m
+␛[0;32mI (551546) tasks: Current local logic time: 1590260492143.754639 ms, offset diff/rate: -61.902751/0.000000␛[0m
+␛[0;32mI (551546) blemesh: custom model cb␛[0m
+␛[0;32mI (551546) blemesh: custom model cb␛[0m
+␛[0;32mI (551556) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (553266) blemesh: custom model cb␛[0m
+␛[0;32mI (553266) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (553266) tasks: delta local/neighbour: 4847.839744/5001␛[0m
+␛[0;32mI (553266) tasks: Beacon from 0x0001: relative_logic_rate 0.031594, offset 94.481445␛[0m
+␛[0;32mI (553276) tasks: logic time: 1590260493901 (high/low: 370 1122594381) hardware_time: 28238␛[0m
+␛[0;33mW (553416) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (556526) blemesh: custom model cb␛[0m
+␛[0;32mI (556526) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (556526) tasks: delta local/neighbour: 5027.878205/5018␛[0m
+␛[0;32mI (556526) tasks: Beacon from 0x0002: relative_logic_rate -0.001965, offset -17.101807␛[0m
+␛[0;32mI (556536) tasks: logic time: 1590260497054 (high/low: 370 1122597534) hardware_time: 27168␛[0m
+␛[0;32mI (556546) tasks: Time beacon task iteration 111␛[0m
+␛[0;32mI (556556) tasks: Current local logic time: 1590260497100.089111 ms, offset diff/rate: 25.793213/0.000000␛[0m
+␛[0;32mI (556566) blemesh: custom model cb␛[0m
+␛[0;32mI (556566) blemesh: custom model cb␛[0m
+␛[0;32mI (556566) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (558286) blemesh: custom model cb␛[0m
+␛[0;32mI (558286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (558286) tasks: delta local/neighbour: 5028.032051/5002␛[0m
+␛[0;32mI (558286) tasks: Beacon from 0x0001: relative_logic_rate -0.005177, offset 43.656250␛[0m
+␛[0;32mI (558296) tasks: logic time: 1590260498904 (high/low: 370 1122599384) hardware_time: 33240␛[0m
+␛[0;33mW (558416) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (561526) blemesh: custom model cb␛[0m
+␛[0;32mI (561526) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (561526) tasks: delta local/neighbour: 5008.000000/5018␛[0m
+␛[0;32mI (561526) tasks: Beacon from 0x0002: relative_logic_rate 0.001997, offset -61.895020␛[0m
+␛[0;32mI (561536) tasks: logic time: 1590260502043 (high/low: 370 1122602523) hardware_time: 32186␛[0m
+␛[0;32mI (561566) tasks: Time beacon task iteration 112␛[0m
+␛[0;32mI (561566) tasks: Current local logic time: 1590260502143.702881 ms, offset diff/rate: -6.079590/0.000000␛[0m
+␛[0;32mI (561566) blemesh: custom model cb␛[0m
+␛[0;32mI (561566) blemesh: custom model cb␛[0m
+␛[0;32mI (561576) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (563286) blemesh: custom model cb␛[0m
+␛[0;32mI (563286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (563286) tasks: delta local/neighbour: 5008.019231/5001␛[0m
+␛[0;32mI (563286) tasks: Beacon from 0x0001: relative_logic_rate -0.001402, offset 42.716553␛[0m
+␛[0;32mI (563296) tasks: logic time: 1590260503905 (high/low: 370 1122604385) hardware_time: 38241␛[0m
+␛[0;33mW (563436) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (566546) blemesh: custom model cb␛[0m
+␛[0;32mI (566546) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (566546) tasks: delta local/neighbour: 5028.070513/5018␛[0m
+␛[0;32mI (566546) tasks: Beacon from 0x0002: relative_logic_rate -0.002003, offset -51.885986␛[0m
+␛[0;32mI (566556) tasks: logic time: 1590260507075 (high/low: 370 1122607555) hardware_time: 37204␛[0m
+␛[0;32mI (566566) tasks: Time beacon task iteration 113␛[0m
+␛[0;32mI (566576) tasks: Current local logic time: 1590260507155.873291 ms, offset diff/rate: -3.056478/0.000000␛[0m
+␛[0;32mI (566586) blemesh: custom model cb␛[0m
+␛[0;32mI (566586) blemesh: custom model cb␛[0m
+␛[0;32mI (566586) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (568286) blemesh: custom model cb␛[0m
+␛[0;32mI (568286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (568286) tasks: delta local/neighbour: 5008.000000/5002␛[0m
+␛[0;32mI (568286) tasks: Beacon from 0x0001: relative_logic_rate -0.001198, offset 39.772949␛[0m
+␛[0;32mI (568296) tasks: logic time: 1590260508907 (high/low: 370 1122609387) hardware_time: 43243␛[0m
+␛[0;33mW (568436) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (571546) blemesh: custom model cb␛[0m
+␛[0;32mI (571546) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (571546) tasks: delta local/neighbour: 5007.987179/5018␛[0m
+␛[0;32mI (571546) tasks: Beacon from 0x0002: relative_logic_rate 0.001999, offset -71.816895␛[0m
+␛[0;32mI (571556) tasks: logic time: 1590260512060 (high/low: 370 1122612540) hardware_time: 42222␛[0m
+␛[0;32mI (571586) tasks: Time beacon task iteration 114␛[0m
+␛[0;32mI (571586) tasks: Current local logic time: 1590260512170.624512 ms, offset diff/rate: -10.681315/0.000000␛[0m
+␛[0;32mI (571586) blemesh: custom model cb␛[0m
+␛[0;32mI (571586) blemesh: custom model cb␛[0m
+␛[0;32mI (571596) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (573286) blemesh: custom model cb␛[0m
+␛[0;32mI (573286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (573286) tasks: delta local/neighbour: 5008.038462/5001␛[0m
+␛[0;32mI (573286) tasks: Beacon from 0x0001: relative_logic_rate -0.001405, offset 43.415771␛[0m
+␛[0;32mI (573296) tasks: logic time: 1590260513908 (high/low: 370 1122614388) hardware_time: 48244␛[0m
+␛[0;33mW (573476) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (576566) blemesh: custom model cb␛[0m
+␛[0;32mI (576566) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (576566) tasks: delta local/neighbour: 5028.064103/5018␛[0m
+␛[0;32mI (576566) tasks: Beacon from 0x0002: relative_logic_rate -0.002002, offset -67.199463␛[0m
+␛[0;32mI (576576) tasks: logic time: 1590260517082 (high/low: 370 1122617562) hardware_time: 47240␛[0m
+␛[0;32mI (576586) tasks: Time beacon task iteration 115␛[0m
+␛[0;32mI (576596) tasks: Current local logic time: 1590260517178.199463 ms, offset diff/rate: -7.927897/0.000000␛[0m
+␛[0;32mI (576606) blemesh: custom model cb␛[0m
+␛[0;32mI (576606) blemesh: custom model cb␛[0m
+␛[0;32mI (576606) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (578286) blemesh: custom model cb␛[0m
+␛[0;32mI (578286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (578286) tasks: delta local/neighbour: 5008.064103/5002␛[0m
+␛[0;32mI (578286) tasks: Beacon from 0x0001: relative_logic_rate -0.001211, offset 45.279785␛[0m
+␛[0;32mI (578296) tasks: logic time: 1590260518910 (high/low: 370 1122619390) hardware_time: 53246␛[0m
+␛[0;33mW (578426) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (581566) blemesh: custom model cb␛[0m
+␛[0;32mI (581566) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (581566) tasks: delta local/neighbour: 5007.814103/5018␛[0m
+␛[0;32mI (581566) tasks: Beacon from 0x0002: relative_logic_rate 0.002034, offset -66.085693␛[0m
+␛[0;32mI (581576) tasks: logic time: 1590260522083 (high/low: 370 1122622563) hardware_time: 52258␛[0m
+␛[0;32mI (581606) tasks: Time beacon task iteration 116␛[0m
+␛[0;32mI (581606) tasks: Current local logic time: 1590260522188.072754 ms, offset diff/rate: -6.935303/0.000000␛[0m
+␛[0;32mI (581606) blemesh: custom model cb␛[0m
+␛[0;32mI (581606) blemesh: custom model cb␛[0m
+␛[0;32mI (581616) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (583286) blemesh: custom model cb␛[0m
+␛[0;32mI (583286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (583286) tasks: delta local/neighbour: 5007.666667/5002␛[0m
+␛[0;32mI (583286) tasks: Beacon from 0x0001: relative_logic_rate -0.001132, offset 45.548340␛[0m
+␛[0;32mI (583296) tasks: logic time: 1590260523911 (high/low: 370 1122624391) hardware_time: 58248␛[0m
+␛[0;33mW (583336) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (586586) blemesh: custom model cb␛[0m
+␛[0;32mI (586586) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (586586) tasks: delta local/neighbour: 5028.243590/5018␛[0m
+␛[0;32mI (586586) tasks: Beacon from 0x0002: relative_logic_rate -0.002037, offset -52.394043␛[0m
+␛[0;32mI (586596) tasks: logic time: 1590260527118 (high/low: 370 1122627598) hardware_time: 57276␛[0m
+␛[0;32mI (586606) tasks: Time beacon task iteration 117␛[0m
+␛[0;32mI (586616) tasks: Current local logic time: 1590260527199.394043 ms, offset diff/rate: -2.281901/0.000000␛[0m
+␛[0;32mI (586626) blemesh: custom model cb␛[0m
+␛[0;32mI (586626) blemesh: custom model cb␛[0m
+␛[0;32mI (586626) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (588286) blemesh: custom model cb␛[0m
+␛[0;32mI (588286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (588286) tasks: delta local/neighbour: 5008.237179/5002␛[0m
+␛[0;32mI (588286) tasks: Beacon from 0x0001: relative_logic_rate -0.001245, offset 41.593262␛[0m
+␛[0;32mI (588296) tasks: logic time: 1590260528913 (high/low: 370 1122629393) hardware_time: 63250␛[0m
+␛[0;33mW (588436) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (591586) blemesh: custom model cb␛[0m
+␛[0;32mI (591586) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (591586) tasks: delta local/neighbour: 5007.980769/5018␛[0m
+␛[0;32mI (591586) tasks: Beacon from 0x0002: relative_logic_rate 0.002001, offset -65.092773␛[0m
+␛[0;32mI (591596) tasks: logic time: 1590260532111 (high/low: 370 1122632591) hardware_time: 62294␛[0m
+␛[0;32mI (591626) tasks: Time beacon task iteration 118␛[0m
+␛[0;32mI (591626) tasks: Current local logic time: 1590260532214.913330 ms, offset diff/rate: -7.833171/0.000000␛[0m
+␛[0;32mI (591626) blemesh: custom model cb␛[0m
+␛[0;32mI (591626) blemesh: custom model cb␛[0m
+␛[0;32mI (591636) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (593286) blemesh: custom model cb␛[0m
+␛[0;32mI (593286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (593286) tasks: delta local/neighbour: 5008.070513/5001␛[0m
+␛[0;32mI (593286) tasks: Beacon from 0x0001: relative_logic_rate -0.001412, offset 43.355957␛[0m
+␛[0;32mI (593296) tasks: logic time: 1590260533915 (high/low: 370 1122634395) hardware_time: 2715␛[0m
+␛[0;33mW (593536) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (596606) blemesh: custom model cb␛[0m
+␛[0;32mI (596606) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (596606) tasks: delta local/neighbour: 5028.083333/5018␛[0m
+␛[0;32mI (596606) tasks: Beacon from 0x0002: relative_logic_rate -0.002005, offset -52.342773␛[0m
+␛[0;32mI (596616) tasks: logic time: 1590260537144 (high/low: 370 1122637624) hardware_time: 1776␛[0m
+␛[0;32mI (596626) tasks: Time beacon task iteration 119␛[0m
+␛[0;32mI (596636) tasks: Current local logic time: 1590260537225.240234 ms, offset diff/rate: -2.995605/0.000000␛[0m
+␛[0;32mI (596646) blemesh: custom model cb␛[0m
+␛[0;32mI (596646) blemesh: custom model cb␛[0m
+␛[0;32mI (596646) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (598306) blemesh: custom model cb␛[0m
+␛[0;32mI (598306) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (598306) tasks: delta local/neighbour: 5028.044872/5002␛[0m
+␛[0;32mI (598306) tasks: Beacon from 0x0001: relative_logic_rate -0.005180, offset 19.306641␛[0m
+␛[0;32mI (598316) tasks: logic time: 1590260538916 (high/low: 370 1122639396) hardware_time: 7717␛[0m
+␛[0;33mW (598496) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (601606) blemesh: custom model cb␛[0m
+␛[0;32mI (601606) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (601606) tasks: delta local/neighbour: 5007.987179/5018␛[0m
+␛[0;32mI (601606) tasks: Beacon from 0x0002: relative_logic_rate 0.001999, offset -92.334473␛[0m
+␛[0;32mI (601616) tasks: logic time: 1590260542109 (high/low: 370 1122642589) hardware_time: 6794␛[0m
+␛[0;32mI (601646) tasks: Time beacon task iteration 120␛[0m
+␛[0;32mI (601646) tasks: Current local logic time: 1590260542240.142090 ms, offset diff/rate: -24.342611/0.000000␛[0m
+␛[0;32mI (601646) blemesh: custom model cb␛[0m
+␛[0;32mI (601646) blemesh: custom model cb␛[0m
+␛[0;32mI (601656) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (603286) blemesh: custom model cb␛[0m
+␛[0;32mI (603286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (603286) tasks: delta local/neighbour: 4987.980769/5001␛[0m
+␛[0;32mI (603286) tasks: Beacon from 0x0001: relative_logic_rate 0.002610, offset 57.668457␛[0m
+␛[0;32mI (603296) tasks: logic time: 1590260543918 (high/low: 370 1122644398) hardware_time: 12718␛[0m
+␛[0;33mW (603536) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (606626) blemesh: custom model cb␛[0m
+␛[0;32mI (606626) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (606626) tasks: delta local/neighbour: 5028.064103/5018␛[0m
+␛[0;32mI (606626) tasks: Beacon from 0x0002: relative_logic_rate -0.002002, offset -51.055908␛[0m
+␛[0;32mI (606636) tasks: logic time: 1590260547154 (high/low: 370 1122647634) hardware_time: 11812␛[0m
+␛[0;32mI (606646) tasks: Time beacon task iteration 121␛[0m
+␛[0;32mI (606656) tasks: Current local logic time: 1590260547234.043213 ms, offset diff/rate: 2.204183/0.000000␛[0m
+␛[0;32mI (606666) blemesh: custom model cb␛[0m
+␛[0;32mI (606666) blemesh: custom model cb␛[0m
+␛[0;32mI (606666) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (608446) blemesh: custom model cb␛[0m
+␛[0;32mI (608446) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (608446) tasks: delta local/neighbour: 5168.250000/5003␛[0m
+␛[0;32mI (608446) tasks: Beacon from 0x0001: relative_logic_rate -0.031974, offset -109.785645␛[0m
+␛[0;32mI (608456) tasks: logic time: 1590260548921 (high/low: 370 1122649401) hardware_time: 17721␛[0m
+␛[0;32mI (611626) blemesh: custom model cb␛[0m
+␛[0;32mI (611626) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (611626) tasks: delta local/neighbour: 5008.185897/5018␛[0m
+␛[0;32mI (611626) tasks: Beacon from 0x0002: relative_logic_rate 0.001960, offset -69.446045␛[0m
+␛[0;32mI (611636) tasks: logic time: 1590260552146 (high/low: 370 1122652626) hardware_time: 16830␛[0m
+␛[0;32mI (611666) tasks: Time beacon task iteration 122␛[0m
+␛[0;32mI (611666) tasks: Current local logic time: 1590260552254.061279 ms, offset diff/rate: -59.743896/0.000000␛[0m
+␛[0;32mI (611666) blemesh: custom model cb␛[0m
+␛[0;32mI (611666) blemesh: custom model cb␛[0m
+␛[0;32mI (611676) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (613286) blemesh: custom model cb␛[0m
+␛[0;32mI (613286) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (613286) tasks: delta local/neighbour: 4847.500000/5002␛[0m
+␛[0;32mI (613286) tasks: Beacon from 0x0001: relative_logic_rate 0.031872, offset 103.458252␛[0m
+␛[0;32mI (613296) tasks: logic time: 1590260553922 (high/low: 370 1122654402) hardware_time: 22723␛[0m
+␛[0;33mW (613436) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (616646) blemesh: custom model cb␛[0m
+␛[0;32mI (616646) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (616646) tasks: delta local/neighbour: 5027.891026/5018␛[0m
+␛[0;32mI (616646) tasks: Beacon from 0x0002: relative_logic_rate -0.001967, offset -16.593018␛[0m
+␛[0;32mI (616656) tasks: logic time: 1590260557167 (high/low: 370 1122657647) hardware_time: 21848␛[0m
+␛[0;32mI (616666) tasks: Time beacon task iteration 123␛[0m
+␛[0;32mI (616676) tasks: Current local logic time: 1590260557212.580322 ms, offset diff/rate: 28.955078/0.000000␛[0m
+␛[0;32mI (616686) blemesh: custom model cb␛[0m
+␛[0;32mI (616686) blemesh: custom model cb␛[0m
+␛[0;32mI (616686) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (618306) blemesh: custom model cb␛[0m
+␛[0;32mI (618306) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (618306) tasks: delta local/neighbour: 5028.262821/5002␛[0m
+␛[0;32mI (618306) tasks: Beacon from 0x0001: relative_logic_rate -0.005223, offset 48.240234␛[0m
+␛[0;32mI (618316) tasks: logic time: 1590260558924 (high/low: 370 1122659404) hardware_time: 27725␛[0m
+␛[0;32mI (621646) blemesh: custom model cb␛[0m
+␛[0;32mI (621646) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0002␛[0m
+␛[0;32mI (621646) tasks: delta local/neighbour: 5008.211538/5018␛[0m
+␛[0;32mI (621646) tasks: Beacon from 0x0002: relative_logic_rate 0.001954, offset -61.759766␛[0m
+␛[0;32mI (621656) tasks: logic time: 1590260562159 (high/low: 370 1122662639) hardware_time: 26866␛[0m
+␛[0;32mI (621686) tasks: Time beacon task iteration 124␛[0m
+␛[0;32mI (621686) tasks: Current local logic time: 1590260562259.330322 ms, offset diff/rate: -4.506510/0.000000␛[0m
+␛[0;32mI (621686) blemesh: custom model cb␛[0m
+␛[0;32mI (621686) blemesh: custom model cb␛[0m
+␛[0;32mI (621696) blemesh: Send 0xd002e5␛[0m
+␛[0;32mI (623306) blemesh: custom model cb␛[0m
+␛[0;32mI (623306) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (623306) tasks: delta local/neighbour: 5007.775641/5001␛[0m
+␛[0;32mI (623306) tasks: Beacon from 0x0001: relative_logic_rate -0.001353, offset 46.971191␛[0m
+␛[0;32mI (623316) tasks: logic time: 1590260563926 (high/low: 370 1122664406) hardware_time: 32726␛[0m
+␛[0;33mW (623556) BLE_MESH: Duplicate found in Network Message Cache␛[0m

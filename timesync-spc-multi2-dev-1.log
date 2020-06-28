@@ -1,0 +1,113 @@
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at http://bit.ly/pio-monitor-filters
+--- Enter port index or full name: ␛[0;32mI (115616) tasks: Time beacon task iteration 23␛[0m
+␛[0;32mI (120616) tasks: Time beacon task iteration 24␛[0m
+␛[0;32mI (125616) tasks: Time beacon task iteration 25␛[0m
+␛[0;32mI (130616) tasks: Time beacon task iteration 26␛[0m
+␛[0;32mI (135616) tasks: Time beacon task iteration 27␛[0m
+␛[0;32mI (140616) tasks: Time beacon task iteration 28␛[0m
+␛[0;32mI (145616) tasks: Time beacon task iteration 29␛[0m
+␛[0;32mI (150616) tasks: Time beacon task iteration 30␛[0m
+␛[0;32mI (155616) tasks: Time beacon task iteration 31␛[0m
+␛[0;32mI (160616) tasks: Time beacon task iteration 32␛[0m
+␛[0;32mI (165616) tasks: Time beacon task iteration 33␛[0m
+␛[0;32mI (170616) tasks: Time beacon task iteration 34␛[0m
+␛[0;32mI (175616) tasks: Time beacon task iteration 35␛[0m
+␛[0;32mI (176276) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_OPEN_EVT, bearer PB-ADV␛[0m
+␛[0;33mW (176496) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;32mI (180616) tasks: Time beacon task iteration 36␛[0m
+␛[0;32mI (182806) blemesh: ESP_BLE_MESH_NODE_PROV_COMPLETE_EVT␛[0m
+␛[0;32mI (182816) blemesh: net_idx: 0x0000, addr: 0x0003␛[0m
+␛[0;32mI (182816) blemesh: flags: 0x00, iv_index: 0x00000000␛[0m
+␛[0;32mI (182816) blemesh: Provision COMPLETED!␛[0m
+␛[0;33mW (183396) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;32mI (183396) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_CLOSE_EVT, bearer PB-ADV␛[0m
+␛[0;33mW (183606) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (183696) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (183696) blemesh: ESP_BLE_MESH_MODEL_OP_APP_KEY_ADD␛[0m
+␛[0;32mI (183696) blemesh: net_idx 0x0000, app_idx 0x0000␛[0m
+␛[0;32mI (183696) AppKey: 33 0c 2e 0c 59 0c 44 0c 4f 92 59 90 43 18 59 6f ␛[0m
+␛[0;33mW (184146) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (184196) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (184196) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (184196) blemesh: elem_addr 0x0003, app_idx 0x0000, cid 0x02e5, mod_id 0x00a2␛[0m
+␛[0;32mI (184586) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (184586) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (184586) blemesh: elem_addr 0x0003, app_idx 0x0000, cid 0x02e5, mod_id 0x00a4␛[0m
+␛[0;33mW (184926) BLE_MESH: Duplicate found in Network Message Cache␛[0m
+␛[0;32mI (185596) blemesh: custom model cb␛[0m
+␛[0;32mI (185616) tasks: Time beacon task iteration 37␛[0m
+␛[0;32mI (189656) blemesh: custom model cb␛[0m
+␛[0;32mI (190616) tasks: Time beacon task iteration 38␛[0m
+␛[0;32mI (194656) blemesh: custom model cb␛[0m
+␛[0;32mI (195616) tasks: Time beacon task iteration 39␛[0m
+␛[0;32mI (199656) blemesh: custom model cb␛[0m
+␛[0;32mI (200616) tasks: Time beacon task iteration 40␛[0m
+␛[0;32mI (204656) blemesh: custom model cb␛[0m
+␛[0;32mI (205616) tasks: Time beacon task iteration 41␛[0m
+␛[0;32mI (209656) blemesh: custom model cb␛[0m
+␛[0;32mI (210616) tasks: Time beacon task iteration 42␛[0m
+␛[0;32mI (214656) blemesh: custom model cb␛[0m
+␛[0;32mI (215616) tasks: Time beacon task iteration 43␛[0m
+␛[0;32mI (219656) blemesh: custom model cb␛[0m
+␛[0;32mI (220616) tasks: Time beacon task iteration 44␛[0m
+␛[0;32mI (224656) blemesh: custom model cb␛[0m
+␛[0;32mI (225616) tasks: Time beacon task iteration 45␛[0m
+␛[0;32mI (229656) blemesh: custom model cb␛[0m
+␛[0;32mI (230616) tasks: Time beacon task iteration 46␛[0m
+␛[0;32mI (234656) blemesh: custom model cb␛[0m
+␛[0;32mI (235616) tasks: Time beacon task iteration 47␛[0m
+␛[0;32mI (239676) blemesh: custom model cb␛[0m
+␛[0;32mI (240616) tasks: Time beacon task iteration 48␛[0m
+␛[0;32mI (244676) blemesh: custom model cb␛[0m
+␛[0;32mI (245616) tasks: Time beacon task iteration 49␛[0m
+␛[0;32mI (249676) blemesh: custom model cb␛[0m
+␛[0;32mI (250616) tasks: Time beacon task iteration 50␛[0m
+␛[0;32mI (254676) blemesh: custom model cb␛[0m
+␛[0;32mI (255616) tasks: Time beacon task iteration 51␛[0m
+␛[0;32mI (259676) blemesh: custom model cb␛[0m
+␛[0;32mI (260616) tasks: Time beacon task iteration 52␛[0m
+␛[0;32mI (264676) blemesh: custom model cb␛[0m
+␛[0;32mI (265616) tasks: Time beacon task iteration 53␛[0m
+␛[0;32mI (269676) blemesh: custom model cb␛[0m
+␛[0;32mI (270616) tasks: Time beacon task iteration 54␛[0m
+␛[0;32mI (274676) blemesh: custom model cb␛[0m
+␛[0;32mI (275616) tasks: Time beacon task iteration 55␛[0m
+␛[0;32mI (279676) blemesh: custom model cb␛[0m
+␛[0;32mI (280616) tasks: Time beacon task iteration 56␛[0m
+␛[0;32mI (284696) blemesh: custom model cb␛[0m
+␛[0;32mI (285616) tasks: Time beacon task iteration 57␛[0m
+␛[0;32mI (289696) blemesh: custom model cb␛[0m
+␛[0;32mI (290616) tasks: Time beacon task iteration 58␛[0m
+␛[0;32mI (294696) blemesh: custom model cb␛[0m
+␛[0;32mI (295616) tasks: Time beacon task iteration 59␛[0m
+␛[0;32mI (299696) blemesh: custom model cb␛[0m
+␛[0;32mI (300616) tasks: Time beacon task iteration 60␛[0m
+␛[0;32mI (304696) blemesh: custom model cb␛[0m
+␛[0;32mI (305616) tasks: Time beacon task iteration 61␛[0m
+␛[0;32mI (309696) blemesh: custom model cb␛[0m
+␛[0;32mI (310616) tasks: Time beacon task iteration 62␛[0m
+␛[0;32mI (314696) blemesh: custom model cb␛[0m
+␛[0;32mI (315616) tasks: Time beacon task iteration 63␛[0m
+␛[0;32mI (319716) blemesh: custom model cb␛[0m
+␛[0;32mI (320616) tasks: Time beacon task iteration 64␛[0m
+␛[0;32mI (324716) blemesh: custom model cb␛[0m
+␛[0;32mI (325616) tasks: Time beacon task iteration 65␛[0m
+␛[0;32mI (329716) blemesh: custom model cb␛[0m
+␛[0;32mI (330616) tasks: Time beacon task iteration 66␛[0m
+␛[0;32mI (334716) blemesh: custom model cb␛[0m
+␛[0;32mI (335616) tasks: Time beacon task iteration 67␛[0m
+␛[0;32mI (339716) blemesh: custom model cb␛[0m
+␛[0;32mI (340616) tasks: Time beacon task iteration 68␛[0m
+␛[0;32mI (344716) blemesh: custom model cb␛[0m
+␛[0;32mI (345616) tasks: Time beacon task iteration 69␛[0m
+␛[0;32mI (349716) blemesh: custom model cb␛[0m
+␛[0;32mI (350616) tasks: Time beacon task iteration 70␛[0m
+␛[0;32mI (354736) blemesh: custom model cb␛[0m
+␛[0;32mI (355616) tasks: Time beacon task iteration 71␛[0m
+␛[0;32mI (359736) blemesh: custom model cb␛[0m
+␛[0;32mI (360616) tasks: Time beacon task iteration 72␛[0m
+␛[0;32mI (364756) blemesh: custom model cb␛[0m
+␛[0;32mI (365616) tasks: Time beacon task iteration 73␛[0m
+␛[0;32mI (369776) blemesh: custom model cb␛[0m
+␛[0;32mI (370616) tasks: Time beacon task iteration 74␛[0m

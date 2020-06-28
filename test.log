@@ -1,0 +1,35 @@
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at http://bit.ly/pio-monitor-filters
+␛[0;33mW (3047526) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3048226) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3048926) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3049626) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3049916) BLE_MESH: Duplicate SDU from src 0x0001␛[0m
+␛[0;33mW (3050216) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (3050416) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (3050516) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (3050616) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (3050626) blemesh: custom model cb␛[0m
+␛[0;32mI (3050626) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (3050626) tasks: delta local/neighbour: 5308.506410/5003.000000␛[0m
+␛[0;32mI (3050636) tasks: Beacon from 0x0001: relative_logic_rate -0.005755, offset -453.476807␛[0m
+␛[0;32mI (3050646) tasks: logic time/rate: 1590243756226.000000/0.000000 hardware_time: 1590243756226.000000␛[0m
+␛[0;33mW (3050816) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (3050816) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (3050906) tasks: Time beacon task iteration 609␛[0m
+␛[0;32mI (3050906) tasks: Current local logic time: 1590243756953.925537 ms, offset diff/rate: -226.738403/0.000000␛[0m
+␛[0;31mE (3050906) BLE_MESH: send_seg, Out of segment buffers␛[0m
+␛[0;32mI (3050916) blemesh: custom model cb␛[0m
+␛[0;31mE (3050916) blemesh: Failed to send message 0xd002e5␛[0m
+␛[0;33mW (3051356) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3051756) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3051816) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3052156) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3052516) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3052556) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3052966) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3053226) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3053366) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3053766) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3053926) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (3054166) BLE_MESH: Not sending ack for non-unicast address␛[0m

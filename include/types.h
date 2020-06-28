@@ -4,11 +4,18 @@
 #include <stdio.h>
 
 // TIME STRUCTS
-typedef struct timesync_beacon_t {
-    double rate;
-    double logic_time;
-    double hardware_time; // miliseconds instead of ticks!
-} timesync_beacon_t;
+typedef struct __attribute__ ((__packed__)) timesync_beacon_t {
+    uint16_t logic_time_high;
+    uint32_t logic_time_low;
+    uint16_t hardware_time;
+} __attribute__ ((__packed__)) timesync_beacon_t;
+
+typedef struct __attribute__ ((__packed__)) timesync_drift_beacon_t {
+    int32_t rate; // logic_rate = 1.0 + 1/rate
+    uint16_t hardware_time;
+} __attribute__ ((__packed__)) timesync_drift_beacon_t;
+
+#define BEACON_LOGIC_TIME(beacon) ((uint64_t)((uint64_t)beacon.logic_time_low | (((uint64_t)beacon.logic_time_high) << 32)))
 
 typedef struct time_model_t {
     double logic_time;
@@ -24,10 +31,15 @@ typedef struct gtsp_neighbour_t gtsp_neighbour_t;
 
 typedef struct gtsp_neighbour_t {
     timesync_beacon_t beacon;
+    timesync_drift_beacon_t drift_beacon;
     double relative_logic_rate;
     time_model_t time_recv;
+    time_model_t drift_recv;
     uint32_t iteration;
     uint16_t sender;
+    bool is_drift_recv;
+    bool read;
+    bool time_authority;
     struct gtsp_neighbour_t *next;
 } gtsp_neighbour_t;
 

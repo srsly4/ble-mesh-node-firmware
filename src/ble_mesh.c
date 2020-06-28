@@ -1,3 +1,4 @@
+#include <memory.h>
 #include "ble_mesh.h"
 #include "tasks.h"
 
@@ -41,6 +42,7 @@ static esp_ble_mesh_model_op_t task_vnd_op[] = {
 
 static esp_ble_mesh_model_op_t timesync_vnd_op[] = {
     ESP_BLE_MESH_MODEL_OP(TIMESYNC_VND_MODEL_OP_BEACON, 1),
+    ESP_BLE_MESH_MODEL_OP(TIMESYNC_VND_MODEL_OP_DRIFT_BEACON, 1),
     ESP_BLE_MESH_MODEL_OP_END,
 };
 
@@ -244,7 +246,6 @@ static uint16_t last_tid = 0;
 static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
                                              esp_ble_mesh_model_cb_param_t *param)
 {
-    ESP_LOGI(TAG, "custom model cb");
     switch (event) {
     case ESP_BLE_MESH_MODEL_OPERATION_EVT:
         if (param->model_operation.opcode == TASK_VND_MODEL_OP_GET) {
@@ -288,10 +289,6 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
                 break;
             }
 
-            if (param->model_operation.ctx->addr != 1) {
-                break;
-            }
-
             ESP_LOGI(TAG, "TIMESYNC_VND_MODEL_OP_BEACON Recv 0x%06x for addr %04x",
                 param->model_operation.opcode,
                 param->model_operation.ctx->addr);
@@ -304,6 +301,25 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
             timesync_beacon_t *beacon_data = (timesync_beacon_t*)param->model_operation.msg;
             update_neighbour_time_beacon(param->model_operation.ctx->addr, beacon_data);
         }
+        if (param->model_operation.opcode == TIMESYNC_VND_MODEL_OP_DRIFT_BEACON) {
+            if (param->model_operation.ctx->addr == current_address) {
+                break;
+            }
+
+            ESP_LOGI(TAG, "TIMESYNC_VND_MODEL_OP_DRIFT_BEACON Recv 0x%06x for addr %04x",
+                param->model_operation.opcode,
+                param->model_operation.ctx->addr);
+
+            if (param->model_operation.length < sizeof(timesync_drift_beacon_t)) {
+                ESP_LOGW(TAG, "Beacon message is too short: %d", param->model_operation.length);
+                break;
+            }
+
+            timesync_drift_beacon_t *drift_data = (timesync_drift_beacon_t*)param->model_operation.msg;
+            update_neighbour_drift_beacon(param->model_operation.ctx->addr, drift_data);
+
+        }
+        ESP_LOGI(TAG, "Model operation: 0x%08x", param->model_operation.opcode);
         break;
     case ESP_BLE_MESH_MODEL_SEND_COMP_EVT:
         if (param->model_send_comp.err_code) {
@@ -329,6 +345,21 @@ void publish_timesync_data(timesync_beacon_t beacon_data) {
     esp_err_t ret = esp_ble_mesh_server_model_send_msg(timesync_model, &msg, TIMESYNC_VND_MODEL_OP_BEACON, sizeof(timesync_beacon_t), (uint8_t*)(&beacon_data));
     if (ret != ESP_OK) {
             ESP_LOGE(TAG, "Could not publish timesync beacon: %d", ret);
+    }
+}
+
+void publish_timedrift_data(timesync_drift_beacon_t beacon_data) {
+    esp_ble_mesh_msg_ctx_t msg;
+    msg.addr = TIMESYNC_VND_MODEL_ADDRESS_PUBLISH;
+    msg.send_ttl = 0;
+    msg.send_rel = 0;
+    msg.net_idx = current_net_idx;
+    msg.app_idx = 0;
+    msg.model = timesync_model;
+
+    esp_err_t ret = esp_ble_mesh_server_model_send_msg(timesync_model, &msg, TIMESYNC_VND_MODEL_OP_DRIFT_BEACON, sizeof(timesync_drift_beacon_t), (uint8_t*)(&beacon_data));
+    if (ret != ESP_OK) {
+            ESP_LOGE(TAG, "Could not publish timedrift beacon: %d", ret);
     }
 }
 

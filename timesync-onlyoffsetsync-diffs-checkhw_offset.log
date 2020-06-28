@@ -1,0 +1,135 @@
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at http://bit.ly/pio-monitor-filters
+␛[0;32mI (30615) tasks: Time beacon task iteration 6␛[0m
+␛[0;32mI (35615) tasks: Time beacon task iteration 7␛[0m
+␛[0;32mI (36165) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_OPEN_EVT, bearer PB-ADV␛[0m
+␛[0;33mW (36475) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;33mW (38775) BLE_MESH: Data for unknown transaction (2 != 0)␛[0m
+␛[0;32mI (40615) tasks: Time beacon task iteration 8␛[0m
+␛[0;32mI (44655) blemesh: ESP_BLE_MESH_NODE_PROV_COMPLETE_EVT␛[0m
+␛[0;32mI (44655) blemesh: net_idx: 0x0000, addr: 0x0007␛[0m
+␛[0;32mI (44655) blemesh: flags: 0x00, iv_index: 0x00000000␛[0m
+␛[0;32mI (44655) blemesh: Provision COMPLETED!␛[0m
+␛[0;33mW (45035) BLE_MESH: bt_mesh_attention, No Health Server context provided␛[0m
+␛[0;32mI (45035) blemesh: ESP_BLE_MESH_NODE_PROV_LINK_CLOSE_EVT, bearer PB-ADV␛[0m
+␛[0;32mI (45315) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (45315) blemesh: ESP_BLE_MESH_MODEL_OP_APP_KEY_ADD␛[0m
+␛[0;32mI (45315) blemesh: net_idx 0x0000, app_idx 0x0000␛[0m
+␛[0;32mI (45315) AppKey: 33 0c 2e 0c 59 0c 44 0c 4f 92 59 90 43 18 59 6f ␛[0m
+␛[0;32mI (45615) tasks: Time beacon task iteration 9␛[0m
+␛[0;32mI (45835) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (45835) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (45835) blemesh: elem_addr 0x0007, app_idx 0x0000, cid 0x02e5, mod_id 0x00a2␛[0m
+␛[0;32mI (46155) blemesh: BUM BUM BUM CONFIG SERVER␛[0m
+␛[0;32mI (46155) blemesh: ESP_BLE_MESH_MODEL_OP_MODEL_APP_BIND␛[0m
+␛[0;32mI (46155) blemesh: elem_addr 0x0007, app_idx 0x0000, cid 0x02e5, mod_id 0x00a4␛[0m
+␛[0;33mW (47115) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (47115) blemesh: custom model cb␛[0m
+␛[0;32mI (47115) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (47115) tasks: Hardware offset from beacon: -1590249883059.000000␛[0m
+␛[0;32mI (47125) tasks: Hardware time offset negative limit exceeded, ignoring beacon␛[0m
+␛[0;33mW (47215) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (47215) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (47295) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (47295) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (47395) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (47395) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (47515) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (47515) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (50615) tasks: Time beacon task iteration 10␛[0m
+␛[0;33mW (51715) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (51715) blemesh: custom model cb␛[0m
+␛[0;32mI (51715) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (51715) tasks: Hardware offset from beacon: -1590249883457.000000␛[0m
+␛[0;32mI (51725) tasks: Hardware time offset negative limit exceeded, ignoring beacon␛[0m
+␛[0;33mW (51815) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (51815) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (52015) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (52015) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (52115) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (52115) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (52215) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (52215) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (52315) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (52315) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (52415) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (52415) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (52515) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (52515) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (52615) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (52615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (55615) tasks: Time beacon task iteration 11␛[0m
+␛[0;33mW (56715) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (56715) blemesh: custom model cb␛[0m
+␛[0;32mI (56715) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (56715) tasks: Hardware offset from beacon: -1590249883454.000000␛[0m
+␛[0;32mI (56725) tasks: Hardware time offset negative limit exceeded, ignoring beacon␛[0m
+␛[0;33mW (56815) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (56815) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (56915) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (56915) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (57015) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (57015) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (57115) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (57115) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (57215) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (57215) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (57315) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (57315) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (57415) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (57415) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (57515) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (57515) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (57615) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (57615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (60615) tasks: Time beacon task iteration 12␛[0m
+␛[0;33mW (61715) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (61715) blemesh: custom model cb␛[0m
+␛[0;32mI (61715) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (61715) tasks: Hardware offset from beacon: -1590249883450.000000␛[0m
+␛[0;32mI (61725) tasks: Hardware time offset negative limit exceeded, ignoring beacon␛[0m
+␛[0;33mW (61815) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (61815) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (61915) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (61915) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (62015) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (62015) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (62215) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (62215) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (62415) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (62415) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (62615) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (62615) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (65615) tasks: Time beacon task iteration 13␛[0m
+␛[0;33mW (66815) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (66815) blemesh: custom model cb␛[0m
+␛[0;32mI (66815) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (66815) tasks: Hardware offset from beacon: -1590249883345.000000␛[0m
+␛[0;32mI (66825) tasks: Hardware time offset negative limit exceeded, ignoring beacon␛[0m
+␛[0;33mW (66935) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (66935) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (67035) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (67035) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (67115) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (67115) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (67235) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (67235) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (67335) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (67335) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (67405) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (67405) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (67515) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (67515) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (70615) tasks: Time beacon task iteration 14␛[0m
+␛[0;33mW (71915) BLE_MESH: Received already received fragment␛[0m
+␛[0;33mW (72035) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;32mI (72035) blemesh: custom model cb␛[0m
+␛[0;32mI (72035) blemesh: TIMESYNC_VND_MODEL_OP_BEACON Recv 0xd002e5 for addr 0001␛[0m
+␛[0;32mI (72035) tasks: Hardware offset from beacon: -1590249883119.000000␛[0m
+␛[0;32mI (72045) tasks: Hardware time offset negative limit exceeded, ignoring beacon␛[0m
+␛[0;33mW (72235) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (72235) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (72335) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (72335) BLE_MESH: Not sending ack for non-unicast address␛[0m
+␛[0;33mW (72435) BLE_MESH: Got segment for already complete SDU␛[0m
+␛[0;33mW (72435) BLE_MESH: Not sending ack for non-unicast address␛[0m

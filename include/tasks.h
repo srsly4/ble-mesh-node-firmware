@@ -20,6 +20,7 @@
 #define TIMER_DIVIDER         512  //  Hardware timer clock divider
 #define TIMER_SCALE           (TIMER_BASE_CLK / TIMER_DIVIDER)  // convert counter value to seconds
 #define TIMER_SCALE_MS        (TIMER_SCALE / 1000)
+#define TIMER_SCALE_MS_FP     ((double)TIMER_BASE_CLK / 512000.0 )
 
 #define LOGIC_TIME_RATE_MULTIPLIER 1000
 #define LOGIC_TIME_THRESHOLD 1000 * 1000
@@ -46,5 +47,6 @@ void initialize_task_timer(void);
 void initialize_task_executor(void);
 
 void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon);
+void update_neighbour_drift_beacon(uint16_t sender, timesync_drift_beacon_t *beacon);
 
 #endif

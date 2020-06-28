@@ -39,7 +39,8 @@
 #define TIMESYNC_VND_MODEL_ID_CLIENT    0x00A3
 #define TIMESYNC_VND_MODEL_ID_SERVER    0x00A4
 
-#define TIMESYNC_VND_MODEL_OP_BEACON    ESP_BLE_MESH_MODEL_OP_3(0x10, CID_ESP)
+#define TIMESYNC_VND_MODEL_OP_BEACON    ESP_BLE_MESH_MODEL_OP_3(0x05, CID_ESP)
+#define TIMESYNC_VND_MODEL_OP_DRIFT_BEACON    ESP_BLE_MESH_MODEL_OP_3(0x06, CID_ESP)
 
 #define TIMESYNC_VND_MODEL_ADDRESS_PUBLISH 0xFFFF
 
@@ -56,5 +57,6 @@ esp_err_t bluetooth_init(void);
 esp_err_t ble_mesh_init(void);
 
 void publish_timesync_data(timesync_beacon_t beacon_data);
+void publish_timedrift_data(timesync_drift_beacon_t beacon_data);
 
 #endif
