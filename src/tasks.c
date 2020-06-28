@@ -289,13 +289,14 @@ static void time_beacon_task(void* args) {
                 avgRate += curr->relative_logic_rate;
                 avgOffset += (double)BEACON_LOGIC_TIME(curr->beacon) - curr->time_recv.logic_time;
                 neighbour_count++;
-            } else if (curr->time_authority) {
-                double hw_time_diff = (double)(time.hardware_time - curr->time_recv.hardware_time) / TIMER_SCALE_MS_FP;
-                double predicted_logic_time = BEACON_LOGIC_TIME(curr->beacon) + hw_time_diff;
-
-                avgOffset += predicted_logic_time - time.logic_time;
-                neighbour_count++;   
             }
+            // else if (curr->time_authority) {
+            //     double hw_time_diff = (double)(time.hardware_time - curr->time_recv.hardware_time) / TIMER_SCALE_MS_FP;
+            //     double predicted_logic_time = BEACON_LOGIC_TIME(curr->beacon) + hw_time_diff;
+
+            //     avgOffset += predicted_logic_time - time.logic_time;
+            //     neighbour_count++;   
+            // }
 
             prev = curr;
             curr = curr->next;
@@ -305,7 +306,7 @@ static void time_beacon_task(void* args) {
         avgOffset /= neighbour_count + 1;
 
         logic_time_offset += avgOffset;
-        logic_time_rate = 0;
+        logic_time_rate = avgRate;
 
         ESP_LOGI(TASK_TAG, "Current local logic time: %f ms, hardware time: %llu, offset diff/rate: %f/%f", time.logic_time, time.hardware_time/TIMER_SCALE_MS, avgOffset, logic_time_rate);
 
@@ -449,8 +450,12 @@ void update_neighbour_drift_beacon(uint16_t sender, timesync_drift_beacon_t *bea
         return;
     }
 
+    ESP_LOGI(TASK_TAG, "delta_local calc (curr, drift_recv): %llu, %llu", current_time.hardware_time, curr->drift_recv.hardware_time);
     double delta_local = (double)(current_time.hardware_time - curr->drift_recv.hardware_time) / TIMER_SCALE_MS_FP; // hi
-    uint16_t delta_neighbour = beacon->hardware_time - curr->beacon.hardware_time; // hj - ile faktycznie minęło na innym nodzie
+    uint16_t delta_neighbour = beacon->hardware_time - curr->drift_beacon.hardware_time; // hj - ile faktycznie minęło na innym nodzie
+
+    curr->drift_beacon = *beacon;
+    curr->drift_recv = current_time;
 
     double current_rate = ((double)delta_neighbour) / delta_local; // hj / hi
 

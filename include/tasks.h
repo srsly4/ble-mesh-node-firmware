@@ -17,8 +17,8 @@
 
 #define TASK_TAG "tasks"
 
-#define TIMER_DIVIDER         512  //  Hardware timer clock divider
-#define TIMER_SCALE           (TIMER_BASE_CLK / TIMER_DIVIDER)  // convert counter value to seconds
+#define TIMER_DIVIDER         512
+#define TIMER_SCALE           (TIMER_BASE_CLK / TIMER_DIVIDER)
 #define TIMER_SCALE_MS        (TIMER_SCALE / 1000)
 #define TIMER_SCALE_MS_FP     ((double)TIMER_BASE_CLK / 512000.0 )
 
