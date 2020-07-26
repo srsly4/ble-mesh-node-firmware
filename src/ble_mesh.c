@@ -280,6 +280,33 @@ esp_err_t _http_event_handler(esp_http_client_event_t *evt)
     return ESP_OK;
 }
 
+static void ota_update_task(void* args) {
+    esp_http_client_config_t config = {
+        .url = "http://192.168.0.73/firmware.bin",
+        .event_handler = _http_event_handler,
+    };
+    esp_err_t ret = esp_https_ota(&config);
+    if (ret == ESP_OK) {
+        ESP_LOGI(TAG, "OTA finished, restarting in 2 secs...");
+        esp_ble_mesh_msg_ctx_t msg;
+        msg.addr = 0x0001;
+        msg.send_ttl = 0;
+        msg.send_rel = 0;
+        msg.net_idx = current_net_idx;
+        msg.app_idx = 0;
+        msg.model = timesync_model;
+
+        esp_err_t ret = esp_ble_mesh_server_model_send_msg(timesync_model, &msg, OTA_VND_MODEL_OP_UPDATE_FINISHED, 0, NULL);
+        if (ret != ESP_OK) {
+            ESP_LOGE(TAG, "Could not publish ota finished message: %d", ret);
+        }
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        esp_restart();
+    } else {
+        ESP_LOGE(TAG, "Firmware upgrade failed");
+    }
+}
+
 static uint16_t last_tid = 0;
 static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
                                              esp_ble_mesh_model_cb_param_t *param)
@@ -360,17 +387,8 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
         }
         if (param->model_operation.opcode == OTA_VND_MODEL_OP_UPDATE) {
             ESP_LOGI(TAG, "UPDATE message receiving, doing OTA...");
-            esp_http_client_config_t config = {
-                .url = "http://192.168.0.73/firmware.bin",
-                .event_handler = _http_event_handler,
-            };
-            esp_err_t ret = esp_https_ota(&config);
-            if (ret == ESP_OK) {
-                ESP_LOGI(TAG, "OTA finished, restarting...");
-                esp_restart();
-            } else {
-                ESP_LOGE(TAG, "Firmware upgrade failed");
-            }
+            xTaskHandle otaUpdateTaskHandle;
+            xTaskCreate(ota_update_task, "ota_update_task", 8096, NULL, 3, &otaUpdateTaskHandle);
         }
         break;
     case ESP_BLE_MESH_MODEL_SEND_COMP_EVT:
