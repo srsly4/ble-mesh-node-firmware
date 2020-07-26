@@ -44,6 +44,18 @@
 
 #define TIMESYNC_VND_MODEL_ADDRESS_PUBLISH 0xFFFF
 
+#define OTA_VND_MODEL_ID_CLIENT 0x00A5
+#define OTA_VND_MODEL_ID_SERVER 0x00A6
+
+#define OTA_VND_MODEL_OP_UPDATE        ESP_BLE_MESH_MODEL_OP_3(0x07, CID_ESP)
+#define OTA_VND_MODEL_OP_UPDATE_FINISHED ESP_BLE_MESH_MODEL_OP_4(0x08, CID_ESP)
+
+typedef struct __attribute__ ((__packed__)) ota_update_t {
+    uint16_t tid;
+    uint8_t func_code;
+    uint64_t time;
+    void* args;
+} __attribute__ ((__packed__)) ota_update_t;
 
 typedef struct __attribute__ ((__packed__)) task_enqueue_t {
     uint16_t tid;

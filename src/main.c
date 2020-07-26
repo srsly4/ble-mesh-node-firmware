@@ -9,6 +9,10 @@
 #include "ble_mesh.h"
 #include "tasks.h"
 #include "example/blink_task.h"
+#include "esp_system.h"
+#include "esp_event.h"
+#include "esp_event_loop.h"
+#include "wifi.h"
 
 #define BLINK_GPIO CONFIG_BLINK_GPIO
 
@@ -54,8 +58,7 @@ void app_main()
         ESP_LOGE(TAG, "Bluetooth mesh init failed (err %d)", err);
     }
 
-
-    // TaskHandle_t xHandle = NULL;
-    // xTaskCreate(blink_task, "blink_task", 8096, NULL, tskIDLE_PRIORITY, &xHandle);
-    // configASSERT(xHandle);
+    tcpip_adapter_init();
+    ESP_ERROR_CHECK(esp_event_loop_create_default());
+    example_connect();
 }
