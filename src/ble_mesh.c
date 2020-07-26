@@ -1,6 +1,9 @@
 #include <memory.h>
 #include "ble_mesh.h"
 #include "tasks.h"
+#include "esp_ota_ops.h"
+#include "esp_http_client.h"
+#include "esp_https_ota.h"
 
 static uint8_t dev_uuid[16] = { 0xdd, 0xdd };
 // SERVER CONFIG
@@ -46,9 +49,16 @@ static esp_ble_mesh_model_op_t timesync_vnd_op[] = {
     ESP_BLE_MESH_MODEL_OP_END,
 };
 
+static esp_ble_mesh_model_op_t ota_vnd_op[] = {
+    ESP_BLE_MESH_MODEL_OP(OTA_VND_MODEL_OP_UPDATE, 0),
+    ESP_BLE_MESH_MODEL_OP(OTA_VND_MODEL_OP_UPDATE_FINISHED, 0),
+    ESP_BLE_MESH_MODEL_OP_END,
+};
+
 static esp_ble_mesh_model_t vnd_models[] = {
     ESP_BLE_MESH_VENDOR_MODEL(CID_ESP, TASK_VND_MODEL_ID_SERVER, task_vnd_op, NULL, NULL),
-    ESP_BLE_MESH_VENDOR_MODEL(CID_ESP, TIMESYNC_VND_MODEL_ID_SERVER, timesync_vnd_op, &timesync_pub_0, NULL)
+    ESP_BLE_MESH_VENDOR_MODEL(CID_ESP, TIMESYNC_VND_MODEL_ID_SERVER, timesync_vnd_op, &timesync_pub_0, NULL),
+    ESP_BLE_MESH_VENDOR_MODEL(CID_ESP, OTA_VND_MODEL_ID_SERVER, ota_vnd_op, NULL, NULL),
 };
 
 static esp_ble_mesh_model_t *timesync_model = &(vnd_models[1]);
@@ -210,7 +220,6 @@ static void esp_ble_mesh_generic_server_cb(esp_ble_mesh_generic_server_cb_event_
 static void esp_ble_mesh_config_server_cb(esp_ble_mesh_cfg_server_cb_event_t event,
                                               esp_ble_mesh_cfg_server_cb_param_t *param)
 {
-    ESP_LOGI(TAG, "BUM BUM BUM CONFIG SERVER");
     if (event == ESP_BLE_MESH_CFG_SERVER_STATE_CHANGE_EVT) {
         switch (param->ctx.recv_op) {
         case ESP_BLE_MESH_MODEL_OP_APP_KEY_ADD:
@@ -242,12 +251,42 @@ static void esp_ble_mesh_config_server_cb(esp_ble_mesh_cfg_server_cb_event_t eve
     }
 }
 
+
+esp_err_t _http_event_handler(esp_http_client_event_t *evt)
+{
+    switch (evt->event_id) {
+    case HTTP_EVENT_ERROR:
+        ESP_LOGD(TAG, "HTTP_EVENT_ERROR");
+        break;
+    case HTTP_EVENT_ON_CONNECTED:
+        ESP_LOGD(TAG, "HTTP_EVENT_ON_CONNECTED");
+        break;
+    case HTTP_EVENT_HEADER_SENT:
+        ESP_LOGD(TAG, "HTTP_EVENT_HEADER_SENT");
+        break;
+    case HTTP_EVENT_ON_HEADER:
+        ESP_LOGD(TAG, "HTTP_EVENT_ON_HEADER, key=%s, value=%s", evt->header_key, evt->header_value);
+        break;
+    case HTTP_EVENT_ON_DATA:
+        ESP_LOGD(TAG, "HTTP_EVENT_ON_DATA, len=%d", evt->data_len);
+        break;
+    case HTTP_EVENT_ON_FINISH:
+        ESP_LOGD(TAG, "HTTP_EVENT_ON_FINISH");
+        break;
+    case HTTP_EVENT_DISCONNECTED:
+        ESP_LOGD(TAG, "HTTP_EVENT_DISCONNECTED");
+        break;
+    }
+    return ESP_OK;
+}
+
 static uint16_t last_tid = 0;
 static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
                                              esp_ble_mesh_model_cb_param_t *param)
 {
     switch (event) {
     case ESP_BLE_MESH_MODEL_OPERATION_EVT:
+        ESP_LOGI(TAG, "Model operation: 0x%08x", param->model_operation.opcode);
         if (param->model_operation.opcode == TASK_VND_MODEL_OP_GET) {
             uint16_t tid = *(uint16_t *)param->model_operation.msg;
             ESP_LOGI(TAG, "TASK_VND_MODEL_OP_GET Recv 0x%06x, tid 0x%04x", param->model_operation.opcode, tid);
@@ -319,7 +358,20 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
             update_neighbour_drift_beacon(param->model_operation.ctx->addr, drift_data);
 
         }
-        ESP_LOGI(TAG, "Model operation: 0x%08x", param->model_operation.opcode);
+        if (param->model_operation.opcode == OTA_VND_MODEL_OP_UPDATE) {
+            ESP_LOGI(TAG, "UPDATE message receiving, doing OTA...");
+            esp_http_client_config_t config = {
+                .url = "http://192.168.0.73/firmware.bin",
+                .event_handler = _http_event_handler,
+            };
+            esp_err_t ret = esp_https_ota(&config);
+            if (ret == ESP_OK) {
+                ESP_LOGI(TAG, "OTA finished, restarting...");
+                esp_restart();
+            } else {
+                ESP_LOGE(TAG, "Firmware upgrade failed");
+            }
+        }
         break;
     case ESP_BLE_MESH_MODEL_SEND_COMP_EVT:
         if (param->model_send_comp.err_code) {

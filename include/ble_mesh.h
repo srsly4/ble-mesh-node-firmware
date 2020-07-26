@@ -48,7 +48,7 @@
 #define OTA_VND_MODEL_ID_SERVER 0x00A6
 
 #define OTA_VND_MODEL_OP_UPDATE        ESP_BLE_MESH_MODEL_OP_3(0x07, CID_ESP)
-#define OTA_VND_MODEL_OP_UPDATE_FINISHED ESP_BLE_MESH_MODEL_OP_4(0x08, CID_ESP)
+#define OTA_VND_MODEL_OP_UPDATE_FINISHED ESP_BLE_MESH_MODEL_OP_3(0x08, CID_ESP)
 
 typedef struct __attribute__ ((__packed__)) ota_update_t {
     uint16_t tid;

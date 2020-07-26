@@ -357,6 +357,9 @@ void initialize_task_executor(void) {
 void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon) {
     // beacon->hardware_time += TIME_TRANSMISSION_DELAY;
     // beacon->logic_time += TIME_TRANSMISSION_DELAY;
+
+    beacon->logic_time_low += 20;
+
     time_model_t current_time = get_logic_time();
 
     gtsp_neighbour_t *curr = neighbours, *prev = NULL;
