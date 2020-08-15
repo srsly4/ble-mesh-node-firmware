@@ -2,6 +2,7 @@
 #include <math.h>
 #include "driver/timer.h"
 #include <string.h>
+#include <driver/adc.h>
 
 static xTaskHandle executor_task_handle;
 static xTaskHandle time_beacon_task_handle;
@@ -118,7 +119,22 @@ void finalize_task(task_item_t *task) {
     task->next = tasks_finished;
     tasks_finished = task;
 
+    task_exec_ack_t *ack_data = malloc(sizeof(task_exec_ack_t) - sizeof(void*) + task->res_data->ret_len);
+
+    ack_data->data_len = task->res_data->ret_len;
+    ack_data->tid = task->tid;
+    memcpy(&(ack_data->data), task->res_data->data, task->res_data->ret_len);
+
+    
     ESP_LOGI(TASK_TAG, "Task finished");
+    
+    vTaskDelay((100 + (esp_random() % 1500)) / portTICK_PERIOD_MS);
+
+
+    publish_exec_task_result(task->source_address, ack_data);
+    ESP_LOGI(TASK_TAG, "Sent task ACK");
+
+    free(ack_data);
 }
 
 uint8_t register_task(uint8_t task_id, task_func_t func) {
@@ -146,7 +162,6 @@ uint8_t register_task(uint8_t task_id, task_func_t func) {
 void IRAM_ATTR timer_group0_isr(void *params) {
     /* Retrieve the interrupt status and the counter value
        from the timer that reported the interrupt */
-    ets_printf("Timer triggered!\n");
     TIMERG0.hw_timer[0].update = 1;
     uint64_t timer_counter_value = 
         ((uint64_t) TIMERG0.hw_timer[0].cnt_high) << 32
@@ -219,7 +234,10 @@ static void executor_task(void* args) {
     ESP_LOGI(TASK_TAG, "Task %02x returned with data length %u", task->func_code, (unsigned int)ret.ret_len);
 
     task->res_data = malloc(sizeof(task_registered_ret_t));
-    *(task->res_data) = ret;
+    task->res_data->ret_len = ret.ret_len;
+    task->res_data->data = malloc(ret.ret_len);
+    memcpy(task->res_data->data, ret.data, ret.ret_len);
+    free(ret.data);
     finalize_task(task);
     vTaskDelete(NULL);
 }
@@ -257,6 +275,10 @@ static void time_beacon_task(void* args) {
     while (1) {
         // todo: add random additional delay
         vTaskDelay((TIME_BEACON_DELAY_BASE - 500) / portTICK_PERIOD_MS);
+
+        int adc_reading = adc1_get_raw(ADC1_CHANNEL_0);
+
+        ESP_LOGI(TASK_TAG, "test ADC %d", adc_reading);
 
         gtsp_current_iteration++;
         ESP_LOGI(TASK_TAG, "Time beacon task iteration %u", gtsp_current_iteration);
@@ -465,11 +487,11 @@ void update_neighbour_drift_beacon(uint16_t sender, timesync_drift_beacon_t *bea
     double beacon_logic_rate = ((double)beacon->rate) / 2147483647.0;
     curr->relative_logic_rate = current_rate * beacon_logic_rate;
 
-    if (curr->relative_logic_rate > 0.1) {
-        curr->relative_logic_rate = 0.1;
+    if (curr->relative_logic_rate > 3.3e-8) {
+        curr->relative_logic_rate = 3.3e-8;
     }
-    if (curr->relative_logic_rate < -0.1) {
-        curr->relative_logic_rate = -0.1;
+    if (curr->relative_logic_rate < -3.3e-8) {
+        curr->relative_logic_rate = -3.3e-8;
     }
 
     ESP_LOGI(TASK_TAG, "Drift beacon, delta local/neighbour: %f/%u", delta_local, delta_neighbour);

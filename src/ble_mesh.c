@@ -40,6 +40,8 @@ static esp_ble_mesh_gen_onoff_srv_t onoff_server_0 = {
 static esp_ble_mesh_model_op_t task_vnd_op[] = {
     ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_GET, 1),
     ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_ENQUEUE, 2),
+    ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_ENQUEUE_ACK, 1),
+    ESP_BLE_MESH_MODEL_OP(TASK_VND_MODEL_OP_EXEC_ACK, 1),
     ESP_BLE_MESH_MODEL_OP_END,
 };
 
@@ -62,6 +64,7 @@ static esp_ble_mesh_model_t vnd_models[] = {
 };
 
 static esp_ble_mesh_model_t *timesync_model = &(vnd_models[1]);
+static esp_ble_mesh_model_t *task_model = &(vnd_models[0]);
 
 
 // ROOT ELEMENT
@@ -282,7 +285,7 @@ esp_err_t _http_event_handler(esp_http_client_event_t *evt)
 
 static void ota_update_task(void* args) {
     esp_http_client_config_t config = {
-        .url = "http://192.168.0.73/firmware.bin",
+        .url = "http://192.168.0.200/firmware.bin",
         .event_handler = _http_event_handler,
     };
     esp_err_t ret = esp_https_ota(&config);
@@ -337,6 +340,7 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
                 param->model_operation.opcode, task_enqueue->func_code, (unsigned int)param->model_operation.length, task_enqueue->time);
 
             task_item_t *task = malloc(sizeof(task_item_t));
+            task->source_address = param->model_operation.ctx->addr;
             task->tid = task_enqueue->tid;
             task->func_code = task_enqueue->func_code;
             task->time = task_enqueue->time;
@@ -347,7 +351,6 @@ static void task_custom_model_cb(esp_ble_mesh_model_cb_event_t event,
             //     memcpy(task->arg_data, param->model_operation.msg + 9, arg_size);
             // }
 
-            ESP_LOGI(TAG, "enqueuing task");
             enqueue_task(task);
         }
         if (param->model_operation.opcode == TIMESYNC_VND_MODEL_OP_BEACON) {
@@ -430,6 +433,27 @@ void publish_timedrift_data(timesync_drift_beacon_t beacon_data) {
     esp_err_t ret = esp_ble_mesh_server_model_send_msg(timesync_model, &msg, TIMESYNC_VND_MODEL_OP_DRIFT_BEACON, sizeof(timesync_drift_beacon_t), (uint8_t*)(&beacon_data));
     if (ret != ESP_OK) {
             ESP_LOGE(TAG, "Could not publish timedrift beacon: %d", ret);
+    }
+}
+
+void publish_exec_task_result(uint16_t address, task_exec_ack_t *exec_task_data) {
+    esp_ble_mesh_msg_ctx_t msg;
+    msg.addr = address;
+    msg.send_ttl = 8;
+    msg.send_rel = 0;
+    msg.net_idx = current_net_idx;
+    msg.app_idx = 0;
+    msg.model = task_model;
+
+    esp_err_t ret = esp_ble_mesh_server_model_send_msg(
+        timesync_model,
+        &msg,
+        TASK_VND_MODEL_OP_EXEC_ACK,
+        sizeof(task_exec_ack_t) - sizeof(void*) + exec_task_data->data_len,
+        exec_task_data
+        );
+    if (ret != ESP_OK) {
+            ESP_LOGE(TAG, "Could not publish task exec ack message: %d", ret);
     }
 }
 

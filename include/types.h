@@ -61,6 +61,7 @@ typedef struct task_item_t task_item_t;
 struct task_item_t {
     uint16_t tid;
     uint64_t time;
+    uint16_t source_address;
     hardware_predicted_time_t predicted_time;
     uint16_t func_code;
     void* arg_data;
