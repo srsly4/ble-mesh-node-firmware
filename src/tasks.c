@@ -295,7 +295,7 @@ static void time_beacon_task(void* args) {
         gtsp_neighbour_t *curr = neighbours, *prev = NULL;
 
         while (curr != NULL) {
-            if (gtsp_current_iteration - curr->iteration > TIME_BEACON_MAX_ITERATION_DIFFERENCE) {
+            if (gtsp_current_iteration - curr->iteration > TIME_BEACON_MAX_ITERATION_DIFFERENCE && curr->time_authority == 0) {
                 ESP_LOGI(TASK_TAG, "Deleting neighbour %04x", curr->sender);
                 // delete old neighbour
                 if (prev != NULL) {
@@ -312,13 +312,13 @@ static void time_beacon_task(void* args) {
                 avgOffset += (double)BEACON_LOGIC_TIME(curr->beacon) - curr->time_recv.logic_time;
                 neighbour_count++;
             }
-            // else if (curr->time_authority) {
-            //     double hw_time_diff = (double)(time.hardware_time - curr->time_recv.hardware_time) / TIMER_SCALE_MS_FP;
-            //     double predicted_logic_time = BEACON_LOGIC_TIME(curr->beacon) + hw_time_diff;
+            else if (curr->time_authority) {
+                double hw_time_diff = (double)(time.hardware_time - curr->time_recv.hardware_time) / TIMER_SCALE_MS_FP;
+                double predicted_logic_time = BEACON_LOGIC_TIME(curr->beacon) + hw_time_diff;
 
-            //     avgOffset += predicted_logic_time - time.logic_time;
-            //     neighbour_count++;   
-            // }
+                avgOffset += predicted_logic_time - time.logic_time;
+                neighbour_count++;   
+            }
 
             prev = curr;
             curr = curr->next;
@@ -379,8 +379,6 @@ void initialize_task_executor(void) {
 void update_neighbour_time_beacon(uint16_t sender, timesync_beacon_t *beacon) {
     // beacon->hardware_time += TIME_TRANSMISSION_DELAY;
     // beacon->logic_time += TIME_TRANSMISSION_DELAY;
-
-    beacon->logic_time_low += 20;
 
     time_model_t current_time = get_logic_time();
 
